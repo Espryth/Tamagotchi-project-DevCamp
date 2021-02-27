@@ -5,8 +5,44 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maimai</groupId>
-    <artifactId>Tamagochi</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tamagotchi-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>Core</module>
+        <module>API</module>
+    </modules>
+
+    <build>
+        <defaultGoal>clean package install</defaultGoal>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <finalName>EasyJoin</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>shade</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>
@@ -18,18 +54,11 @@
             </snapshots>
         </repository>
     </repositories>
-    <dependencies>
-        <dependency>
-            <groupId>dev.morphia.morphia</groupId>
-            <artifactId>morphia-core</artifactId>
-            <version>2.1.4</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-
 </project>
