@@ -9,4 +9,6 @@ public interface Inventory {
     List<FoodItem> getFoodItems();
 
     List<ToyItem> getToyItems();
+    
+    List<BathItem> getBathItems();
 }
