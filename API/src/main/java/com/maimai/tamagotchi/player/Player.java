@@ -3,7 +3,7 @@ package com.maimai.tamagotchi.player;
 import com.maimai.tamagotchi.entity.Entity;
 import com.maimai.tamagotchi.player.inventory.Inventory;
 import com.maimai.tamagotchi.statistic.impl.IntegerStatistic;
-import com.maimai.tamagotchi.action.PlayerAction;
+import com.maimai.tamagotchi.action.player.PlayerAction;
 
 import java.util.List;
 

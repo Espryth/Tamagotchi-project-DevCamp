@@ -1,7 +1,10 @@
 package com.maimai.tamagotchi.tamagotchi;
 
+import com.maimai.tamagotchi.Manager;
+import com.maimai.tamagotchi.action.Action;
+import com.maimai.tamagotchi.action.ActionManager;
 import com.maimai.tamagotchi.entity.Entity;
-import com.maimai.tamagotchi.action.TamagotchiAction;
+import com.maimai.tamagotchi.action.tamagotchi.TamagotchiAction;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 
 import java.util.List;
@@ -16,7 +19,9 @@ public interface Tamagotchi extends Entity {
 
     void setType(TamagotchiType type);
 
-    List<TamagotchiAction> getActions();
+
+
+    List<Action<Tamagotchi>> getActions();
 
     void setActions(List<TamagotchiAction> actions);
 

@@ -10,5 +10,4 @@ public interface Statistic<T extends Number> {
 
     void setValue(T value);
 
-
 }
