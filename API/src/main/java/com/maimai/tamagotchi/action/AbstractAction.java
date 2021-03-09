@@ -1,23 +1,13 @@
 package com.maimai.tamagotchi.action;
 
-import com.maimai.tamagotchi.action.tamagotchi.TamagotchiAction;
 import com.maimai.tamagotchi.entity.Entity;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public abstract class AbstractAction<T extends Entity> implements Action<T> {
 
-    private final String name;
-
     private final ActionHandler<T> actionHandler;
 
-    public AbstractAction(String name, ActionHandler<T> actionHandler) {
-        this.name = name;
+    public AbstractAction(ActionHandler<T> actionHandler) {
         this.actionHandler = actionHandler;
-    }
-
-    @Override
-    public String getActionName() {
-        return name;
     }
 
     @Override
@@ -25,27 +15,22 @@ public abstract class AbstractAction<T extends Entity> implements Action<T> {
         return actionHandler;
     }
 
-    public static class Builder implements Action.Builder<Tamagotchi> {
+    public abstract static class Builder<T extends Entity> implements Action.Builder<T> {
 
-        private String name;
-
-        private ActionHandler<Tamagotchi> actionHandler;
+        private ActionHandler<T> actionHandler;
 
         @Override
-        public Action.Builder<Tamagotchi> setName(String name) {
-            this.name = name;
-            return this;
-        }
+        public abstract Action<T> build();
 
         @Override
-        public Action.Builder<Tamagotchi> createActionHandler(ActionHandler<Tamagotchi> actionHandler) {
+        public Action.Builder<T> createActionHandler(ActionHandler<T> actionHandler) {
             this.actionHandler = actionHandler;
             return this;
         }
 
-        @Override
-        public Action<Tamagotchi> build() {
-            return new TamagotchiAction(name, actionHandler);
+        protected ActionHandler<T> getActionHandler() {
+            return actionHandler;
         }
+
     }
 }

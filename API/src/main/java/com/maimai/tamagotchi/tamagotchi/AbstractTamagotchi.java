@@ -2,21 +2,24 @@ package com.maimai.tamagotchi.tamagotchi;
 
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.action.tamagotchi.TamagotchiAction;
-import com.maimai.tamagotchi.entity.Entity;
+import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleTamagotchi implements Tamagotchi{
+public abstract class AbstractTamagotchi implements Tamagotchi {
 
-    private List<Action<Tamagotchi>> actions;
+    public AbstractTamagotchi() {
+        registerActions();
 
-    public SimpleTamagotchi() {
-        this.actions = new ArrayList<>();
     }
 
+    public abstract void registerActions();
+
+    protected void registerAction(String name, Action<Tamagotchi> action) {
+        getActionManager().insert(name, action);
+    }
 
     @Override
     public boolean isAlive() {
@@ -34,17 +37,28 @@ public class SimpleTamagotchi implements Tamagotchi{
     }
 
     @Override
+    public Manager<Action<Tamagotchi>> getActionManager() {
+        return null;
+    }
+
+    @Override
+    public void setActionManager(Manager<Action<Tamagotchi>> actionManager) {
+
+    }
+
+    @Override
     public void setType(TamagotchiType type) {
 
     }
 
     @Override
     public List<Action<Tamagotchi>> getActions() {
-        return actions;
+        return null;
     }
 
     @Override
     public void setActions(List<TamagotchiAction> actions) {
+
     }
 
     @Override
@@ -96,7 +110,6 @@ public class SimpleTamagotchi implements Tamagotchi{
     public void setName(String name) {
 
     }
-
 
     @Override
     public ObjectId getId() {
