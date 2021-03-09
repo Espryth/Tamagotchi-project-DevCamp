@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.player.inventory;
 
+import com.maimai.tamagotchi.item.bath.BathItem;
 import com.maimai.tamagotchi.item.food.FoodItem;
 import com.maimai.tamagotchi.item.toy.ToyItem;
 

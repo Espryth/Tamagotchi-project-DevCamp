@@ -6,6 +6,14 @@ public class IntegerStatistic implements Statistic<Integer> {
 
     private int value;
 
+    public IntegerStatistic(int value) {
+        this.value = value;
+    }
+
+    public IntegerStatistic() {
+        this(0);
+    }
+
     @Override
     public void increase(Integer value) {
         this.value += value;

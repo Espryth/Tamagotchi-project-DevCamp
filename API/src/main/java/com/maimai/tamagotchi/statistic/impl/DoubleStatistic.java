@@ -6,6 +6,14 @@ public class DoubleStatistic implements Statistic<Double> {
 
     private double value;
 
+    public DoubleStatistic(int value) {
+        this.value = value;
+    }
+
+    public DoubleStatistic() {
+        this(0);
+    }
+
     @Override
     public void increase(Double value) {
         this.value += value;

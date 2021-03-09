@@ -1,11 +1,10 @@
 package com.maimai.tamagotchi;
 
-import org.bson.types.ObjectId;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public interface Model {
 
-    ObjectId getId();
-
-    void setId(ObjectId id);
+    @JsonProperty("_id")
+    String getId();
 
 }

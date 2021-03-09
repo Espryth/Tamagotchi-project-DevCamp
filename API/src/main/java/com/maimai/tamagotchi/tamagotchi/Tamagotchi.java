@@ -1,44 +1,36 @@
 package com.maimai.tamagotchi.tamagotchi;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.entity.Entity;
-import com.maimai.tamagotchi.action.tamagotchi.TamagotchiAction;
 import com.maimai.tamagotchi.manager.Manager;
+import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 
-import java.util.List;
 
 public interface Tamagotchi extends Entity {
 
+    @JsonProperty("isAlive")
     boolean isAlive();
 
     void setAlive(boolean alive);
 
+    @JsonProperty("type")
     TamagotchiType getType();
 
+    @JsonIgnore
     Manager<Action<Tamagotchi>> getActionManager();
 
-    void setActionManager(Manager<Action<Tamagotchi>> actionManager);
+    @JsonProperty("hunger")
+    Statistic<Double> getHunger();
 
-    void setType(TamagotchiType type);
+    @JsonProperty("health")
+    Statistic<Double> getHealth();
 
-    List<Action<Tamagotchi>> getActions();
+    @JsonProperty("thirst")
+    Statistic<Double> getThirst();
 
-    void setActions(List<TamagotchiAction> actions);
-
-    DoubleStatistic getHunger();
-
-    void setHunger(DoubleStatistic hunger);
-
-    DoubleStatistic getHealth();
-
-    void setHealth(DoubleStatistic health);
-
-    DoubleStatistic getThirst();
-
-    void setThirst(DoubleStatistic thirst);
-
-    DoubleStatistic getDirty();
-
-    void setDirty(DoubleStatistic dirty);
+    @JsonProperty("dirty")
+    Statistic<Double> getDirty();
 }
