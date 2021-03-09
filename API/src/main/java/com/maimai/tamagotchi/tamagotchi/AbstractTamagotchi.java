@@ -2,8 +2,8 @@ package com.maimai.tamagotchi.tamagotchi;
 
 import com.maimai.tamagotchi.action.Action;
 
-import com.maimai.tamagotchi.action.ActionManager;
 import com.maimai.tamagotchi.manager.Manager;
+import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 
@@ -42,7 +42,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.thirst = new DoubleStatistic();
         this.dirty = new DoubleStatistic();
 
-        this.actionManager = new ActionManager<>();
+        this.actionManager = new ManagerImpl<>();
 
         registerActions();
     }
