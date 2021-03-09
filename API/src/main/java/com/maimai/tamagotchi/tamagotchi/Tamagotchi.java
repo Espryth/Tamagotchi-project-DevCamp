@@ -1,8 +1,6 @@
 package com.maimai.tamagotchi.tamagotchi;
 
-import com.maimai.tamagotchi.Manager;
 import com.maimai.tamagotchi.action.Action;
-import com.maimai.tamagotchi.action.ActionManager;
 import com.maimai.tamagotchi.entity.Entity;
 import com.maimai.tamagotchi.action.tamagotchi.TamagotchiAction;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;

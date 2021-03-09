@@ -1,11 +1,18 @@
 package com.maimai.tamagotchi.manager;
 
-import com.maimai.tamagotchi.entity.Entity;
-import org.bson.types.ObjectId;
+import java.util.Map;
+import java.util.Optional;
 
-public interface Manager<T extends Entity> {
+public interface Manager<T> {
 
-    T find(ObjectId id);
+    Map<String, T> getCache();
 
-    void save(ObjectId id, T value);
+    default Optional<T> find(String key) {
+        return Optional.ofNullable(getCache().get(key));
+    }
+
+    default void insert(String key, T t) {
+        getCache().put(key, t);
+    }
+
 }

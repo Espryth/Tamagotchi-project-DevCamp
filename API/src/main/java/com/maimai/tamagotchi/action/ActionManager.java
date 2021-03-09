@@ -1,6 +1,6 @@
 package com.maimai.tamagotchi.action;
 
-import com.maimai.tamagotchi.Manager;
+import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.entity.Entity;
 
 import java.util.Map;
