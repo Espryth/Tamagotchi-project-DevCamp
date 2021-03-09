@@ -1,10 +1,8 @@
-package com.maimai.tamagotchi.action.player;
+package com.maimai.tamagotchi.player.action;
 
 import com.maimai.tamagotchi.action.AbstractAction;
-
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.action.ActionHandler;
-
 import com.maimai.tamagotchi.player.Player;
 
 public class PlayerAction extends AbstractAction<Player> {
