@@ -15,11 +15,11 @@ public enum FoodType implements DefaultType {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public double getValue() {
-        return 0;
+        return value;
     }
 }

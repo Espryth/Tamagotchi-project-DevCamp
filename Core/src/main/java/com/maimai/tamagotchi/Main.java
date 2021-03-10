@@ -16,6 +16,8 @@ public class Main {
                 })
                 .setType(FoodType.APPLE)
                 .build();
+
+        System.out.println(teest.getDefaultType().getValue());
     }
 
 }
