@@ -4,32 +4,32 @@ import com.maimai.tamagotchi.Nameable;
 
 public abstract class AbstractAction<T extends Nameable> implements Action<T> {
 
-    private final ActionHandler<T> actionHandler;
+    private final ActionExecutor<T> actionExecutor;
 
-    public AbstractAction(ActionHandler<T> actionHandler) {
-        this.actionHandler = actionHandler;
+    public AbstractAction(ActionExecutor<T> actionExecutor) {
+        this.actionExecutor = actionExecutor;
     }
 
     @Override
-    public ActionHandler<T> getActionHandler() {
-        return actionHandler;
+    public ActionExecutor<T> getActionExecutor() {
+        return actionExecutor;
     }
 
     public abstract static class Builder<T extends Nameable> implements Action.Builder<T> {
 
-        private ActionHandler<T> actionHandler;
+        private ActionExecutor<T> actionExecutor;
 
         @Override
         public abstract Action<T> build();
 
         @Override
-        public Action.Builder<T> createActionHandler(ActionHandler<T> actionHandler) {
-            this.actionHandler = actionHandler;
+        public Action.Builder<T> createExecutor(ActionExecutor<T> actionExecutor) {
+            this.actionExecutor = actionExecutor;
             return this;
         }
 
-        protected ActionHandler<T> getActionHandler() {
-            return actionHandler;
+        protected ActionExecutor<T> getActionExecutor() {
+            return actionExecutor;
         }
 
     }

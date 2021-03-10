@@ -4,11 +4,11 @@ import com.maimai.tamagotchi.Nameable;
 
 public interface Action<T extends Nameable> {
 
-    ActionHandler<T> getActionHandler();
+    ActionExecutor<T> getActionExecutor();
 
     interface Builder<T extends Nameable> {
 
-        Builder<T> createActionHandler(ActionHandler<T> actionHandler);
+        Builder<T> createExecutor(ActionExecutor<T> actionExecutor);
 
         Action<T> build();
 
