@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.manager;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 
@@ -13,6 +14,10 @@ public interface Manager<T> {
 
     default void insert(String key, T t) {
         getCache().put(key, t);
+    }
+
+    default Collection<T> values() {
+        return getCache().values();
     }
 
 }
