@@ -8,14 +8,4 @@ public interface Item {
 
     DefaultType getDefaultType();
 
-    interface Builder {
-
-        Builder createExecutor(ItemExecutor itemExecutor);
-
-        Builder setType(DefaultType type);
-
-        Item build();
-
-    }
-
 }

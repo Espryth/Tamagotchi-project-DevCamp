@@ -34,32 +34,4 @@ public abstract class AbstractItem implements Item {
         return itemExecutor;
     }
 
-    public abstract static class Builder implements Item.Builder {
-
-        private ItemExecutor itemExecutor;
-
-        private DefaultType defaultType;
-
-        @Override
-        public abstract Item build();
-
-        @Override
-        public Builder createExecutor(ItemExecutor itemExecutor) {
-            this.itemExecutor = itemExecutor;
-            return this;
-        }
-
-        public Builder setType(DefaultType type) {
-            this.defaultType = type;
-            return this;
-        }
-
-        protected ItemExecutor getItemExecutor() {
-            return itemExecutor;
-        }
-
-        protected DefaultType getType() {
-            return defaultType;
-        }
-    }
 }

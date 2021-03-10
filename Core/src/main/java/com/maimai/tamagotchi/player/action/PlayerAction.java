@@ -3,7 +3,9 @@ package com.maimai.tamagotchi.player.action;
 import com.maimai.tamagotchi.action.AbstractAction;
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.action.ActionExecutor;
+import com.maimai.tamagotchi.builder.IBuilder;
 import com.maimai.tamagotchi.player.Player;
+
 
 public class PlayerAction extends AbstractAction<Player> {
 
@@ -11,11 +13,18 @@ public class PlayerAction extends AbstractAction<Player> {
         super(actionExecutor);
     }
 
-    public static class Builder extends AbstractAction.Builder<Player> {
+    public static class Builder implements IBuilder<Action<Player>> {
+
+        private ActionExecutor<Player> actionExecutor;
+
+        public Builder createExecutor(ActionExecutor<Player> actionExecutor) {
+            this.actionExecutor = actionExecutor;
+            return this;
+        }
 
         @Override
         public Action<Player> build() {
-            return new PlayerAction(getActionExecutor());
+            return new PlayerAction(actionExecutor);
         }
 
     }
