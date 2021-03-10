@@ -1,4 +1,6 @@
-package com.maimai.tamagotchi.event;
+package com.maimai.tamagotchi.event.listener;
+
+import com.maimai.tamagotchi.event.EventExecutor;
 
 public class RegisteredListener {
 

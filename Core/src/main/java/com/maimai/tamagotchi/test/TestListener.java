@@ -1,7 +1,7 @@
 package com.maimai.tamagotchi.test;
 
 import com.maimai.tamagotchi.event.EventHandler;
-import com.maimai.tamagotchi.event.Listener;
+import com.maimai.tamagotchi.event.listener.Listener;
 
 public class TestListener implements Listener {
 

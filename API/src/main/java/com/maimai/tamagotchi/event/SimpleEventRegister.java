@@ -1,6 +1,8 @@
 package com.maimai.tamagotchi.event;
 
 import com.maimai.tamagotchi.event.exception.EventException;
+import com.maimai.tamagotchi.event.listener.Listener;
+import com.maimai.tamagotchi.event.listener.RegisteredListener;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
