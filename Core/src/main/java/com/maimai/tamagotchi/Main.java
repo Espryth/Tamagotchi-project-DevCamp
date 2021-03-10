@@ -4,8 +4,6 @@ import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
 import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.item.food.FoodItem;
-import com.maimai.tamagotchi.test.TestEvent;
-import com.maimai.tamagotchi.test.TestListener;
 
 public class Main {
 
