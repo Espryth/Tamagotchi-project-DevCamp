@@ -2,7 +2,7 @@ package com.maimai.tamagotchi.item;
 
 public interface Item {
 
-    ItemHandler getItemHandler();
+    ItemExecutor getItemExecutor();
 
     ItemType getType();
 
@@ -10,7 +10,7 @@ public interface Item {
 
     interface Builder {
 
-        Builder createItemHandler(ItemHandler itemHandler);
+        Builder createExecutor(ItemExecutor itemExecutor);
 
         Builder setType(DefaultType type);
 

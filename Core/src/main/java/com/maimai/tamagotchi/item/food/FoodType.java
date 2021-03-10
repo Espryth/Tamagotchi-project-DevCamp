@@ -5,8 +5,8 @@ import com.maimai.tamagotchi.item.DefaultType;
 public enum FoodType implements DefaultType {
     APPLE("Manzana", 10);
 
-    private String name;
-    private double value;
+    private final String name;
+    private final double value;
 
     FoodType(String name, double value) {
         this.name = name;

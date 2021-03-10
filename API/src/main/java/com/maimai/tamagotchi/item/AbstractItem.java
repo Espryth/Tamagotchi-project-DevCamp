@@ -4,7 +4,7 @@ public abstract class AbstractItem implements Item {
 
 
 
-    private final ItemHandler itemHandler;
+    private final ItemExecutor itemExecutor;
 
     private final ItemType type;
 
@@ -12,11 +12,11 @@ public abstract class AbstractItem implements Item {
 
     public AbstractItem(DefaultType defaultType,
                         ItemType type,
-                        ItemHandler itemHandler) {
+                        ItemExecutor itemExecutor) {
 
         this.defaultType = defaultType;
         this.type = type;
-        this.itemHandler = itemHandler;
+        this.itemExecutor = itemExecutor;
     }
 
     @Override
@@ -30,13 +30,13 @@ public abstract class AbstractItem implements Item {
     }
 
     @Override
-    public ItemHandler getItemHandler(){
-        return itemHandler;
+    public ItemExecutor getItemExecutor(){
+        return itemExecutor;
     }
 
     public abstract static class Builder implements Item.Builder {
 
-        private ItemHandler itemHandler;
+        private ItemExecutor itemExecutor;
 
         private DefaultType defaultType;
 
@@ -44,8 +44,8 @@ public abstract class AbstractItem implements Item {
         public abstract Item build();
 
         @Override
-        public Builder createItemHandler(ItemHandler itemHandler) {
-            this.itemHandler = itemHandler;
+        public Builder createExecutor(ItemExecutor itemExecutor) {
+            this.itemExecutor = itemExecutor;
             return this;
         }
 
@@ -54,8 +54,8 @@ public abstract class AbstractItem implements Item {
             return this;
         }
 
-        protected ItemHandler getItemHandler() {
-            return itemHandler;
+        protected ItemExecutor getItemExecutor() {
+            return itemExecutor;
         }
 
         protected DefaultType getType() {

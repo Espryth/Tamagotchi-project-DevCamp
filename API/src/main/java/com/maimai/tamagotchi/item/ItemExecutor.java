@@ -4,6 +4,6 @@ import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 @FunctionalInterface
-public interface ItemHandler {
+public interface ItemExecutor {
     void consume(Tamagotchi tamagotchi, Player player);
 }

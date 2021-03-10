@@ -4,15 +4,15 @@ import com.maimai.tamagotchi.item.*;
 
 public class FoodItem extends AbstractItem {
 
-    public FoodItem(DefaultType defaultType, ItemHandler itemHandler) {
-        super(defaultType, ItemType.FOOD, itemHandler);
+    public FoodItem(DefaultType defaultType, ItemExecutor itemExecutor) {
+        super(defaultType, ItemType.FOOD, itemExecutor);
     }
 
     public static class Builder extends AbstractItem.Builder {
 
         @Override
         public Item build() {
-            return new FoodItem(getType(), getItemHandler());
+            return new FoodItem(getType(), getItemExecutor());
         }
     }
 }
