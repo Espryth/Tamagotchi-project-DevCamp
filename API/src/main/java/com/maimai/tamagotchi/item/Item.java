@@ -1,16 +1,18 @@
 package com.maimai.tamagotchi.item;
 
-import com.maimai.tamagotchi.Nameable;
-
 public interface Item {
 
     ItemHandler getItemHandler();
 
     ItemType getType();
 
+    DefaultType getDefaultType();
+
     interface Builder {
 
         Builder createItemHandler(ItemHandler itemHandler);
+
+        Builder setType(DefaultType type);
 
         Item build();
 

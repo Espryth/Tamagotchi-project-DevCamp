@@ -16,12 +16,15 @@ public class MongoDbManager {
     private Provider<ObjectRepository<Player>> playerRepositoryProvider;
 
     public MongoDbManager() {
+
         Provider<MongoClient> mongoClientProvider = new MongoClientProvider("uri");
         this.mongoDatabaseProvider = new MongoDatabaseProvider(mongoClientProvider.get(), "MaimaiTamagotchi");
         this.objectMapperProvider = new ObjectMapperProvider();
+
+        initRepositories();
     }
 
-    private void initReepositorys() {
+    private void initRepositories() {
         this.playerRepositoryProvider = new ObjectRepositoryProvider<>(
                 mongoDatabaseProvider.get(),
                 "players",

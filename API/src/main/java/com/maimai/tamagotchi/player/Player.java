@@ -11,6 +11,9 @@ import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public interface Player extends Nameable {
 
+    @JsonProperty("tamagotchi")
+    Tamagotchi getTamagotchi();
+
     @JsonProperty("inventory")
     Inventory getInventory();
 

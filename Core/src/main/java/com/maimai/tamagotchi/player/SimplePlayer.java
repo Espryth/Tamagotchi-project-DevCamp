@@ -8,6 +8,11 @@ import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public class SimplePlayer implements Player {
     @Override
+    public Tamagotchi getTamagotchi() {
+        return null;
+    }
+
+    @Override
     public Inventory getInventory() {
         return null;
     }

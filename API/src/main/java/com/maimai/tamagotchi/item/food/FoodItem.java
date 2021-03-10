@@ -1,35 +1,18 @@
 package com.maimai.tamagotchi.item.food;
 
-import com.maimai.tamagotchi.item.AbstractItem;
-import com.maimai.tamagotchi.item.Item;
-import com.maimai.tamagotchi.item.ItemHandler;
-import com.maimai.tamagotchi.item.ItemType;
+import com.maimai.tamagotchi.item.*;
 
 public class FoodItem extends AbstractItem {
 
-    private final FoodType foodType;
-
-    public FoodItem(FoodType foodType, ItemHandler itemHandler) {
-        super(ItemType.FOOD, itemHandler);
-        this.foodType = foodType;
-    }
-
-    public FoodType getFoodType() {
-        return foodType;
+    public FoodItem(DefaultType defaultType, ItemHandler itemHandler) {
+        super(defaultType, ItemType.FOOD, itemHandler);
     }
 
     public static class Builder extends AbstractItem.Builder {
 
-        private FoodType foodType;
-
-        public Builder setFoodType(FoodType foodType) {
-            this.foodType = foodType;
-            return this;
-        }
-
         @Override
         public Item build() {
-            return new FoodItem(foodType, getItemHandler());
+            return new FoodItem(getType(), getItemHandler());
         }
     }
 }
