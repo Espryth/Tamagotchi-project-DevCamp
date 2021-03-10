@@ -20,6 +20,12 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mongojack</groupId>
+            <artifactId>mongojack</artifactId>
+            <version>4.0.2</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 
