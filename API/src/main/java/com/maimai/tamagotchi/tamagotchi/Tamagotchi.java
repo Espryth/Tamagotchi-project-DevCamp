@@ -32,4 +32,7 @@ public interface Tamagotchi extends Nameable {
 
     @JsonProperty("dirty")
     Statistic<Double> getDirty();
+
+    @JsonProperty("happiness")
+    Statistic<Double> getHappiness();
 }

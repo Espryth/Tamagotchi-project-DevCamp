@@ -20,9 +20,10 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Statistic<Double> health;
     private final Statistic<Double> thirst;
     private final Statistic<Double> dirty;
+    private final Statistic<Double> happiness;
 
     private final Manager<Action<Tamagotchi>> actionManager;
-    ;
+
     @ConstructorProperties({
             "id",
             "name",
@@ -41,6 +42,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.health = new DoubleStatistic();
         this.thirst = new DoubleStatistic();
         this.dirty = new DoubleStatistic();
+        this.happiness = new DoubleStatistic();
 
         this.actionManager = new ManagerImpl<>();
 
@@ -103,4 +105,9 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     public String getId() {
         return id;
     }
+    @Override
+    public Statistic<Double> getHappiness() {
+        return happiness;
+    }
+
 }
