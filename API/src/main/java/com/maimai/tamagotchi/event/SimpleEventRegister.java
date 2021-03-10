@@ -1,6 +1,5 @@
 package com.maimai.tamagotchi.event;
 
-import com.maimai.tamagotchi.event.exception.EventException;
 import com.maimai.tamagotchi.event.listener.Listener;
 import com.maimai.tamagotchi.event.listener.RegisteredListener;
 

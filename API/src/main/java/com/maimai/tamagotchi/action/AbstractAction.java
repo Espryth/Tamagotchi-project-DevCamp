@@ -1,8 +1,8 @@
 package com.maimai.tamagotchi.action;
 
-import com.maimai.tamagotchi.entity.Entity;
+import com.maimai.tamagotchi.Nameable;
 
-public abstract class AbstractAction<T extends Entity> implements Action<T> {
+public abstract class AbstractAction<T extends Nameable> implements Action<T> {
 
     private final ActionHandler<T> actionHandler;
 
@@ -15,7 +15,7 @@ public abstract class AbstractAction<T extends Entity> implements Action<T> {
         return actionHandler;
     }
 
-    public abstract static class Builder<T extends Entity> implements Action.Builder<T> {
+    public abstract static class Builder<T extends Nameable> implements Action.Builder<T> {
 
         private ActionHandler<T> actionHandler;
 

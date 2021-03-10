@@ -2,11 +2,15 @@ package com.maimai.tamagotchi.item;
 
 public abstract class AbstractItem implements Item {
 
+
+
     private final ItemHandler itemHandler;
 
     private final ItemType type;
 
-    public AbstractItem(ItemType type, ItemHandler itemHandler) {
+    public AbstractItem(ItemType type,
+                        ItemHandler itemHandler) {
+
         this.type = type;
         this.itemHandler = itemHandler;
     }
