@@ -23,7 +23,7 @@ public class FoodItem extends AbstractItem {
             this.defaultType = type;
             return this;
         }
-        
+
         @Override
         public Item build() {
             return new FoodItem(defaultType, itemExecutor);

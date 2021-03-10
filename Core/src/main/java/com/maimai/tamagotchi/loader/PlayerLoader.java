@@ -1,9 +1,9 @@
-package com.maimai.tamagotchi.player;
+package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.database.MongoDbManager;
-import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.manager.Manager;
+import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.action.PlayerAction;
 
 public class PlayerLoader implements Loader {
