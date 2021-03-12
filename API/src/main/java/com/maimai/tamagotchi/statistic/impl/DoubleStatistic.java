@@ -16,7 +16,9 @@ public class DoubleStatistic implements Statistic<Double> {
 
     @Override
     public void increase(Double value) {
-        this.value += value;
+        if(!(this.value + value > 100)) {
+            this.value += value;
+        }
     }
 
     @Override
