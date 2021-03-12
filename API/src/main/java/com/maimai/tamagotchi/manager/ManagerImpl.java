@@ -15,5 +15,4 @@ public class ManagerImpl<T> implements Manager<T> {
     public Map<String, T> getCache() {
         return cache;
     }
-
 }

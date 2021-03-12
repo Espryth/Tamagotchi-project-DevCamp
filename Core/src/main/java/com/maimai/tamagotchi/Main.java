@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String... args) {
 
-        this.eventRegister = new SimpleEventRegister();
+        eventRegister = new SimpleEventRegister();
 
         Item teest = new FoodItem.Builder()
                 .createExecutor((t,p) -> {

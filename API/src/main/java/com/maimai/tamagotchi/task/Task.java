@@ -1,12 +1,9 @@
-package com.maimai.tamagotchi.scheduler;
+package com.maimai.tamagotchi.task;
 
 public interface Task {
-
     int getTaskId();
 
     boolean isSync();
-
-    boolean isCancelled();
 
     void cancel();
 }
