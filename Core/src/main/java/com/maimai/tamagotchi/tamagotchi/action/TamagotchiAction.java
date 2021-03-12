@@ -3,27 +3,35 @@ package com.maimai.tamagotchi.tamagotchi.action;
 import com.maimai.tamagotchi.action.AbstractAction;
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.action.ActionExecutor;
+import com.maimai.tamagotchi.action.ActionRequirement;
 import com.maimai.tamagotchi.builder.IBuilder;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
+import com.maimai.tamagotchi.player.Player;
 
-public class TamagotchiAction extends AbstractAction<Tamagotchi> {
+public class TamagotchiAction extends AbstractAction<Player> {
 
-    public TamagotchiAction(ActionExecutor<Tamagotchi> actionExecutor) {
-        super(actionExecutor);
+    public TamagotchiAction(ActionExecutor<Player> actionExecutor,
+                            ActionRequirement<Player> actionRequirement) {
+        super(actionExecutor, actionRequirement);
     }
 
-    public static class Builder implements IBuilder<Action<Tamagotchi>> {
+    public static class Builder implements IBuilder<Action<Player>> {
 
-        private ActionExecutor<Tamagotchi> actionExecutor;
+        private ActionExecutor<Player> actionExecutor;
 
-        public Builder createExecutor(ActionExecutor<Tamagotchi> actionExecutor) {
+        private ActionRequirement<Player> actionRequirement;
+
+        public Builder createExecutor(ActionExecutor<Player> actionExecutor) {
             this.actionExecutor = actionExecutor;
+            return this;
+        }
+        public Builder createRequirement(ActionRequirement<Player> actionRequirement) {
+            this.actionRequirement = actionRequirement;
             return this;
         }
 
         @Override
-        public Action<Tamagotchi> build() {
-            return new TamagotchiAction(actionExecutor);
+        public Action<Player> build() {
+            return new TamagotchiAction(actionExecutor, actionRequirement);
         }
     }
 

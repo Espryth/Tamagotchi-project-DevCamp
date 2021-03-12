@@ -6,4 +6,6 @@ public interface Action<T extends Entity> {
 
     ActionExecutor<T> getActionExecutor();
 
+    ActionRequirement<T> getActionRequirement();
+
 }

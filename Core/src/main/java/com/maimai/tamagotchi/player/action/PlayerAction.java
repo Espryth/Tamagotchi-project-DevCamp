@@ -10,7 +10,7 @@ import com.maimai.tamagotchi.player.Player;
 public class PlayerAction extends AbstractAction<Player> {
 
     public PlayerAction(ActionExecutor<Player> actionExecutor) {
-        super(actionExecutor);
+        super(actionExecutor, actionRequeriment);
     }
 
     public static class Builder implements IBuilder<Action<Player>> {

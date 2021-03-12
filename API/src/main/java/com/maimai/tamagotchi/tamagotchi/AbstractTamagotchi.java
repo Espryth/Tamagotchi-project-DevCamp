@@ -4,6 +4,7 @@ import com.maimai.tamagotchi.action.Action;
 
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
+import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 
@@ -22,7 +23,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Statistic<Double> dirty;
     private final Statistic<Double> happiness;
 
-    private final Manager<Action<Tamagotchi>> actionManager;
+    private final Manager<Action<Player>> actionManager;
 
     @ConstructorProperties({
             "id",
@@ -51,7 +52,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
     public abstract void registerActions();
 
-    protected void registerAction(String name, Action<Tamagotchi> action) {
+    protected void registerAction(String name, Action<Player> action) {
         getActionManager().insert(name, action);
     }
 
@@ -72,7 +73,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     @Override
-    public Manager<Action<Tamagotchi>> getActionManager() {
+    public Manager<Action<Player>> getActionManager() {
         return actionManager;
     }
 
