@@ -14,12 +14,12 @@ public class BathItem extends AbstractItem {
         private ItemExecutor itemExecutor;
         private DefaultType defaultType;
 
-        public BathItem.Builder createExecutor(ItemExecutor itemExecutor) {
+        public Builder createExecutor(ItemExecutor itemExecutor) {
             this.itemExecutor = itemExecutor;
             return this;
         }
 
-        public BathItem.Builder setType(DefaultType type) {
+        public Builder setType(DefaultType type) {
             this.defaultType = type;
             return this;
         }
