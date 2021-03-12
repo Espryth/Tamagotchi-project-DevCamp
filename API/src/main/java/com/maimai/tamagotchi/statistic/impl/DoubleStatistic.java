@@ -23,7 +23,9 @@ public class DoubleStatistic implements Statistic<Double> {
 
     @Override
     public void decrement(Double value) {
-        this.value -= value;
+        if(!(this.value - value < 0)) {
+            this.value -= value;
+        }
     }
 
     @Override
