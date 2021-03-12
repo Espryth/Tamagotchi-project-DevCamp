@@ -4,8 +4,6 @@ import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public class TamagotchiHungryEvent extends TamagotchiEvent {
 
-    private boolean hungry;
-
     public TamagotchiHungryEvent(Tamagotchi tamagotchi) {
         super(tamagotchi);
     }
