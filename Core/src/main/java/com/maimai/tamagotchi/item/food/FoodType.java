@@ -3,7 +3,7 @@ package com.maimai.tamagotchi.item.food;
 import com.maimai.tamagotchi.item.DefaultType;
 
 public enum FoodType implements DefaultType {
-    APPLE("Manzana", 10);
+    APPLE("Manzana", 10), FISH("Pescado", 30);
 
     private final String name;
     private final double value;
