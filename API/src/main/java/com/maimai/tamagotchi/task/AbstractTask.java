@@ -1,37 +1,22 @@
 package com.maimai.tamagotchi.task;
 
-public abstract class AbstractTask implements Task {
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-    private final int id;
-    private final boolean sync;
-    private final Runnable runnable;
+public class AbstractTask implements Task {
+
     private final long delay;
     private final long period;
+    private final Thread thread;
+    private ScheduledExecutorService service;
 
-    public AbstractTask(int id, boolean sync, Runnable runnable, long delay, long period) {
-        this.id = id;
-        this.sync = sync;
-        this.runnable = runnable;
+    public AbstractTask(Runnable runnable, long delay, long period) {
         this.delay = delay;
         this.period = period;
-    }
-
-    @Override
-    public int getTaskId() {
-        return id;
-    }
-
-    @Override
-    public boolean isSync() {
-        return sync;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Runnable getRunnable() {
-        return runnable;
+        this.thread = new Thread(runnable);
+        this.service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(thread, delay, period, TimeUnit.SECONDS);
     }
 
     public long getDelay() {
@@ -43,6 +28,17 @@ public abstract class AbstractTask implements Task {
     }
 
     @Override
+    public int getTaskId() {
+        return (int)thread.getId();
+    }
+
+    @Override
+    public boolean isSync() {
+        return true;
+    }
+
+    @Override
     public void cancel() {
+        service.shutdown();
     }
 }
