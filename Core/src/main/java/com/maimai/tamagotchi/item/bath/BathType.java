@@ -7,9 +7,9 @@ public enum BathType implements DefaultType {
 
     private final String name;
     private final double value;
-    private final double cost;
+    private final int cost;
 
-    BathType(String name, double value, double cost) {
+    BathType(String name, double value, int cost) {
         this.name = name;
         this.value = value;
         this.cost = cost;
@@ -26,7 +26,7 @@ public enum BathType implements DefaultType {
     }
 
     @Override
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 }
