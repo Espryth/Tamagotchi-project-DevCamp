@@ -6,4 +6,5 @@ public interface DefaultType {
 
     double getValue();
 
+    int getCost();
 }
