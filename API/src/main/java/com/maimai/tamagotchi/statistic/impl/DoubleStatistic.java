@@ -18,6 +18,8 @@ public class DoubleStatistic implements Statistic<Double> {
     public void increase(Double value) {
         if(!(this.value + value > 100)) {
             this.value += value;
+        } else {
+            this.value = 100;
         }
     }
 
@@ -25,6 +27,8 @@ public class DoubleStatistic implements Statistic<Double> {
     public void decrement(Double value) {
         if(!(this.value - value < 0)) {
             this.value -= value;
+        } else {
+            this.value = 0;
         }
     }
 
