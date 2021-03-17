@@ -2,7 +2,8 @@ package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.event.EventRegister;
-import com.maimai.tamagotchi.event.SimpleEventRegister;
+import com.maimai.tamagotchi.event.HungryEventListener;
+import com.maimai.tamagotchi.test.TestListener;
 
 public class ListenerLoader implements Loader{
 
@@ -14,9 +15,11 @@ public class ListenerLoader implements Loader{
 
     @Override
     public void load() {
-
-        EventRegister eventRegister = new SimpleEventRegister();
-        eventRegister.registerEvents();
+        EventRegister eventRegister = core.getEventRegister();
+        eventRegister.registerEvents(
+                new HungryEventListener(),
+                new TestListener()
+        );
 
     }
 }
