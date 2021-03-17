@@ -30,4 +30,15 @@ public class PlayerInventory implements Inventory {
         this.items.addAll(Arrays.asList(items));
     }
 
+    @Override
+    public void removeItem(int index){
+        this.items.remove(index);
+    }
+
+    @Override
+    public void removeItems(int... index){
+        for (int id : index){
+            items.remove(id);
+        }
+    }
 }

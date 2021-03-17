@@ -10,4 +10,7 @@ public interface Inventory {
 
     void addItems(Item... items);
 
+    void removeItem(int index);
+
+    void removeItems(int... index);
 }

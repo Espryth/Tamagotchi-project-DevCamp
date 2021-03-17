@@ -3,16 +3,16 @@ package com.maimai.tamagotchi.manager;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ManagerImpl<T> implements Manager<T> {
+public class ManagerImpl<K, V> implements Manager<K, V> {
 
-    private final Map<String, T> cache;
+    private final Map<K, V> cache;
 
     public ManagerImpl() {
         this.cache = new ConcurrentHashMap<>();
     }
 
     @Override
-    public Map<String, T> getCache() {
+    public Map<K, V> getCache() {
         return cache;
     }
 }

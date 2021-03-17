@@ -8,11 +8,13 @@ import com.maimai.tamagotchi.item.food.FoodType;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 
+import java.util.Scanner;
+
 public class Main {
 
     private static EventRegister eventRegister;
 
-    public static void main(String... args) {
+    public static void main(String[] args) {
         Module module = new MainModule();
         module.start();
         eventRegister = new SimpleEventRegister();
