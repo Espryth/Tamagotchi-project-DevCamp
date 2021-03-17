@@ -32,6 +32,8 @@ public class SimpleCommandRegister implements CommandRegister {
 
         String[] arguments = argument.split("\\s+");
 
+        if(!arguments[0].startsWith(prefix)) return;
+
         Optional<RegisteredCommand> optionalCommand = registeredCommandManager.find(arguments[0].replace(prefix, ""));
 
         if(!optionalCommand.isPresent()) {
