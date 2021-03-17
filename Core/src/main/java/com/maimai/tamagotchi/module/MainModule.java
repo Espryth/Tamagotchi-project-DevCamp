@@ -10,11 +10,25 @@ import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.impl.CatTamagotchi;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainModule implements Module{
 
     private final ProgramCore core;
+
+    private static final Map<String, TamagotchiType> TAMAGOTCHI_TYPE_ALIASES = new HashMap<>();
+
+    static {
+        for (TamagotchiType tamagotchiType : TamagotchiType.values()) {
+
+            TAMAGOTCHI_TYPE_ALIASES.put(tamagotchiType.toString().toLowerCase(), tamagotchiType);
+            TAMAGOTCHI_TYPE_ALIASES.put(tamagotchiType.getName().toLowerCase(), tamagotchiType);
+
+        }
+    }
+
 
     public MainModule(ProgramCore core) {
         this.core = core;
@@ -41,19 +55,19 @@ public class MainModule implements Module{
             String tamagotchiName = scanner.next();
             
             System.out.println("What kind of tamagotchi do you want?");
-            TamagotchiType tamagotchiType = TamagotchiType.valueOf(scanner.next().toUpperCase());
+            TamagotchiType tamagotchiType = TAMAGOTCHI_TYPE_ALIASES.get(scanner.next());
             
             while (tamagotchiType == null) {
-
                 Arrays.asList(
                         "That kind of tamagotchi doesn't exist!",
                         "please try again."
                 ).forEach(System.out::println);
 
-                tamagotchiType = TamagotchiType.valueOf(scanner.next());
+                tamagotchiType = TAMAGOTCHI_TYPE_ALIASES.get(scanner.next());
             }
             
             Tamagotchi tamagotchi;
+            
             switch (tamagotchiType) {
                 case CAT:
                     tamagotchi = new CatTamagotchi("a", tamagotchiName);
