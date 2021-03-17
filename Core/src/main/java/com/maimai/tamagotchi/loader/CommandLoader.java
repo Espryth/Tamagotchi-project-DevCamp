@@ -28,7 +28,8 @@ public class CommandLoader implements Loader{
                 new HelpCommand(),
                 new OpenCommand(),
                 new ShopCommand(),
-                new ExitCommand(core)
+                new ExitCommand(core),
+                new ActionCommand(core.getPlayer())
         );
 
         while (core.isEnabled()) {
