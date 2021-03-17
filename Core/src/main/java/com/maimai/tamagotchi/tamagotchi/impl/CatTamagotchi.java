@@ -37,6 +37,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 .createExecutor(player -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
+                    player.getTamagotchi().getDirty().decrement(80D);
                     System.out.println(player.getTamagotchi().getName()+" is very angry");
                 }).build());
     }
