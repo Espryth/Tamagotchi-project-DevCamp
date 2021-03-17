@@ -8,10 +8,10 @@ import com.maimai.tamagotchi.player.action.PlayerAction;
 
 public class PlayerLoader implements Loader {
 
-    private final Manager<Player> playerManager;
+    private final Manager<String, Player> playerManager;
     private final MongoDbManager mongoDbManager;
 
-    public PlayerLoader(Manager<Player> playerManager,
+    public PlayerLoader(Manager<String, Player> playerManager,
                         MongoDbManager mongoDbManager) {
 
         this.playerManager = playerManager;

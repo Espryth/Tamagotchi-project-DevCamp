@@ -1,6 +1,8 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.command.annotation.Command;
+import com.maimai.tamagotchi.command.part.ArgumentPart;
+import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 
@@ -10,16 +12,16 @@ import java.util.*;
 
 public class SimpleCommandRegister implements CommandRegister {
 
-    private final Manager<RegisteredCommand> registeredCommandManager;
+    private final Manager<String, RegisteredCommand> registeredCommandManager;
 
-    private final Set<ArgumentPart<?>> argumentParts;
+    private final PartHandler partHandler;
 
     private final String prefix;
 
-    public SimpleCommandRegister(String prefix) {
+    public SimpleCommandRegister(PartHandler partHandler, String prefix) {
         this.prefix = prefix;
+        this.partHandler = partHandler;
         this.registeredCommandManager = new ManagerImpl<>();
-        this.argumentParts = new HashSet<>();
     }
 
     @Override
@@ -55,8 +57,19 @@ public class SimpleCommandRegister implements CommandRegister {
 
                     ArgumentStack stack = new SimpleArgumentStack(arguments);
 
+                    List<ArgumentPart<?>> argumentPartList = new ArrayList<>();
+
+                    arguments.forEach(argument -> {
+
+                        ArgumentPart<?> argumentPart = partHandler.tryParseArgument(argument.getClass());
+
+                        if(argumentPart != null) {
+                            argumentPartList.add(argumentPart);
+                        }
+                    });
+
                     try {
-                        method.invoke(command, arguments.toArray());
+                        method.invoke(command, parseAll(argumentPartList, stack).toArray());
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
@@ -75,25 +88,11 @@ public class SimpleCommandRegister implements CommandRegister {
     }
 
     @Override
-    public void installPart(ArgumentPart<?> part) {
-        argumentParts.add(part);
-    }
-
-    @Override
-    public void installPart(ArgumentPart<?>... parts) {
-        for (ArgumentPart<?> part : parts) {
-            installPart(part);
-        }
-    }
-
-    @Override
-    public List<Object> parseAll(ArgumentStack argumentStack) {
+    public List<Object> parseAll(List<ArgumentPart<?>> argumentParts, ArgumentStack argumentStack) {
 
         List<Object> list = new ArrayList<>();
 
-        for(ArgumentPart<?> part : argumentParts) {
-            list.add(part.parse(argumentStack));
-        }
+        argumentParts.forEach(argumentPart -> list.add(argumentPart.parse(argumentStack)));
 
         return list;
     }

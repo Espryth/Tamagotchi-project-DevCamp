@@ -18,7 +18,7 @@ public interface Player extends Entity {
     Inventory getInventory();
 
     @JsonIgnore
-    Manager<Action<Player>> getActionManager();
+    Manager<String, Action<Player>> getActionManager();
 
     @JsonProperty("money")
     Statistic<Integer> getMoney();

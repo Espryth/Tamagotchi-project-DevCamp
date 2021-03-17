@@ -1,5 +1,7 @@
 package com.maimai.tamagotchi.command;
 
+import com.maimai.tamagotchi.command.part.ArgumentPart;
+
 import java.util.List;
 
 public interface CommandRegister {
@@ -10,10 +12,6 @@ public interface CommandRegister {
 
     void registerCommand(CommandClass... commandClasses);
 
-    void installPart(ArgumentPart<?> part);
-
-    void installPart(ArgumentPart<?>... parts);
-
-    List<Object> parseAll(ArgumentStack argumentStack);
+    List<Object> parseAll(List<ArgumentPart<?>> argumentParts, ArgumentStack argumentStack);
 
 }

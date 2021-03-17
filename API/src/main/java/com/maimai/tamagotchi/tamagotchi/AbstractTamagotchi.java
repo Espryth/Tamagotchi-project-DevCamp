@@ -23,7 +23,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Statistic<Double> dirty;
     private final Statistic<Double> happiness;
 
-    private final Manager<Action<Player>> actionManager;
+    private final Manager<String, Action<Player>> actionManager;
 
     @ConstructorProperties({
             "id",
@@ -73,7 +73,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     @Override
-    public Manager<Action<Player>> getActionManager() {
+    public Manager<String, Action<Player>> getActionManager() {
         return actionManager;
     }
 

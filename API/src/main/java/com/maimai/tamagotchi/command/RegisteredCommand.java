@@ -1,7 +1,5 @@
 package com.maimai.tamagotchi.command;
 
-import com.maimai.tamagotchi.player.Player;
-
 public class RegisteredCommand {
 
     private final CommandClass commandClass;

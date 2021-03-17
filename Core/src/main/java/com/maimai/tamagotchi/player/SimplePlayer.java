@@ -16,7 +16,7 @@ public class SimplePlayer implements Player {
     private final String id;
     private final String name;
 
-    private final Manager<Action<Player>> actionManager;
+    private final Manager<String, Action<Player>> actionManager;
 
     private final Tamagotchi tamagotchi;
     private final Inventory inventory;
@@ -45,7 +45,7 @@ public class SimplePlayer implements Player {
     }
 
     @Override
-    public Manager<Action<Player>> getActionManager() {
+    public Manager<String, Action<Player>> getActionManager() {
         return actionManager;
     }
 

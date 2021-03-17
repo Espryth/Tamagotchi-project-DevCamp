@@ -24,7 +24,7 @@ public class PlayerAction extends AbstractAction<Player> {
 
         @Override
         public Action<Player> build() {
-            return new PlayerAction(actionExecutor);
+            return new PlayerAction(actionExecutor, null);
         }
 
     }
