@@ -70,7 +70,7 @@ public class MainModule implements Module{
 
             switch (tamagotchiType) {
                 case CAT:
-                    tamagotchi = new CatTamagotchi("a", tamagotchiName);
+                    tamagotchi = new CatTamagotchi(core, "a", tamagotchiName);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + tamagotchiType);

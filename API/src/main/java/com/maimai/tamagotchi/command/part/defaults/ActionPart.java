@@ -21,10 +21,13 @@ public class ActionPart implements ArgumentPart<Action<Player>> {
     public Action<Player> parse(ArgumentStack argumentStack) {
 
         if(argumentStack.hasNext()) {
-            if(!actionManager.find(argumentStack.next()).isPresent()) {
+
+            String argument = argumentStack.next();
+
+            if(!actionManager.find(argument).isPresent()) {
                 throw new ArgumentParseException("No se pudo pa");
             }
-            return actionManager.find(argumentStack.next()).get();
+            return actionManager.find(argument).get();
         }
 
         return null;

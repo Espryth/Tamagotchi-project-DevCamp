@@ -1,6 +1,7 @@
 package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
+import com.maimai.tamagotchi.TestCommand;
 import com.maimai.tamagotchi.command.*;
 import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.command.part.defaults.ActionPart;
@@ -30,7 +31,8 @@ public class CommandLoader implements Loader{
                 new HelpCommand(),
                 new OpenCommand(),
                 new ShopCommand(),
-                new ExitCommand(core)
+                new ExitCommand(core),
+                new TestCommand(core.getPlayer())
         );
 
         while (core.isEnabled()) {
