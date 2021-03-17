@@ -24,6 +24,8 @@ public class TamagotchiCore implements ProgramCore {
     @Override
     public void initCore() {
 
+        initObjects();
+
         this.enabled = true;
 
         Module module = new MainModule(this);
