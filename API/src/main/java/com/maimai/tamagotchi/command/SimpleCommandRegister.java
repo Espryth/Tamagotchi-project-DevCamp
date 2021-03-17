@@ -72,10 +72,8 @@ public class SimpleCommandRegister implements CommandRegister {
                     Arrays.asList(parameters).forEach(parameter -> {
 
                         ArgumentPart<?> argumentPart = partHandler.corvertToArgumentPart(parameter.getType());
-
-                        if(argumentPart != null) {
-                            argumentPartList.add(argumentPart);
-                        }
+                        argumentPartList.add(argumentPart);
+                        
                     });
 
                     List<Object> objectParsedList = parseAll(argumentPartList, stack);
