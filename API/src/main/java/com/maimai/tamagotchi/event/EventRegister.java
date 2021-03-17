@@ -6,6 +6,8 @@ public interface EventRegister {
 
     void callEvent(Event event);
 
+    void registerEvents(Listener listener);
+
     void registerEvents(Listener... listeners);
 
 }
