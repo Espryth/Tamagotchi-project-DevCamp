@@ -3,6 +3,7 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.command.CommandRegister;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
+import com.maimai.tamagotchi.event.SimpleEventRegister;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
@@ -14,7 +15,11 @@ public class TamagotchiCore implements ProgramCore {
 
     private boolean enabled;
 
+    private Player player;
+
     private MongoDbManager mongoDbManager;
+
+    private EventRegister eventRegister;
 
     @Override
     public void initCore() {
@@ -41,7 +46,8 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     private void initObjects() {
-        this.mongoDbManager = new MongoDbManager();
+        //this.mongoDbManager = new MongoDbManager();
+        this.eventRegister = new SimpleEventRegister();
     }
 
 
@@ -60,7 +66,7 @@ public class TamagotchiCore implements ProgramCore {
 
     @Override
     public EventRegister getEventRegister() {
-        return null;
+        return eventRegister;
     }
 
     @Override
@@ -70,12 +76,12 @@ public class TamagotchiCore implements ProgramCore {
 
     @Override
     public Player getPlayer() {
-        return null;
+        return player;
     }
 
     @Override
     public void setPlayer(Player player) {
-
+        this.player = player;
     }
 
 
