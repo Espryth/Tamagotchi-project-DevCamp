@@ -7,6 +7,10 @@ public interface ProgramCore {
 
     void initCore();
 
+    boolean isEnabled();
+
+    void setEnabled(boolean bol);
+
     EventRegister getEventRegister();
 
     CommandRegister getCommandRegister();
