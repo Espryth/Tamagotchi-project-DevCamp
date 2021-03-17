@@ -61,7 +61,7 @@ public class SimpleCommandRegister implements CommandRegister {
                 registeredCommandManager.insert(method.getAnnotation(Command.class).name(), new RegisteredCommand(commandClass, method.getAnnotation(Command.class).usage(), (command, arguments) -> {
 
                     if(parameters.length != arguments.size()) {
-                        System.out.println(method.getAnnotation(Command.class).usage());
+                        System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
                         return;
                     }
 
@@ -71,15 +71,20 @@ public class SimpleCommandRegister implements CommandRegister {
 
                     Arrays.asList(parameters).forEach(parameter -> {
 
-                        ArgumentPart<?> argumentPart = partHandler.tryParseArgument(parameter.getType());
+                        ArgumentPart<?> argumentPart = partHandler.corvertToArgumentPart(parameter.getType());
+                        argumentPartList.add(argumentPart);
 
-                        if(argumentPart != null) {
-                            argumentPartList.add(argumentPart);
-                        }
                     });
 
+                    List<Object> objectParsedList = parseAll(argumentPartList, stack);
+
+                    if(objectParsedList == null) {
+                        System.out.println("Uno de los valorees es invalodo");
+                        return;
+                    }
+
                     try {
-                        method.invoke(command, parseAll(argumentPartList, stack).toArray());
+                        method.invoke(command, objectParsedList.toArray());
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
@@ -102,7 +107,20 @@ public class SimpleCommandRegister implements CommandRegister {
 
         List<Object> list = new ArrayList<>();
 
-        argumentParts.forEach(argumentPart -> list.add(argumentPart.parse(argumentStack)));
+        argumentParts.forEach(argumentPart ->  {
+
+            Object object = argumentPart.parse(argumentStack);
+
+            if(object == null) {
+                return;
+            }
+
+            list.add(object);
+        });
+
+        if(list.size() != argumentParts.size()) {
+            return null;
+        }
 
         return list;
     }
