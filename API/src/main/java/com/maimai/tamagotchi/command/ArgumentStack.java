@@ -1,13 +1,13 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.command.exception.ArgumentParseException;
-import com.maimai.tamagotchi.command.exception.NoArgumentsException;
+import com.maimai.tamagotchi.command.exception.NoMoreArgumentsException;
 
 public interface ArgumentStack {
 
     boolean hasNext();
 
-    String next() throws NoArgumentsException;
+    String next() throws NoMoreArgumentsException;
 
     int nextInt() throws ArgumentParseException;
 
