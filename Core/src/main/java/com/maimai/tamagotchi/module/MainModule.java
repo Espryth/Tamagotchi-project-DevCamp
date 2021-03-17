@@ -71,10 +71,10 @@ public class MainModule implements Module{
 
             switch (tamagotchiType) {
                 case CAT:
-                    tamagotchi = new CatTamagotchi(core, "");
+                    tamagotchi = new CatTamagotchi(core, tamagotchiName);
                     break;
                 case DOG:
-                    tamagotchi = new DogTamagotchi(core, "");
+                    tamagotchi = new DogTamagotchi(core, tamagotchiName);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + tamagotchiType);
