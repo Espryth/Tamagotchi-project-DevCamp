@@ -24,7 +24,7 @@
             <groupId>org.mongojack</groupId>
             <artifactId>mongojack</artifactId>
             <version>4.0.2</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

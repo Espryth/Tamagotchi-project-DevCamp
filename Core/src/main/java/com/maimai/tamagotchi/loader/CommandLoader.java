@@ -1,10 +1,8 @@
 package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.TestCommand;
 import com.maimai.tamagotchi.command.*;
 import com.maimai.tamagotchi.command.part.PartHandler;
-import com.maimai.tamagotchi.command.part.defaults.ActionPart;
 import com.maimai.tamagotchi.command.part.defaults.StringPart;
 
 import java.util.Scanner;
@@ -24,15 +22,13 @@ public class CommandLoader implements Loader{
 
         PartHandler partHandler = new PartHandler();
         partHandler.installPart(new StringPart());
-        partHandler.installPart(new ActionPart(core.getPlayer().getTamagotchi().getActionManager()));
 
         CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
         commandRegister.registerCommand(
                 new HelpCommand(),
                 new OpenCommand(),
                 new ShopCommand(),
-                new ExitCommand(core),
-                new TestCommand(core.getPlayer())
+                new ExitCommand(core)
         );
 
         while (core.isEnabled()) {

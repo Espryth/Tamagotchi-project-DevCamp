@@ -3,7 +3,6 @@ package com.maimai.tamagotchi.tamagotchi.impl;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
