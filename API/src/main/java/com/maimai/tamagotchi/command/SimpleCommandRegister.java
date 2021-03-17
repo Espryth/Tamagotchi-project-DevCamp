@@ -8,6 +8,7 @@ import com.maimai.tamagotchi.manager.ManagerImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.*;
 
 public class SimpleCommandRegister implements CommandRegister {
@@ -59,9 +60,11 @@ public class SimpleCommandRegister implements CommandRegister {
 
                     List<ArgumentPart<?>> argumentPartList = new ArrayList<>();
 
-                    arguments.forEach(argument -> {
+                    Parameter[] parameters = method.getParameters();
 
-                        ArgumentPart<?> argumentPart = partHandler.tryParseArgument(argument.getClass());
+                    Arrays.asList(parameters).forEach(parameter -> {
+
+                        ArgumentPart<?> argumentPart = partHandler.tryParseArgument(parameter.getType());
 
                         if(argumentPart != null) {
                             argumentPartList.add(argumentPart);
