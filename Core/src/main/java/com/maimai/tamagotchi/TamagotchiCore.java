@@ -1,22 +1,35 @@
 package com.maimai.tamagotchi;
 
 import com.maimai.tamagotchi.command.CommandRegister;
+import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.Loader;
+import com.maimai.tamagotchi.manager.ManagerImpl;
+import com.maimai.tamagotchi.module.MainModule;
+import com.maimai.tamagotchi.module.Module;
+import com.maimai.tamagotchi.player.Player;
 
 public class TamagotchiCore implements ProgramCore {
 
     private boolean enabled;
+
+    private MongoDbManager mongoDbManager;
 
     @Override
     public void initCore() {
 
         this.enabled = true;
 
+        Module module = new MainModule(this);
+
+        module.start();
+
         initLoaders(
                 new CommandLoader(this)
         );
+
+
 
     }
 
@@ -24,6 +37,10 @@ public class TamagotchiCore implements ProgramCore {
         for (Loader loader : loaders) {
             loader.load();
         }
+    }
+
+    private void initObjects() {
+        this.mongoDbManager = new MongoDbManager();
     }
 
 
@@ -48,5 +65,21 @@ public class TamagotchiCore implements ProgramCore {
     @Override
     public CommandRegister getCommandRegister() {
         return null;
+    }
+
+    @Override
+    public Player getPlayer() {
+        return null;
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+
+    }
+
+
+    @Override
+    public MongoDbManager getMongoManager() {
+        return mongoDbManager;
     }
 }
