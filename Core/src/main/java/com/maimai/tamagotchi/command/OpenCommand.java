@@ -8,6 +8,7 @@ public class OpenCommand implements CommandClass {
 
     @Command(name = "open")
     public void onExecuteOpenCommand() {
+        System.out.println("test");
         Module module = new MainModule();
         module.start();
     }
