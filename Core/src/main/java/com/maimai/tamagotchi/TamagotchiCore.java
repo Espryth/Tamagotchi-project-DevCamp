@@ -4,8 +4,8 @@ import com.maimai.tamagotchi.command.CommandRegister;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.loader.CommandLoader;
+import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
-import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
@@ -26,6 +26,7 @@ public class TamagotchiCore implements ProgramCore {
         module.start();
 
         initLoaders(
+                new ListenerLoader(this),
                 new CommandLoader(this)
         );
 
