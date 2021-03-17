@@ -9,4 +9,15 @@ public class TestListener implements Listener {
     public void test(TestEvent event) {
         System.out.println(event.getTest());
     }
+
+    @EventHandler
+    public void testtwo(TestEvent event) {
+        System.out.println(event.getTest() + " poto");
+    }
+
+    @EventHandler
+    public void te(TestEventTwo event) {
+        System.out.println(event.getTest() + " pa");
+    }
+
 }

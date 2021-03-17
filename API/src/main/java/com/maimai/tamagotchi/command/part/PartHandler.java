@@ -1,6 +1,5 @@
 package com.maimai.tamagotchi.command.part;
 
-import com.maimai.tamagotchi.command.ArgumentStack;
 import com.maimai.tamagotchi.command.exception.UnknownArgumentPartException;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
