@@ -6,7 +6,7 @@ import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
 public class TestTamagotchi extends AbstractTamagotchi {
     public TestTamagotchi(String id, String name, TamagotchiType type) {
-        super(id, name, type);
+        super(name, type);
     }
 
     @Override

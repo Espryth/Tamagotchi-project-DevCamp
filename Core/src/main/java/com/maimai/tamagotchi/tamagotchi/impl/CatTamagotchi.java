@@ -9,8 +9,8 @@ import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
 public class CatTamagotchi extends AbstractTamagotchi{
     private final ProgramCore core;
-    public CatTamagotchi(ProgramCore core, String id, String name) {
-        super(id, name, TamagotchiType.CAT);
+    public CatTamagotchi(ProgramCore core, String name) {
+        super(name, TamagotchiType.CAT);
         this.core = core;
     }
 

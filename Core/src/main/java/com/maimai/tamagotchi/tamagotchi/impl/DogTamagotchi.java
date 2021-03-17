@@ -8,8 +8,8 @@ import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
 public class DogTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
-    public DogTamagotchi(ProgramCore core, String id, String name) {
-        super(id, name, TamagotchiType.DOG);
+    public DogTamagotchi(ProgramCore core, String name) {
+        super(name, TamagotchiType.DOG);
         this.core = core;
     }
 
