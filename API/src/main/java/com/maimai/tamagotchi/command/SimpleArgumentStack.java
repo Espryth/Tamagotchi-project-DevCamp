@@ -1,7 +1,7 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.command.exception.ArgumentParseException;
-import com.maimai.tamagotchi.command.exception.NoArgumentsException;
+import com.maimai.tamagotchi.command.exception.NoMoreArgumentsException;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class SimpleArgumentStack implements ArgumentStack{
     @Override
     public String next() {
         if(!hasNext()) {
-            throw new NoArgumentsException("No hay mas argumentos");
+            throw new NoMoreArgumentsException();
         }
 
         return arguments.get(index++);
@@ -37,7 +37,7 @@ public class SimpleArgumentStack implements ArgumentStack{
         try {
             return Integer.parseInt(next);
         } catch (NumberFormatException e) {
-            throw new ArgumentParseException("Failed to parse the string " + next + " as int!");
+            throw new ArgumentParseException(next);
         }
     }
 
@@ -49,7 +49,7 @@ public class SimpleArgumentStack implements ArgumentStack{
         try {
             return Double.parseDouble(next);
         } catch (NumberFormatException e) {
-            throw new ArgumentParseException("Failed to parse the string " + next + " as double!");
+            throw new ArgumentParseException(next);
         }
     }
 }

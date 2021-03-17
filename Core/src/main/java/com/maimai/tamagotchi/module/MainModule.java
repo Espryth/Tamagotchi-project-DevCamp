@@ -67,7 +67,7 @@ public class MainModule implements Module{
             }
             
             Tamagotchi tamagotchi;
-            
+
             switch (tamagotchiType) {
                 case CAT:
                     tamagotchi = new CatTamagotchi("a", tamagotchiName);
