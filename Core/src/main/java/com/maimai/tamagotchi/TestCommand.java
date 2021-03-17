@@ -5,7 +5,7 @@ import com.maimai.tamagotchi.command.annotation.Command;
 
 public class TestCommand implements CommandClass {
 
-    @Command(name = "poto")
+    @Command(name = "poto", usage = "poto")
     public void onPoto(String a, Double b) {
         System.out.println(a);
         System.out.println(b);

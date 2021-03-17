@@ -19,7 +19,9 @@ public class SimpleCommandRegister implements CommandRegister {
 
     private final String prefix;
 
-    public SimpleCommandRegister(PartHandler partHandler, String prefix) {
+    public SimpleCommandRegister(PartHandler partHandler,
+                                 String prefix) {
+
         this.prefix = prefix;
         this.partHandler = partHandler;
         this.registeredCommandManager = new ManagerImpl<>();
@@ -33,7 +35,7 @@ public class SimpleCommandRegister implements CommandRegister {
         Optional<RegisteredCommand> optionalCommand = registeredCommandManager.find(arguments[0].replace(prefix, ""));
 
         if(!optionalCommand.isPresent()) {
-            System.out.println("Comando incorrecto");
+            System.out.println("Incorrect command please use /help");
             return;
         }
 
@@ -54,13 +56,18 @@ public class SimpleCommandRegister implements CommandRegister {
 
             if(method.isAnnotationPresent(Command.class)) {
 
-                registeredCommandManager.insert(method.getAnnotation(Command.class).name(), new RegisteredCommand(commandClass, (command, arguments) -> {
+                Parameter[] parameters = method.getParameters();
+
+                registeredCommandManager.insert(method.getAnnotation(Command.class).name(), new RegisteredCommand(commandClass, method.getAnnotation(Command.class).usage(), (command, arguments) -> {
+
+                    if(parameters.length != arguments.size()) {
+                        System.out.println(method.getAnnotation(Command.class).usage());
+                        return;
+                    }
 
                     ArgumentStack stack = new SimpleArgumentStack(arguments);
 
                     List<ArgumentPart<?>> argumentPartList = new ArrayList<>();
-
-                    Parameter[] parameters = method.getParameters();
 
                     Arrays.asList(parameters).forEach(parameter -> {
 

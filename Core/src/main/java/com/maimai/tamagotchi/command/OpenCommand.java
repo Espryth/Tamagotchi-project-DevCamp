@@ -6,10 +6,8 @@ import com.maimai.tamagotchi.module.Module;
 
 public class OpenCommand implements CommandClass {
 
-    @Command(name = "open")
-    public void onExecuteOpenCommand() {
-        System.out.println("test1");
-        Module module = new MainModule();
+    @Command(name = "open", usage = "/open <module>")
+    public void executeOpenCommand(Module module) {
         module.start();
     }
 }
