@@ -61,7 +61,7 @@ public class SimpleCommandRegister implements CommandRegister {
                 registeredCommandManager.insert(method.getAnnotation(Command.class).name(), new RegisteredCommand(commandClass, method.getAnnotation(Command.class).usage(), (command, arguments) -> {
 
                     if(parameters.length != arguments.size()) {
-                        System.out.println(method.getAnnotation(Command.class).usage());
+                        System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
                         return;
                     }
 
