@@ -25,7 +25,7 @@ public class ActionPart implements ArgumentPart<Action<Player>> {
             String argument = argumentStack.next();
 
             if(!actionManager.find(argument).isPresent()) {
-                throw new ArgumentParseException("No se pudo pa");
+                return null;
             }
             return actionManager.find(argument).get();
         }

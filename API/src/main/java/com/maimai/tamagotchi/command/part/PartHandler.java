@@ -12,7 +12,7 @@ public class PartHandler {
         this.argumentPartManager = new ManagerImpl<>();
     }
 
-    public ArgumentPart<?> tryParseArgument(Class<?> clazz) {
+    public ArgumentPart<?> corvertToArgumentPart(Class<?> clazz) {
         return argumentPartManager.find(clazz).orElseThrow(UnknownArgumentPartException::new);
     }
 
