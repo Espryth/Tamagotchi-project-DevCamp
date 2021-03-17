@@ -6,7 +6,7 @@ import com.maimai.tamagotchi.item.food.FoodType;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.statistic.Statistic;
 
-public class PlayerAction {
+public class ShopAction {
 
     public void buyItem(DefaultType defaultType, Player player){
 
