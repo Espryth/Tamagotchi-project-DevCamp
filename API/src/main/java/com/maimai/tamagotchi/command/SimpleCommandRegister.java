@@ -73,7 +73,7 @@ public class SimpleCommandRegister implements CommandRegister {
 
                         ArgumentPart<?> argumentPart = partHandler.corvertToArgumentPart(parameter.getType());
                         argumentPartList.add(argumentPart);
-                        
+
                     });
 
                     List<Object> objectParsedList = parseAll(argumentPartList, stack);

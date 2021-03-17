@@ -9,6 +9,7 @@ import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 
 import java.beans.ConstructorProperties;
+import java.util.UUID;
 
 public abstract class AbstractTamagotchi implements Tamagotchi {
 
@@ -26,15 +27,13 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Manager<String, Action<Player>> actionManager;
 
     @ConstructorProperties({
-            "id",
             "name",
             "type"
     })
-    public AbstractTamagotchi(String id,
-                              String name,
+    public AbstractTamagotchi(String name,
                               TamagotchiType type) {
 
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.type = type;
         this.alive = true;

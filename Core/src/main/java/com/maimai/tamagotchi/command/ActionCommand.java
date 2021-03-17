@@ -1,4 +1,4 @@
 package com.maimai.tamagotchi.command;
 
-public class ActionCommand {
+public class ActionCommand implements CommandClass{
 }
