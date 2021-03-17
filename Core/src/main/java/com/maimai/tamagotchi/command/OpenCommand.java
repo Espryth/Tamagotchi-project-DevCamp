@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.command.annotation.Command;
-import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 
 public class OpenCommand implements CommandClass {
