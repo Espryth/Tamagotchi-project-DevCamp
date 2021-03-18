@@ -27,11 +27,8 @@ public class CommandLoader implements Loader{
 
         CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
         commandRegister.registerCommand(
-                new HelpCommand(),
-                new OpenCommand(),
                 new ShopCommand(),
-                new ExitCommand(core),
-                new ActionCommand(core.getPlayer())
+                new MainCommands(core)
         );
 
         while (core.isEnabled()) {
