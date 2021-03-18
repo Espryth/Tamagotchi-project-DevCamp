@@ -30,7 +30,7 @@ public class ShopCommand implements CommandClass {
         ShopMain shopMain = core.getShop();
         ShopAction shopAction = shopMain.getActions();
         List<DefaultType> defaultTypes = shopMain.getAllItems();
-        switch (arg) {
+        switch (arg.toLowerCase()) {
             case "help":
                 System.out.println("Shop help 1/3");
                 System.out.println("/shop foods");
@@ -45,6 +45,7 @@ public class ShopCommand implements CommandClass {
                 for (ToyType toyType : shopMain.getToys()){
                     System.out.println(toyType + " - " + toyType.getValue() +   " - "  + toyType.getCost() + "$");
                 }
+                break;
             case "foods":
                 System.out.println("List of foods:");
                 for (FoodType foodType : shopMain.getFoods()){
@@ -115,7 +116,9 @@ public class ShopCommand implements CommandClass {
                 }
                 System.out.println("Error - Unknown item.");
                 break;
+            default:
+                System.out.println("Unknown argument");
+                break;
         }
-        System.out.println("Unknown argument");
     }
 }
