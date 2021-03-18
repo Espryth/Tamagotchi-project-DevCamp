@@ -9,6 +9,7 @@ import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.command.part.defaults.ActionPart;
 import com.maimai.tamagotchi.command.part.defaults.ItemPart;
 import com.maimai.tamagotchi.command.part.defaults.StringPart;
+import com.maimai.tamagotchi.shop.Shop;
 import com.maimai.tamagotchi.shop.TamagotchiShop;
 
 import java.util.Scanner;
@@ -17,11 +18,11 @@ public class CommandLoader implements Loader{
 
     private final ProgramCore core;
 
-    private final TamagotchiShop shopMain;
+    private final Shop shop;
 
-    public CommandLoader(ProgramCore core, TamagotchiShop shopMain) {
+    public CommandLoader(ProgramCore core, Shop shop) {
         this.core = core;
-        this.shopMain = shopMain;
+        this.shop = shop;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class CommandLoader implements Loader{
 
         CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
         commandRegister.registerCommand(
-                new ShopCommand(core, shopMain),
+                new ShopCommand(core, shop),
                 new MainCommands(core)
         );
 

@@ -9,6 +9,7 @@ import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.player.Player;
+import com.maimai.tamagotchi.shop.Shop;
 import com.maimai.tamagotchi.shop.TamagotchiShop;
 import com.maimai.tamagotchi.shop.action.ShopAction;
 import com.maimai.tamagotchi.shop.action.TamagotchiShopAction;
@@ -20,11 +21,11 @@ public class ShopCommand implements CommandClass {
 
     private final ProgramCore core;
 
-    private final TamagotchiShop tamagotchiShop;
+    private final Shop shop;
 
-    public ShopCommand(ProgramCore core, TamagotchiShop tamagotchiShop) {
+    public ShopCommand(ProgramCore core, Shop shop) {
         this.core = core;
-        this.tamagotchiShop = tamagotchiShop;
+        this.shop = shop;
     }
 
     @Command(name = "shop", usage = "/shop help")
@@ -32,8 +33,8 @@ public class ShopCommand implements CommandClass {
 
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
-        ShopAction shopAction = tamagotchiShop.getShopAction();
-        List<DefaultType> defaultTypes = tamagotchiShop.getDefaultType();
+        ShopAction shopAction = shop.getShopAction();
+        List<DefaultType> defaultTypes = shop.getDefaultType();
         switch (arg.toLowerCase()) {
             case "help":
                 Arrays.asList(
