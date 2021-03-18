@@ -86,10 +86,12 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                                 if (item.getDefaultType() == ToyType.WHEEL || item.getDefaultType() == ToyType.LABYRINTH){
                                     return true;
                                 }
+                                break;
                             case RABBIT:
                                 if (item.getDefaultType() == ToyType.TUNNEL || item.getDefaultType() == ToyType.LADDER){
                                     return true;
                                 }
+                                break;
                         }
                         System.out.println("This item can not be used with this Tamagotchi");
                     }else{
