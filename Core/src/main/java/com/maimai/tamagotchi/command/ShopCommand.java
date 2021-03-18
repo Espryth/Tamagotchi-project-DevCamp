@@ -95,7 +95,7 @@ public class ShopCommand implements CommandClass {
                 }
 
                 try{
-                    FoodType.valueOf(item.toUpperCase());
+                    ToyType.valueOf(item.toUpperCase());
                 }catch (IllegalArgumentException illegalArgumentException){
                     System.out.println("Unknown item");
                     return;
