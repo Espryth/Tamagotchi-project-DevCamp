@@ -35,6 +35,7 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
         registerAction("Exercise", new SimpleAction.Builder()
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getFatigue().decrement(40D);
                     player.getTamagotchi().getHunger().decrement(50D);
                     player.getTamagotchi().getThirst().decrement(40D);
                     player.getTamagotchi().getHappiness().decrement(10D);
