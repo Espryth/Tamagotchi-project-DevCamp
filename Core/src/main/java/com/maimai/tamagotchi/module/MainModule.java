@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class MainModule implements Module{
+public class MainModule implements Module {
 
     private final ProgramCore core;
 
@@ -33,6 +33,7 @@ public class MainModule implements Module{
 
     public MainModule(ProgramCore core) {
         this.core = core;
+
     }
 
     @Override
@@ -86,7 +87,7 @@ public class MainModule implements Module{
             Arrays.asList(
 
                     "Welcome " + player.getName() + "!",
-                    "to start use / help"
+                    "to start use /help"
 
             ).forEach(System.out::println);
 
@@ -95,6 +96,5 @@ public class MainModule implements Module{
             Loader playerLoader = new PlayerLoader(core);
             playerLoader.load();
         }
-
     }
 }
