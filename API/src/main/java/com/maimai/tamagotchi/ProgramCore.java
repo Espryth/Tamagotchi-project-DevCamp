@@ -3,6 +3,7 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.scheduler.Scheduler;
+import com.maimai.tamagotchi.shop.Shop;
 
 public interface ProgramCore {
 
@@ -17,6 +18,8 @@ public interface ProgramCore {
     Player getPlayer();
 
     void setPlayer(Player player);
+
+    Shop getShop();
 
     Scheduler getScheduler();
 }

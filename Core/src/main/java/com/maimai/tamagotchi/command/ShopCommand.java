@@ -9,8 +9,10 @@ import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.player.Player;
-import com.maimai.tamagotchi.shop.ShopLoader;
+import com.maimai.tamagotchi.shop.Shop;
+import com.maimai.tamagotchi.shop.TamagotchiShop;
 import com.maimai.tamagotchi.shop.action.ShopAction;
+import com.maimai.tamagotchi.shop.action.TamagotchiShopAction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +21,11 @@ public class ShopCommand implements CommandClass {
 
     private final ProgramCore core;
 
-    private final ShopLoader shopMain;
+    private final Shop shop;
 
-    public ShopCommand(ProgramCore core, ShopLoader shopMain) {
+    public ShopCommand(ProgramCore core, Shop shop) {
         this.core = core;
-        this.shopMain = shopMain;
+        this.shop = shop;
     }
 
     @Command(name = "shop", usage = "/shop help")
@@ -31,8 +33,8 @@ public class ShopCommand implements CommandClass {
 
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
-        ShopAction shopAction = shopMain.getActions();
-        List<DefaultType> defaultTypes = shopMain.getAllItems();
+        ShopAction shopAction = shop.getShopAction();
+        List<DefaultType> defaultTypes = shop.getDefaultType();
         switch (arg.toLowerCase()) {
             case "help":
                 Arrays.asList(
@@ -46,13 +48,13 @@ public class ShopCommand implements CommandClass {
                 break;
             case "toys":
                 System.out.println("List of toys");
-                for (ToyType toyType : shopMain.getToys()){
+                for (ToyType toyType : ToyType.values()){
                     System.out.println(toyType + " - " + toyType.getValue() +   " - "  + toyType.getCost() + "$");
                 }
                 break;
             case "foods":
                 System.out.println("List of foods:");
-                for (FoodType foodType : shopMain.getFoods()){
+                for (FoodType foodType : FoodType.values()){
                     System.out.println(foodType.getName() + " - " + foodType.getValue() +  " - " + foodType.getCost() + "$");
                 }
                 break;
@@ -105,7 +107,6 @@ public class ShopCommand implements CommandClass {
                     if (!defaultType.getName().equalsIgnoreCase(item)) {
                         continue;
                     }
-
                     for (int id = 0; id < inventory.getSize(); id++) {
                         if (!inventory.getItem(id).getDefaultType().getName().equals(item)){
                             continue;
