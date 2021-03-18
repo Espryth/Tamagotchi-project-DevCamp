@@ -32,7 +32,7 @@ public class ShopCommand implements CommandClass {
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
         ShopMain shopMain = core.getShop();
-        
+
         if (arg.equalsIgnoreCase("help")) {
             System.out.println("Shop help 1/3");
             System.out.println("/shop foods");
