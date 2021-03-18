@@ -3,10 +3,10 @@ package com.maimai.tamagotchi.item.toy;
 import com.maimai.tamagotchi.item.DefaultType;
 
 public enum ToyType implements DefaultType {
+    WHEEL("Wheel", 50, 25), //Hamster
     LABYRINTH("Labyrinth", 40, 25), //Hamster
     RUBBER_BONE("Rubber_bone", 40, 25), //Dog
     BALL("Ball", 50, 25), //Dog
-    FORAGING("Foraging", 40, 25), //Idk
     ROPE("Rope", 50, 25), //Cat
     POINTER("Pointer", 40, 25); //Cat
 
