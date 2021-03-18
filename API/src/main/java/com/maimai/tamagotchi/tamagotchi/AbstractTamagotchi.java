@@ -70,36 +70,28 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                             case CAT:
                                 if (item.getDefaultType() == ToyType.ROPE || item.getDefaultType() == ToyType.POINTER){
                                     return true;
-                                }else{
-                                    System.out.println("This item can not be used with this Tamagotchi");
                                 }
                                 break;
                             case DOG:
                                 if (item.getDefaultType() == ToyType.RUBBER_BONE || item.getDefaultType() == ToyType.BALL){
                                     return true;
-                                }else {
-                                    System.out.println("This item can not be used with this Tamagotchi");
                                 }
+                                break;
                             case PARROT:
                                 if (item.getDefaultType() == ToyType.PLATFORMS || item.getDefaultType() == ToyType.BELL){
                                     return true;
-                                }else{
-                                    System.out.println("This item can not be used with this Tamagotchi");
                                 }
                                 break;
                             case HAMSTER:
                                 if (item.getDefaultType() == ToyType.WHEEL || item.getDefaultType() == ToyType.LABYRINTH){
                                     return true;
-                                }else {
-                                    System.out.println("This item can not be used with this Tamagotchi");
                                 }
                             case RABBIT:
                                 if (item.getDefaultType() == ToyType.TUNNEL || item.getDefaultType() == ToyType.LADDER){
                                     return true;
-                                }else {
-                                    System.out.println("This item can not be used with this Tamagotchi");
                                 }
                         }
+                        System.out.println("This item can not be used with this Tamagotchi");
                     }else{
                         System.out.println(player.getTamagotchi().getName() + " is very tired to play");
                     }
