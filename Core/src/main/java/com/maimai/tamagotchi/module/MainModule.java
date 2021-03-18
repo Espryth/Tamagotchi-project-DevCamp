@@ -108,11 +108,18 @@ public class MainModule implements Module {
             Loader playerLoader = new PlayerLoader(core, mongoDbManager);
             playerLoader.load();
         }
-        core.getScheduler().runTask(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Test");
+        Tamagotchi tamagotchi = core.getPlayer().getTamagotchi();
+        core.getScheduler().runTask(() -> tamagotchi.getHunger().decrement(10D),0L, 30L, TimeUnit.MINUTES);
+        core.getScheduler().runTask(() -> {
+            if(tamagotchi.isHunger()) {
+                Arrays.asList(
+                        "Your tamagotchi requires your attention!",
+                        "Feed him"
+                ).forEach(System.out::println);
             }
-        },10L, 20L, TimeUnit.MINUTES);
+            if(tamagotchi.getHunger().getValue() <= 0D) {
+                tamagotchi.getHealth().decrement(1D);
+            }
+        }, 0L, 1L, TimeUnit.SECONDS);
     }
 }

@@ -24,6 +24,9 @@ public interface Tamagotchi extends Entity {
     @JsonProperty("hunger")
     Statistic<Double> getHunger();
 
+    @JsonProperty("isHunger")
+    boolean isHunger();
+
     @JsonProperty("health")
     Statistic<Double> getHealth();
 
@@ -38,7 +41,4 @@ public interface Tamagotchi extends Entity {
 
     @JsonProperty("fatigue")
     Statistic<Double> getFatigue();
-
-    @JsonProperty("isFatigue")
-    boolean isFatigue();
 }
