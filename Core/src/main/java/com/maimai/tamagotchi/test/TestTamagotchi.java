@@ -12,10 +12,10 @@ public class TestTamagotchi extends AbstractTamagotchi {
     @Override
     public void registerActions() {
         registerAction("comer", new TamagotchiAction.Builder()
-                .createRequirement(player -> {
+                .createRequirement((player, item) -> {
                     return true;
                 })
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
 
                 })
                 .build());

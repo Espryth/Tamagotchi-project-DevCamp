@@ -61,7 +61,7 @@ public class MainCommands implements CommandClass {
         Player player = core.getPlayer();
         Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
 
-        System.out.println("Stats:");
+        /*System.out.println("Stats:");
         System.out.println("");
         System.out.println("Player:");
         System.out.println("- Name: " + player.getName());
@@ -76,7 +76,26 @@ public class MainCommands implements CommandClass {
         System.out.println("- Hunger points: " + tamagotchiMain.getHunger().getValue());
         System.out.println("- Thirst points: " + tamagotchiMain.getThirst().getValue());
         System.out.println("- Happiness points: " + tamagotchiMain.getHappiness().getValue());
-        System.out.println("- Dirty points: " + tamagotchiMain.getDirty().getValue());
+        System.out.println("- Dirty points: " + tamagotchiMain.getDirty().getValue());¨*/
+
+        Arrays.asList(
+                "Stats:",
+                "",
+                "Player:",
+                "- Name: " + player.getName(),
+                "- Money: " + player.getMoney().getValue(),
+                "",
+                "Tamagochi:",
+                "- Type: " + tamagotchiMain.getType().getName(),
+                "- Name: " + tamagotchiMain.getName(),
+                "",
+                "Status of " + tamagotchiMain.getName() + ":",
+                "- Health points: " + tamagotchiMain.getHealth().getValue(),
+                "- Hunger points: " + tamagotchiMain.getHunger().getValue(),
+                "- Thirst points: " + tamagotchiMain.getThirst().getValue(),
+                "- Happiness points: " + tamagotchiMain.getHappiness().getValue(),
+                "- Dirty points: " + tamagotchiMain.getDirty().getValue()
+        ).forEach(System.out::println);
     }
 
     @Command(

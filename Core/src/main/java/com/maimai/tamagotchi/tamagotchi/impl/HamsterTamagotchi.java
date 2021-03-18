@@ -16,7 +16,7 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
     @Override
     public void registerActions() {
         registerAction("Play", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(40D);
                     player.getTamagotchi().getHunger().decrement(30D);
@@ -26,14 +26,14 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
                 }).build());
 
         registerAction("Pet", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(20D);
                     System.out.println(player.getTamagotchi().getName()+" is licking your hand");
                 }).build());
 
         registerAction("Bath", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
                     player.getTamagotchi().getDirty().decrement(80D);

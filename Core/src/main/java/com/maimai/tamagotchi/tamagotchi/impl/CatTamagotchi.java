@@ -27,7 +27,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 }).build());
 
         registerAction("Pet", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(20D);
                     player.getMoney().increase(5);
@@ -35,7 +35,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 }).build());
 
         registerAction("Bath", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
                     player.getTamagotchi().getDirty().decrement(80D);
@@ -44,7 +44,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 }).build());
 
         registerAction("Exercise", new TamagotchiAction.Builder()
-                .createExecutor(player -> {
+                .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHunger().decrement(40D);
                     player.getTamagotchi().getThirst().decrement(40D);
