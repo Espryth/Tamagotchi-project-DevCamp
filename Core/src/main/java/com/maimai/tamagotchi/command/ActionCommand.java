@@ -12,6 +12,14 @@ public class ActionCommand implements CommandClass {
             name = "action",
             usage = "/action [action] <item>"
     )
-    public void executeActionCommand(Action<Player> action, @OptArg Item item){}
+    public void executeActionCommand(Action<Player> action, @OptArg Item item) {
+
+        if(item == null) {
+            System.out.println("Usage - /action [action] [item name]");
+            return;
+        }
+
+
+    }
 
 }
