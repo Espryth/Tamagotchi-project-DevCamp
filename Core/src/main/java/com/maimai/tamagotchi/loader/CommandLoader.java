@@ -18,9 +18,7 @@ public class CommandLoader implements Loader{
 
     private final ProgramCore core;
 
-    private final Shop shop;
-
-    public CommandLoader(ProgramCore core, Shop shop) {
+    public CommandLoader(ProgramCore core) {
         this.core = core;
         this.shop = shop;
     }
@@ -37,7 +35,7 @@ public class CommandLoader implements Loader{
 
         CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
         commandRegister.registerCommand(
-                new ShopCommand(core, shop),
+                new ShopCommand(core),
                 new MainCommands(core)
         );
 

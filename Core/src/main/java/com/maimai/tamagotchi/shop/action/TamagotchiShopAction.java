@@ -9,6 +9,7 @@ import com.maimai.tamagotchi.statistic.Statistic;
 
 public class TamagotchiShopAction implements ShopAction {
 
+    @Override
     public void buyItem(Player player, ItemType itemType, DefaultType defaultType) {
 
         Statistic<Integer> money = player.getMoney();
@@ -30,6 +31,7 @@ public class TamagotchiShopAction implements ShopAction {
         System.out.println("You successfully sold the item, it costs " + defaultType.getCost() + "$.");
     }
 
+    @Override
     public void sellItem(Player player, int id) {
 
         DefaultType defaultType = player.getInventory().getItem(id).getDefaultType();

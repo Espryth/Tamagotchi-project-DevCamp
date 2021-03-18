@@ -41,7 +41,7 @@ public class TamagotchiCore implements ProgramCore {
         initLoaders(
                 new ListenerLoader(this),
                 new TamagotchiShop(),
-                new CommandLoader(this, shop)
+                new CommandLoader(this)
         );
     }
 

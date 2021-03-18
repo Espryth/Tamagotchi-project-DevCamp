@@ -21,11 +21,8 @@ public class ShopCommand implements CommandClass {
 
     private final ProgramCore core;
 
-    private final Shop shop;
-
-    public ShopCommand(ProgramCore core, Shop shop) {
+    public ShopCommand(ProgramCore core) {
         this.core = core;
-        this.shop = shop;
     }
 
     @Command(name = "shop", usage = "/shop help")
@@ -33,6 +30,7 @@ public class ShopCommand implements CommandClass {
 
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
+        Shop shop = core.getShop();
         ShopAction shopAction = shop.getShopAction();
         List<DefaultType> defaultTypes = shop.getDefaultType();
         switch (arg.toLowerCase()) {
@@ -78,7 +76,7 @@ public class ShopCommand implements CommandClass {
                             break;
                         }
 
-                        shopAction.buyItem(core.getPlayer(), ItemType.FOOD, FoodType.valueOf(item.toUpperCase()));
+                        shopAction.buyItem(player, ItemType.FOOD, FoodType.valueOf(item.toUpperCase()));
                         break;
                     case "toys":
                         if (item == null){
@@ -92,7 +90,7 @@ public class ShopCommand implements CommandClass {
                             System.out.println("Unknown item");
                             break;
                         }
-                        shopAction.buyItem(core.getPlayer(), ItemType.TOY, ToyType.valueOf(item.toUpperCase()));
+                        shopAction.buyItem(player, ItemType.TOY, ToyType.valueOf(item.toUpperCase()));
                         break;
                 }
                 System.out.println("Unknown type");
