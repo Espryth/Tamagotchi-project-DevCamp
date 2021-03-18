@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.TestCommand;
 import com.maimai.tamagotchi.command.*;
 import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.command.part.defaults.ActionPart;
+import com.maimai.tamagotchi.command.part.defaults.ItemPart;
 import com.maimai.tamagotchi.command.part.defaults.StringPart;
 
 import java.util.Scanner;
@@ -25,6 +26,7 @@ public class CommandLoader implements Loader{
         PartHandler partHandler = new PartHandler();
         partHandler.installPart(new StringPart());
         partHandler.installPart(new ActionPart(core.getPlayer().getTamagotchi().getActionManager()));
+        partHandler.installPart(new ItemPart(core.getPlayer()));
 
         CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
         commandRegister.registerCommand(

@@ -1,18 +1,23 @@
 package com.maimai.tamagotchi;
 
-import com.maimai.tamagotchi.command.CommandRegister;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
+import com.maimai.tamagotchi.item.Item;
+import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
+import com.maimai.tamagotchi.manager.Manager;
+import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.scheduler.Scheduler;
 import com.maimai.tamagotchi.scheduler.TamagotchiScheduler;
 import com.maimai.tamagotchi.shop.ShopMain;
+
+import java.util.List;
 
 public class TamagotchiCore implements ProgramCore {
 
@@ -24,6 +29,7 @@ public class TamagotchiCore implements ProgramCore {
     private Scheduler scheduler;
 
     private EventRegister eventRegister;
+
     private ShopMain shopMain;
 
     @Override
@@ -72,11 +78,6 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     @Override
-    public CommandRegister getCommandRegister() {
-        return null;
-    }
-
-    @Override
     public Player getPlayer() {
         return player;
     }
@@ -91,6 +92,7 @@ public class TamagotchiCore implements ProgramCore {
     public MongoDbManager getMongoManager() {
         return mongoDbManager;
     }
+
 
     @Override
     public Scheduler getScheduler() {

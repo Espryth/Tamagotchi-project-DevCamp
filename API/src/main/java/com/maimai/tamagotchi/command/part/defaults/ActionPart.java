@@ -2,7 +2,6 @@ package com.maimai.tamagotchi.command.part.defaults;
 
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.command.ArgumentStack;
-import com.maimai.tamagotchi.command.exception.ArgumentParseException;
 import com.maimai.tamagotchi.command.part.ArgumentPart;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.player.Player;
