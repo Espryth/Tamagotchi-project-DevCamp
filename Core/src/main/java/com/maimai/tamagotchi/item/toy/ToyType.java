@@ -7,6 +7,8 @@ public enum ToyType implements DefaultType {
     LABYRINTH("Labyrinth", 40, 25), //Hamster
     RUBBER_BONE("Rubber_bone", 40, 25), //Dog
     BALL("Ball", 50, 25), //Dog
+    PLATFORMS("Platforms", 50, 25), //Parrot
+    BELL("Bell", 40, 25), //Parrot
     ROPE("Rope", 50, 25), //Cat
     POINTER("Pointer", 40, 25); //Cat
 
