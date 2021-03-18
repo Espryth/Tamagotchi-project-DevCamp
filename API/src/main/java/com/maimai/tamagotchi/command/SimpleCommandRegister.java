@@ -83,7 +83,7 @@ public class SimpleCommandRegister implements CommandRegister {
                     });
 
 
-                    if(arguments.size() > argumentPartList.size() + argumentPartOptList.size()) {
+                    if(arguments.size() > argumentPartList.size() + argumentPartOptList.size() || (arguments.isEmpty() && parameters.length > 0)) {
                         System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
                         return;
                     }

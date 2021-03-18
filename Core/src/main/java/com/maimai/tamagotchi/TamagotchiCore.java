@@ -12,6 +12,7 @@ import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.scheduler.Scheduler;
 import com.maimai.tamagotchi.scheduler.TamagotchiScheduler;
+import com.maimai.tamagotchi.shop.ShopMain;
 
 public class TamagotchiCore implements ProgramCore {
 
@@ -23,6 +24,7 @@ public class TamagotchiCore implements ProgramCore {
     private Scheduler scheduler;
 
     private EventRegister eventRegister;
+    private ShopMain shopMain;
 
     @Override
     public void initCore() {
@@ -50,10 +52,8 @@ public class TamagotchiCore implements ProgramCore {
     private void initObjects() {
         //this.mongoDbManager = new MongoDbManager();
         this.eventRegister = new SimpleEventRegister();
+        this.shopMain = new ShopMain();
     }
-
-
-
 
 
     @Override
@@ -92,7 +92,13 @@ public class TamagotchiCore implements ProgramCore {
         return mongoDbManager;
     }
 
+    @Override
     public Scheduler getScheduler() {
         return scheduler;
+    }
+
+    @Override
+    public ShopMain getShop() {
+        return shopMain;
     }
 }
