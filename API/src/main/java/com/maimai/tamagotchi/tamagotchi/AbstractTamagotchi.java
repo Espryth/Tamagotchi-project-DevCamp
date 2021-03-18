@@ -47,14 +47,19 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.fatigue = new DoubleStatistic();
 
         this.actionManager = new ManagerImpl<>();
-
+        
         registerActions();
+        registerDefaultActions();
     }
 
     public abstract void registerActions();
 
     protected void registerAction(String name, Action<Player> action) {
         getActionManager().insert(name, action);
+    }
+
+    private void registerDefaultActions() {
+
     }
 
 

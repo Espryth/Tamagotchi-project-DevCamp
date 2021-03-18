@@ -41,18 +41,6 @@ public class MainCommands implements CommandClass {
     }
 
     @Command(
-            name = "action",
-            usage = "/action [action name]"
-    )
-    public void executeActionCommand(Action<Player> action) {
-        if(!action.getActionRequirement().requeriment(core.getPlayer())) {
-            System.out.println("Can't execute this action!");
-            return;
-        }
-        action.getActionExecutor().execute(core.getPlayer());
-    }
-
-    @Command(
             name = "inventory", usage = "")
     public void executeInventoryCommand(){
         Inventory inventory = core.getPlayer().getInventory();
