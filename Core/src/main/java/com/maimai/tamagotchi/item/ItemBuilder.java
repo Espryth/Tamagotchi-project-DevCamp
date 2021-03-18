@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi.item;
 
 import com.maimai.tamagotchi.builder.IBuilder;
-import com.maimai.tamagotchi.item.bath.BathItem;
 
 public class ItemBuilder extends AbstractItem {
 
