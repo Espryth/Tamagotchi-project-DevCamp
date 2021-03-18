@@ -12,6 +12,6 @@ public interface CommandRegister {
 
     void registerCommand(CommandClass... commandClasses);
 
-    List<Object> parseAll(List<ArgumentPart<?>> argumentParts, ArgumentStack argumentStack);
+    List<Object> parseAll(List<ArgumentPart<?>> argumentParts, List<ArgumentPart<?>> argumentPartsOpt, ArgumentStack argumentStack);
 
 }
