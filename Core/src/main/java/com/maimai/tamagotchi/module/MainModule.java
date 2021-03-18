@@ -120,6 +120,6 @@ public class MainModule implements Module {
             if(tamagotchi.getHunger().getValue() <= 0D) {
                 tamagotchi.getHealth().decrement(1D);
             }
-        }, 0L, 1L, TimeUnit.SECONDS);
+        }, 5L, 20L, TimeUnit.SECONDS);
     }
 }
