@@ -42,3 +42,4 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
     }
 
 }
+.

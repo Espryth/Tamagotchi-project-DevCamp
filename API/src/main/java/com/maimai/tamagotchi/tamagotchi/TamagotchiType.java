@@ -13,3 +13,4 @@ public enum TamagotchiType {
         return name;
     }
 }
+.
