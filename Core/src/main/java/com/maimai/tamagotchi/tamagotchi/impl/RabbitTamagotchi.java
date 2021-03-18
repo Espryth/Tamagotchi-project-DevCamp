@@ -42,4 +42,3 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
     }
 
 }
-.

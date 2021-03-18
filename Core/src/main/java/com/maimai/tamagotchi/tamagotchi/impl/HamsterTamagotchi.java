@@ -42,5 +42,3 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
     }
 
 }
-
-.
