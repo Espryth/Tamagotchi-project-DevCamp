@@ -9,6 +9,9 @@ import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainCommands implements CommandClass {
 
@@ -52,8 +55,14 @@ public class MainCommands implements CommandClass {
                 "",
                 "List of items:"
         ).forEach(System.out::println);
-        for (Item item : inventory.getItems()){
-            System.out.println("- " + item.getDefaultType().getName() + " - Value:" + item.getDefaultType().getValue());
+
+        Set<Item> itemSet = new HashSet<>(inventory.getItems());
+
+        for (Item item : itemSet){
+
+            int amount = Collections.frequency(inventory.getItems(), item);
+
+            System.out.println("- " + item.getDefaultType().getName() + "x("+amount+")" + " - Value:" + item.getDefaultType().getValue());
         }
     }
 

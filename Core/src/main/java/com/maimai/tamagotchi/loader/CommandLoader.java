@@ -20,7 +20,6 @@ public class CommandLoader implements Loader{
 
     public CommandLoader(ProgramCore core) {
         this.core = core;
-        this.shop = shop;
     }
 
     @Override
