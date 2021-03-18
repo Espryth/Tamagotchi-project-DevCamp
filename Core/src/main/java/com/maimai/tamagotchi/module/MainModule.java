@@ -6,6 +6,7 @@ import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.loader.PlayerLoader;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.SimplePlayer;
+import com.maimai.tamagotchi.player.language.Language;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.impl.*;
@@ -21,6 +22,7 @@ public class MainModule implements Module {
     private final ProgramCore core;
 
     private static final Map<String, TamagotchiType> TAMAGOTCHI_TYPE_ALIASES = new HashMap<>();
+    private static final Map<String, Language> LANGUAGE_ALIASES = new HashMap<>();
 
     static {
         for (TamagotchiType tamagotchiType : TamagotchiType.values()) {
@@ -29,9 +31,27 @@ public class MainModule implements Module {
             TAMAGOTCHI_TYPE_ALIASES.put(tamagotchiType.getName().toLowerCase(), tamagotchiType);
 
         }
+
+        for(Language language : Language.values()) {
+
+            LANGUAGE_ALIASES.put(language.toString().toLowerCase(), language);
+
+            switch (language) {
+                case ES:
+                    LANGUAGE_ALIASES.put("español", language);
+                    LANGUAGE_ALIASES.put("spanish", language);
+                    break;
+                case EN:
+                    LANGUAGE_ALIASES.put("ingles", language);
+                    LANGUAGE_ALIASES.put("english", language);
+                    break;
+            }
+
+        }
+
     }
 
-    private MongoDbManager mongoDbManager;
+    private final MongoDbManager mongoDbManager;
 
     public MainModule(ProgramCore core, MongoDbManager mongoDbManager) {
         this.core = core;
@@ -52,6 +72,17 @@ public class MainModule implements Module {
         ).forEach(System.out::println);
 
         if(scanner.nextBoolean()) {
+
+            System.out.println("To start put your language");
+            Language language = LANGUAGE_ALIASES.get(scanner.next());
+
+            while (language == null) {
+                Arrays.asList(
+                        "That language doesn't exist!",
+                        "please try again."
+                ).forEach(System.out::println);
+                language = LANGUAGE_ALIASES.get(scanner.next());
+            }
 
             System.out.println("Enter your name");
             String playerName = scanner.next();
@@ -93,7 +124,7 @@ public class MainModule implements Module {
                     throw new IllegalStateException("Unexpected value: " + tamagotchiType);
             }
 
-            Player player = new SimplePlayer(playerName, tamagotchi);
+            Player player = new SimplePlayer(playerName, tamagotchi, language);
             core.setPlayer(player);
 
             Arrays.asList(

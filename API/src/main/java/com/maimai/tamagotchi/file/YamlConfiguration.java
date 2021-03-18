@@ -3,7 +3,7 @@ package com.maimai.tamagotchi.file;
 import java.util.HashMap;
 import java.util.List;
 
-public class YamlConfiguration implements File {
+public class YamlConfiguration {
 
     private final HashMap<String, String> stringPath;
     private final HashMap<String, List<String>> listStringPath;
@@ -13,7 +13,6 @@ public class YamlConfiguration implements File {
         this.listStringPath = new HashMap<>();
     }
 
-    @Override
     public String getString(String path) {
         return stringPath.get(path);
     }
@@ -36,11 +35,8 @@ public class YamlConfiguration implements File {
         listStringPath.replace(path, text);
     }
 
-
-    @Override
     public List<String> getStringList(String path){
         return listStringPath.get(path);
     }
-
 
 }

@@ -3,12 +3,16 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
+import com.maimai.tamagotchi.file.YamlFileCreator;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
+import com.maimai.tamagotchi.manager.Manager;
+import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
+import com.maimai.tamagotchi.player.language.Language;
 import com.maimai.tamagotchi.scheduler.Scheduler;
 import com.maimai.tamagotchi.scheduler.TamagotchiScheduler;
 import com.maimai.tamagotchi.shop.Shop;
@@ -27,9 +31,13 @@ public class TamagotchiCore implements ProgramCore {
 
     private Shop shop;
 
+    private Manager<Language, YamlFileCreator> languageManager;
+
     @Override
     public void initCore() {
+
         initObjects();
+        initLanguages();
 
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
@@ -53,8 +61,16 @@ public class TamagotchiCore implements ProgramCore {
 
     private void initObjects() {
         //this.mongoDbManager = new MongoDbManager();
+        this.languageManager = new ManagerImpl<>();
         this.eventRegister = new SimpleEventRegister();
         this.shop = new TamagotchiShop();
+    }
+
+    private void initLanguages() {
+        for(Language language : Language.values()) {
+            YamlFileCreator file = new YamlFileCreator(language.getFileName());
+            languageManager.insert(language, file);
+        }
     }
 
 
@@ -81,6 +97,11 @@ public class TamagotchiCore implements ProgramCore {
     @Override
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    @Override
+    public Manager<Language, YamlFileCreator> getLanguageManager() {
+        return languageManager;
     }
 
 

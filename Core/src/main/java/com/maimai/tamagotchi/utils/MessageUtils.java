@@ -1,8 +1,20 @@
 package com.maimai.tamagotchi.utils;
 
+import com.maimai.tamagotchi.ProgramCore;
+
 import java.util.Arrays;
 
 public class MessageUtils {
+
+    public static void sendMessage(ProgramCore core, String path) {
+        core.getLanguageManager().find(core.getPlayer().getLanguage()).ifPresent(file -> {
+            if(file.getString(path).isEmpty()) {
+                System.out.println("An error occurred while trying to send the message " + path);
+                return;
+            }
+            System.out.println(file.getString(path));
+        });
+    }
 
     public static void sendCenteredMessage(String message) {
         System.out.println(centerString(message));
