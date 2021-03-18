@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.task.Task;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class TamagotchiScheduler implements Scheduler {
 
@@ -15,8 +16,8 @@ public class TamagotchiScheduler implements Scheduler {
     }
 
     @Override
-    public Task runTask(Runnable runnable, long delay, long period) throws IllegalArgumentException {
-        Task task = new SimpleTask(runnable, delay, period);
+    public Task runTask(Runnable runnable, long delay, long period, TimeUnit timeUnit) throws IllegalArgumentException {
+        Task task = new SimpleTask(runnable, delay, period, timeUnit);
         return taskMap.put(task.getTaskId(), task);
     }
 

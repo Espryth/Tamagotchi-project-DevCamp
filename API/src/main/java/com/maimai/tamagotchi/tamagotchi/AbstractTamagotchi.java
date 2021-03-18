@@ -25,6 +25,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Statistic<Double> happiness;
 
     private final Manager<String, Action<Player>> actionManager;
+    private final Statistic<Double> fatigue;
 
     @ConstructorProperties({
             "name",
@@ -43,6 +44,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.thirst = new DoubleStatistic();
         this.dirty = new DoubleStatistic();
         this.happiness = new DoubleStatistic();
+        this.fatigue = new DoubleStatistic();
 
         this.actionManager = new ManagerImpl<>();
 
@@ -110,4 +112,13 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         return happiness;
     }
 
+    @Override
+    public Statistic<Double> getFatigue() {
+        return fatigue;
+    }
+
+    @Override
+    public boolean isFatigue() {
+        return fatigue.getValue() >= 90;
+    }
 }

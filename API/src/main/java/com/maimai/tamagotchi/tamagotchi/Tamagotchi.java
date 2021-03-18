@@ -36,4 +36,10 @@ public interface Tamagotchi extends Entity {
 
     @JsonProperty("happiness")
     Statistic<Double> getHappiness();
+
+    @JsonProperty("fatigue")
+    Statistic<Double> getFatigue();
+
+    @JsonProperty("isFatigue")
+    boolean isFatigue();
 }

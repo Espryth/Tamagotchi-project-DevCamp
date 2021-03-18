@@ -41,5 +41,4 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     System.out.println(player.getTamagotchi().getName()+" is very angry");
                 }).build());
     }
-
 }
