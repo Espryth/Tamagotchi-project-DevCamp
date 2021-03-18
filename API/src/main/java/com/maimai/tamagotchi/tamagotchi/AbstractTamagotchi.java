@@ -4,6 +4,8 @@ import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.action.SimpleAction;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
+import com.maimai.tamagotchi.item.impl.FoodType;
+import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.statistic.Statistic;
@@ -62,6 +64,42 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
     private void registerDefaultActions(ProgramCore core) {
         registerAction("Play", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    switch (player.getTamagotchi().getType()){
+                        case CAT:
+                            if (item.getDefaultType() == ToyType.ROPE || item.getDefaultType() == ToyType.POINTER){
+                                return true;
+                            }else{
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                            break;
+                        case DOG:
+                            if (item.getDefaultType() == ToyType.RUBBER_BONE || item.getDefaultType() == ToyType.BALL){
+                                return true;
+                            }else {
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                        case PARROT:
+                            if (item.getDefaultType() == ToyType.PLATFORMS || item.getDefaultType() == ToyType.BELL){
+                                return true;
+                            }else{
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                            break;
+                        case HAMSTER:
+                            if (item.getDefaultType() == ToyType.WHEEL || item.getDefaultType() == ToyType.LABYRINTH){
+                                return true;
+                            }else {
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                        case RABBIT:
+                            if (item.getDefaultType() == ToyType.TUNNEL || item.getDefaultType() == ToyType.LADDER){
+                                return true;
+                            }else {
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                    }return false;
+                })
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHunger().decrement(30D);
@@ -83,6 +121,61 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                             break;
                         case RABBIT:
                             System.out.println("Sniff snifff");
+                            break;
+                    }
+                }).build());
+
+        registerAction("Feed", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    switch (player.getTamagotchi().getType()){
+                        case CAT:
+                        case DOG:
+                            if (item.getDefaultType() == FoodType.BEEF || item.getDefaultType() == FoodType.FISH ||
+                                    item.getDefaultType() == FoodType.CHICKEN){
+                                return true;
+                            }else{
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                            break;
+                        case PARROT:
+                        case HAMSTER:
+                            if (item.getDefaultType() == FoodType.SEED || item.getDefaultType() == FoodType.APPLE ||
+                                    item.getDefaultType() == FoodType.BERRIE || item.getDefaultType() == FoodType.MANGO ||
+                                    item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE){
+                                return true;
+                            }else{
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                            break;
+                        case RABBIT:
+                            if (item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE){
+                                return true;
+                            }else {
+                                System.out.println("This item can not be used with this Tamagotchi");
+                            }
+                    }return false;
+                })
+                .createExecutor((player, item)-> {
+                    core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getHunger().decrement(30D);
+                    player.getTamagotchi().getThirst().decrement(30D);
+                    player.getTamagotchi().getDirty().increase(30D);
+                    player.getMoney().increase(10);
+                    switch (player.getTamagotchi().getType()){
+                        case CAT:
+                            System.out.println("C");
+                            break;
+                        case DOG:
+                            System.out.println("D");
+                            break;
+                        case PARROT:
+                            System.out.println("P");
+                            break;
+                        case HAMSTER:
+                            System.out.println("H");
+                            break;
+                        case RABBIT:
+                            System.out.println("R");
                             break;
                     }
                 }).build());
