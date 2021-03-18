@@ -1,6 +1,7 @@
 package com.maimai.tamagotchi.module;
 
 import com.maimai.tamagotchi.ProgramCore;
+import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.loader.PlayerLoader;
 import com.maimai.tamagotchi.player.Player;
@@ -31,9 +32,11 @@ public class MainModule implements Module {
         }
     }
 
+    private MongoDbManager mongoDbManager;
 
-    public MainModule(ProgramCore core) {
+    public MainModule(ProgramCore core, MongoDbManager mongoDbManager) {
         this.core = core;
+        this.mongoDbManager = mongoDbManager;
 
     }
 
@@ -94,7 +97,7 @@ public class MainModule implements Module {
 
             
         } else {
-            Loader playerLoader = new PlayerLoader(core);
+            Loader playerLoader = new PlayerLoader(core, mongoDbManager);
             playerLoader.load();
         }
         core.getScheduler().runTask(new Runnable() {

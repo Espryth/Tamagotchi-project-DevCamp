@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.tamagotchi;
 
+import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.Action;
 
 import com.maimai.tamagotchi.manager.Manager;
@@ -12,7 +13,7 @@ import java.beans.ConstructorProperties;
 import java.util.UUID;
 
 public abstract class AbstractTamagotchi implements Tamagotchi {
-
+    
     private final String id;
     private final String name;
     private final TamagotchiType type;
@@ -31,7 +32,8 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
             "name",
             "type"
     })
-    public AbstractTamagotchi(String name,
+    public AbstractTamagotchi(ProgramCore core,
+                              String name,
                               TamagotchiType type) {
 
         this.id = UUID.randomUUID().toString();
@@ -49,7 +51,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.actionManager = new ManagerImpl<>();
 
         registerActions();
-        registerDefaultActions();
+        registerDefaultActions(core);
     }
 
     public abstract void registerActions();
@@ -58,7 +60,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         getActionManager().insert(name, action);
     }
 
-    private void registerDefaultActions() {
+    private void registerDefaultActions(ProgramCore core) {
 
     }
 

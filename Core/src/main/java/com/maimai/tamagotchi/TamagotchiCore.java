@@ -39,7 +39,7 @@ public class TamagotchiCore implements ProgramCore {
 
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
-        Module module = new MainModule(this);
+        Module module = new MainModule(this, mongoDbManager);
 
         module.start();
 
@@ -85,12 +85,6 @@ public class TamagotchiCore implements ProgramCore {
     @Override
     public void setPlayer(Player player) {
         this.player = player;
-    }
-
-
-    @Override
-    public MongoDbManager getMongoManager() {
-        return mongoDbManager;
     }
 
 

@@ -9,7 +9,7 @@ import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 public class RabbitTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
     public RabbitTamagotchi(ProgramCore core, String name) {
-        super(name, TamagotchiType.RABBIT);
+        super(core, name, TamagotchiType.RABBIT);
         this.core = core;
     }
 

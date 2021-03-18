@@ -9,7 +9,7 @@ import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 public class HamsterTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
     public HamsterTamagotchi(ProgramCore core, String name) {
-        super(name, TamagotchiType.HAMSTER);
+        super(core, name, TamagotchiType.HAMSTER);
         this.core = core;
     }
 
