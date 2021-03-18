@@ -37,7 +37,7 @@ public class FileManager {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
         for (String lines : bufferedReader.lines().collect(Collectors.toList())) {
-            yamlConfiguration.setString(lines.split("/.")[0], lines.split("/.")[1]);
+            yamlConfiguration.setString(lines.split(":")[0], lines.split(":")[1]);
         }
 
     }
