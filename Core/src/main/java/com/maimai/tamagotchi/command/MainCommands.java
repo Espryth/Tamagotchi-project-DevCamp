@@ -84,11 +84,11 @@ public class MainCommands implements CommandClass {
         System.out.println("- Name: " + tamagotchiMain.getName());
         System.out.println("");
         System.out.println("Status of " + tamagotchiMain.getName() + ":");
+        System.out.println("- Health points: " + tamagotchiMain.getHealth().getValue());
         System.out.println("- Hunger points: " + tamagotchiMain.getHunger().getValue());
         System.out.println("- Thirst points: " + tamagotchiMain.getThirst().getValue());
-        System.out.println("- Health points: " + tamagotchiMain.getHealth().getValue());
-        System.out.println("- Dirty points: " + tamagotchiMain.getDirty().getValue());
         System.out.println("- Happiness points: " + tamagotchiMain.getHappiness().getValue());
+        System.out.println("- Dirty points: " + tamagotchiMain.getDirty().getValue());
     }
 
     @Command(
