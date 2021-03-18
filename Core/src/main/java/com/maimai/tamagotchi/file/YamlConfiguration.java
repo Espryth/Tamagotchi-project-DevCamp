@@ -1,21 +1,17 @@
 package com.maimai.tamagotchi.file;
 
-import com.sun.javafx.binding.StringFormatter;
-
 import java.util.HashMap;
 import java.util.List;
 
 public class YamlConfiguration implements File {
 
-    private final HashMap<String, String> stringPath = new HashMap<>();
-    private final HashMap<String, List<String>> listStringPath = new HashMap<>();
+    private final HashMap<String, String> stringPath;
+    private final HashMap<String, List<String>> listStringPath;
 
-    private String fileName;
-
-    public YamlConfiguration(String fileName) {
-        this.fileName = fileName;
+    public YamlConfiguration() {
+        this.stringPath = new HashMap<>();
+        this.listStringPath = new HashMap<>();
     }
-
 
     @Override
     public String getString(String path) {
