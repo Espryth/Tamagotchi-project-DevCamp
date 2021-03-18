@@ -8,7 +8,7 @@ import com.maimai.tamagotchi.player.Player;
 
 public class ActionCommand implements CommandClass {
 
-    private Player player;
+    private final Player player;
 
     public ActionCommand(Player player) {
         this.player = player;

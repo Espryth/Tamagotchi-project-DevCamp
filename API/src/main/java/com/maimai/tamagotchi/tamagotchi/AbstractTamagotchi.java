@@ -57,6 +57,10 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         getActionManager().insert(name, action);
     }
 
+    private void regusterDefaultActions() {
+        
+    }
+
 
     @Override
     public boolean isAlive() {
