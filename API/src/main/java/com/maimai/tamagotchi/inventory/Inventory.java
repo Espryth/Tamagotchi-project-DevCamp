@@ -8,7 +8,11 @@ public interface Inventory {
 
     Item getItem(int index);
 
+    int getSize();
+
     void setItem(int index, Item item);
+
+    void addItem(Item item);
 
     void addItems(Item... items);
 
@@ -16,5 +20,5 @@ public interface Inventory {
 
     void removeItems(int... index);
 
-    List<Item> getAllItems();
+    List<Item> getItems();
 }
