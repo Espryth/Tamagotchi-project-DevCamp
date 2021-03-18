@@ -3,6 +3,7 @@ package com.maimai.tamagotchi.command;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.TamagotchiCore;
 import com.maimai.tamagotchi.command.annotation.Command;
+import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.DefaultType;
 import com.maimai.tamagotchi.item.Item;
@@ -26,9 +27,8 @@ public class ShopCommand implements CommandClass {
     }
 
     @Command(name = "shop", usage = "/shop help")
-    public void executeShopCommand(String arg, String type, String item) {
+    public void executeShopCommand(String arg, @OptArg String type, @OptArg String item) {
 
-        System.out.println(arg);
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
         ShopMain shopMain = core.getShop();
@@ -73,7 +73,7 @@ public class ShopCommand implements CommandClass {
 
         if (arg.equalsIgnoreCase("buy")){
 
-            if (type.isEmpty()){
+            if (type == null){
                 System.out.println("Usage - /shop buy [foods/toys/baths]");
                 return;
             }
@@ -81,7 +81,7 @@ public class ShopCommand implements CommandClass {
 
             if (type.equalsIgnoreCase("foods")){
 
-                if (item.isEmpty()){
+                if (item == null){
                     System.out.println("Usage - /shop buy foods [item]");
                     return;
                 }
@@ -91,7 +91,7 @@ public class ShopCommand implements CommandClass {
             }
 
             if (type.equalsIgnoreCase("baths")) {
-                if (item.isEmpty()){
+                if (item == null){
                     System.out.println("Usage - /shop buy baths [item]");
                     return;
                 }
@@ -100,7 +100,7 @@ public class ShopCommand implements CommandClass {
             }
 
             if (type.equalsIgnoreCase("toys")){
-                if (item.isEmpty()){
+                if (item == null){
                     System.out.println("Usage - /shop buy toys [item]");
                     return;
                 }
@@ -114,7 +114,7 @@ public class ShopCommand implements CommandClass {
         }
 
         if (arg.equalsIgnoreCase("sell")){
-            if (item.isEmpty()){
+            if (item == null){
                 System.out.println("Usage - /shop sell [item]");
                 return;
             }
