@@ -98,19 +98,19 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getMoney().increase(5);
                     switch (player.getTamagotchi().getType()){
                         case CAT:
-                            System.out.println("c");
+                            System.out.println(player.getTamagotchi().getName()+" is tired, as always");
                             break;
                         case DOG:
-                            System.out.println("d");
+                            System.out.println(player.getTamagotchi().getName()+" is running around the place");
                             break;
                         case PARROT:
-                            System.out.println("p");
+                            System.out.println(player.getTamagotchi().getName()+" is screaming for food");
                             break;
                         case HAMSTER:
-                            System.out.println("h");
+                            System.out.println(player.getTamagotchi().getName()+" wants to eat and go to bed again");
                             break;
                         case RABBIT:
-                            System.out.println("r");
+                            System.out.println(player.getTamagotchi().getName()+" went to bed again");
                             break;
                     }
                 }).build());
