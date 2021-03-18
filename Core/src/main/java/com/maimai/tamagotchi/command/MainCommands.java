@@ -73,17 +73,17 @@ public class MainCommands implements CommandClass {
         Player player = core.getPlayer();
         Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
 
-        System.out.println("Stats of the player:");
+        System.out.println("Stats:");
         System.out.println("");
-        System.out.println("Player>");
+        System.out.println("Player:");
         System.out.println("- Name: " + player.getName());
         System.out.println("- Money: " + player.getMoney().getValue());
         System.out.println();
-        System.out.println("Tamagochi>");
+        System.out.println("Tamagochi:");
         System.out.println("- Type: " + tamagotchiMain.getType().getName());
         System.out.println("- Name: " + tamagotchiMain.getName());
         System.out.println("");
-        System.out.println("Status of the tamagochi:");
+        System.out.println("Status of " + tamagotchiMain.getName() + ":");
         System.out.println("- Hunger points: " + tamagotchiMain.getHunger().getValue());
         System.out.println("- Thirst points: " + tamagotchiMain.getThirst().getValue());
         System.out.println("- Health points: " + tamagotchiMain.getHealth().getValue());
