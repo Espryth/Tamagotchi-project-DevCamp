@@ -11,38 +11,31 @@ import java.util.stream.Collectors;
 
 public class YamlFileCreator {
 
-    private final String fileName;
-
     private File file;
 
     private YamlConfiguration yamlConfiguration;
 
     public YamlFileCreator(String fileName) {
-        this.fileName = fileName;
-        createFile();
-    }
-
-    public void createFile() {
         try {
             URL resource = getClass().getClassLoader().getResource(fileName + ".yml");
-
-            file = new File(resource.toURI());
-            file.createNewFile();
-
-            yamlConfiguration = new YamlConfiguration();
-            loadPaths();
+            this.file = new File(resource.toURI());
+            if(!file.exists()) {
+                file.getParentFile().mkdir();
+                file.createNewFile();
+            }
+            this.yamlConfiguration = new YamlConfiguration();
+            loadConfig();
         } catch (IOException | URISyntaxException exception) {
             exception.printStackTrace();
         }
     }
 
-    public void loadPaths() {
+    public void loadConfig() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-
-            for (String lines : bufferedReader.lines().collect(Collectors.toList())) {
+            bufferedReader.lines().collect(Collectors.toList()).forEach(lines -> {
                 yamlConfiguration.setString(lines.split(":")[0], lines.split(":")[1]);
-            }
+            });
         } catch (IOException exception) {
             exception.printStackTrace();
         }
