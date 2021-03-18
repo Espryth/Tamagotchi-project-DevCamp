@@ -102,6 +102,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                 })
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getFatigue().decrement(30D);
                     player.getTamagotchi().getHunger().decrement(30D);
                     player.getTamagotchi().getThirst().decrement(30D);
                     player.getTamagotchi().getDirty().increase(30D);
