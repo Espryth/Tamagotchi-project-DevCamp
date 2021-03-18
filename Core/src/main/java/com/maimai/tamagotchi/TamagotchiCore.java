@@ -3,21 +3,15 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
-import com.maimai.tamagotchi.item.Item;
-import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
-import com.maimai.tamagotchi.manager.Manager;
-import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.scheduler.Scheduler;
 import com.maimai.tamagotchi.scheduler.TamagotchiScheduler;
-import com.maimai.tamagotchi.shop.ShopMain;
-
-import java.util.List;
+import com.maimai.tamagotchi.shop.ShopLoader;
 
 public class TamagotchiCore implements ProgramCore {
 
@@ -30,21 +24,22 @@ public class TamagotchiCore implements ProgramCore {
 
     private EventRegister eventRegister;
 
-    private ShopMain shopMain;
+    private ShopLoader shopMain;
 
     @Override
     public void initCore() {
-
         initObjects();
 
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
+
         Module module = new MainModule(this, mongoDbManager);
 
         module.start();
 
         initLoaders(
                 new ListenerLoader(this),
+                new ShopLoader(),
                 new CommandLoader(this)
         );
     }
@@ -58,7 +53,7 @@ public class TamagotchiCore implements ProgramCore {
     private void initObjects() {
         //this.mongoDbManager = new MongoDbManager();
         this.eventRegister = new SimpleEventRegister();
-        this.shopMain = new ShopMain();
+        this.shopMain = new ShopLoader();
     }
 
 
@@ -94,7 +89,7 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     @Override
-    public ShopMain getShop() {
+    public ShopLoader getShop() {
         return shopMain;
     }
 }

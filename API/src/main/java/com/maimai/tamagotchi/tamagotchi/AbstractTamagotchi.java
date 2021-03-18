@@ -2,12 +2,10 @@ package com.maimai.tamagotchi.tamagotchi;
 
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.Action;
-
 import com.maimai.tamagotchi.action.SimpleAction;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
-import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 

@@ -5,7 +5,6 @@ import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.module.MainModule;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
-import com.sun.javafx.iio.common.SmoothMinifier;
 
 import java.util.Optional;
 

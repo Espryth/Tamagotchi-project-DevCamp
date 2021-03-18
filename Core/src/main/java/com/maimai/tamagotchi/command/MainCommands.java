@@ -1,8 +1,6 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.TamagotchiMain;
-import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;

@@ -2,7 +2,6 @@ package com.maimai.tamagotchi.player.inventory;
 
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;
-import com.sun.corba.se.spi.ior.iiop.IIOPProfileTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;

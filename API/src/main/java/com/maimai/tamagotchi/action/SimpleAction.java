@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi.action;
 
 import com.maimai.tamagotchi.builder.IBuilder;
-import com.maimai.tamagotchi.player.Player;
 
 public class SimpleAction implements Action{
 

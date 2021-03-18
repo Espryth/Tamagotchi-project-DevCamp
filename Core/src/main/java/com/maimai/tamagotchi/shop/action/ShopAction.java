@@ -1,12 +1,11 @@
 package com.maimai.tamagotchi.shop.action;
 
-import com.maimai.tamagotchi.item.*;
-import com.maimai.tamagotchi.item.food.FoodItem;
-import com.maimai.tamagotchi.item.food.FoodType;
+import com.maimai.tamagotchi.item.DefaultType;
+import com.maimai.tamagotchi.item.Item;
+import com.maimai.tamagotchi.item.ItemBuilder;
+import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.statistic.Statistic;
-
-import javax.swing.table.DefaultTableModel;
 
 public class ShopAction {
 

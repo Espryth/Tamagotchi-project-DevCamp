@@ -1,7 +1,5 @@
 package com.maimai.tamagotchi.command;
 
-import java.lang.reflect.Parameter;
-
 public class RegisteredCommand {
 
     private final CommandClass commandClass;

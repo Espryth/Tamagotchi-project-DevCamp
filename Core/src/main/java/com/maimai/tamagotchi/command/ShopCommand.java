@@ -9,7 +9,7 @@ import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.item.food.FoodType;
 import com.maimai.tamagotchi.item.toy.ToyType;
 import com.maimai.tamagotchi.player.Player;
-import com.maimai.tamagotchi.shop.ShopMain;
+import com.maimai.tamagotchi.shop.ShopLoader;
 import com.maimai.tamagotchi.shop.action.ShopAction;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class ShopCommand implements CommandClass {
 
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
-        ShopMain shopMain = core.getShop();
+        ShopLoader shopMain = core.getShop();
         ShopAction shopAction = shopMain.getActions();
         List<DefaultType> defaultTypes = shopMain.getAllItems();
         switch (arg.toLowerCase()) {
