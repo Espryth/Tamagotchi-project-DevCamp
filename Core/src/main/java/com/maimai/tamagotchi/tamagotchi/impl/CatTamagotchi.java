@@ -55,5 +55,4 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 }).build());
 
     }
-
 }

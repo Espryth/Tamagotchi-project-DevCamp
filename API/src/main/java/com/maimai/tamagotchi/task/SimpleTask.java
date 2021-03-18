@@ -10,13 +10,14 @@ public class SimpleTask implements Task {
     private final long period;
     private final Thread thread;
     private ScheduledExecutorService service;
+    private TimeUnit timeUnit;
 
-    public SimpleTask(Runnable runnable, long delay, long period) {
+    public SimpleTask(Runnable runnable, long delay, long period, TimeUnit timeUnit) {
         this.delay = delay;
         this.period = period;
         this.thread = new Thread(runnable);
         this.service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(thread, delay, period, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(thread, delay, period, timeUnit);
     }
 
     public long getDelay() {
@@ -35,6 +36,10 @@ public class SimpleTask implements Task {
     @Override
     public boolean isSync() {
         return true;
+    }
+
+    public TimeUnit getTimeUnit() {
+        return timeUnit;
     }
 
     @Override

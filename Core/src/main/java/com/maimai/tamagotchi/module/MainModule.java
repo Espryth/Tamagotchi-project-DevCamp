@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class MainModule implements Module {
 
@@ -96,5 +97,11 @@ public class MainModule implements Module {
             Loader playerLoader = new PlayerLoader(core);
             playerLoader.load();
         }
+        core.getScheduler().runTask(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Test");
+            }
+        },10L, 20L, TimeUnit.MINUTES);
     }
 }
