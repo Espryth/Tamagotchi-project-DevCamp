@@ -91,7 +91,7 @@ public class SimpleCommandRegister implements CommandRegister {
                     List<Object> objectParsedList = parseAll(argumentPartList, argumentPartOptList, stack);
 
                     if(objectParsedList == null) {
-                        System.out.println("Uno de los valorees es invalodo");
+                        System.out.println("You have a invalid argument!");
                         return;
                     }
 
