@@ -12,11 +12,6 @@ public class ShopAction {
 
     public void buyItem(Player player, ItemType itemType, DefaultType defaultType){
 
-        if (defaultType == null){
-            System.out.println("Unknown item");
-            return;
-        }
-
         Statistic<Integer> money = player.getMoney();
 
         if (money.getValue() < defaultType.getCost()){
@@ -32,6 +27,7 @@ public class ShopAction {
 
         player.getInventory().addItem(item);
         money.decrement(defaultType.getCost());
+
         System.out.println("You successfully sold the item, it costs " + defaultType.getCost() + "$.");
     }
 

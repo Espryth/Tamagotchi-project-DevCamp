@@ -32,10 +32,10 @@ public class ShopCommand implements CommandClass {
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
         ShopMain shopMain = core.getShop();
-
+        
         if (arg.equalsIgnoreCase("help")) {
             System.out.println("Shop help 1/3");
-            System.out.println("/shop food");
+            System.out.println("/shop foods");
             System.out.println("/shop toys");
             System.out.println("/shop baths");
             System.out.println(" ");
@@ -47,7 +47,7 @@ public class ShopCommand implements CommandClass {
         if (arg.equalsIgnoreCase("toys")){
             System.out.println("List of toys");
             for (ToyType toyType : shopMain.getToys()){
-                System.out.println(toyType + " - " + toyType.getValue() +  "-" + toyType.getCost() + "$");
+                System.out.println(toyType + " - " + toyType.getValue() +   " - "  + toyType.getCost() + "$");
             }
             return;
         }
@@ -55,7 +55,7 @@ public class ShopCommand implements CommandClass {
         if (arg.equalsIgnoreCase("foods")){
             System.out.println("List of foods:");
             for (FoodType foodType : shopMain.getFoods()){
-                System.out.println(foodType.getName() + " - " + foodType.getValue() +  "-" + foodType.getCost() + "$");
+                System.out.println(foodType.getName() + " - " + foodType.getValue() +  " - " + foodType.getCost() + "$");
             }
             return;
         }
@@ -63,7 +63,7 @@ public class ShopCommand implements CommandClass {
         if (arg.equalsIgnoreCase("baths")){
             System.out.println("List of baths: ");
             for (BathType bathType : shopMain.getBaths()){
-                System.out.println(bathType + " - " + bathType.getValue() +  "-" + bathType.getCost() + "$");
+                System.out.println(bathType + " - " + bathType.getValue() +  " - " + bathType.getCost() + "$");
             }
             return;
         }
@@ -86,7 +86,14 @@ public class ShopCommand implements CommandClass {
                     return;
                 }
 
-                shopAction.buyItem(core.getPlayer(), ItemType.FOOD, FoodType.valueOf(item));
+                try{
+                    FoodType.valueOf(item.toUpperCase());
+                }catch (IllegalArgumentException illegalArgumentException){
+                    System.out.println("Unknown item");
+                    return;
+                }
+
+                shopAction.buyItem(core.getPlayer(), ItemType.FOOD, FoodType.valueOf(item.toUpperCase()));
                 return;
             }
 
@@ -95,7 +102,15 @@ public class ShopCommand implements CommandClass {
                     System.out.println("Usage - /shop buy baths [item]");
                     return;
                 }
-                shopAction.buyItem(core.getPlayer(), ItemType.BATH, BathType.valueOf(item));
+
+                try{
+                    BathType.valueOf(item.toUpperCase());
+                }catch (IllegalArgumentException illegalArgumentException){
+                    System.out.println("Unknown item");
+                    return;
+                }
+
+                shopAction.buyItem(core.getPlayer(), ItemType.BATH, BathType.valueOf(item.toUpperCase()));
                 return;
             }
 
@@ -105,7 +120,14 @@ public class ShopCommand implements CommandClass {
                     return;
                 }
 
-                shopAction.buyItem(core.getPlayer(), ItemType.TOY, ToyType.valueOf(item));
+                try{
+                    FoodType.valueOf(item.toUpperCase());
+                }catch (IllegalArgumentException illegalArgumentException){
+                    System.out.println("Unknown item");
+                    return;
+                }
+
+                shopAction.buyItem(core.getPlayer(), ItemType.TOY, ToyType.valueOf(item.toUpperCase()));
                 return;
             }
 
@@ -139,7 +161,10 @@ public class ShopCommand implements CommandClass {
             }
 
             System.out.println("Error - Unknown item.");
+            return;
         }
+
+        System.out.println("Unknown argument");
 
     }
 }
