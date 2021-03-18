@@ -33,6 +33,14 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
                 }).build());
 
         registerAction("Exercise", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
+                        return true;
+                    }else {
+                        System.out.println(player.getTamagotchi().getName() + " is very tired to exercise");
+                        return false;
+                    }
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getFatigue().decrement(40D);
