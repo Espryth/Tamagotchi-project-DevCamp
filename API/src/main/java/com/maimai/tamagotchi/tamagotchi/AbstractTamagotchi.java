@@ -3,6 +3,8 @@ package com.maimai.tamagotchi.tamagotchi;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.Action;
 
+import com.maimai.tamagotchi.action.SimpleAction;
+import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.player.Player;
@@ -61,6 +63,31 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     private void registerDefaultActions(ProgramCore core) {
+        registerAction("Play", new SimpleAction.Builder()
+                .createExecutor((player, item)-> {
+                    core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getHunger().decrement(30D);
+                    player.getTamagotchi().getThirst().decrement(30D);
+                    player.getTamagotchi().getDirty().increase(30D);
+                    switch (player.getTamagotchi().getType()){
+                        case CAT:
+                            System.out.println("Miauuu");
+                            break;
+                        case DOG:
+                            System.out.println("Guauu guauuu");
+                            break;
+                        case PARROT:
+                            System.out.println("Aagrrrr Aaggrrrrr");
+                            break;
+                        case HAMSTER:
+                            System.out.println("Squeaky squeeaky");
+                            break;
+                        case RABBIT:
+                            System.out.println("Sniff snifff");
+                            break;
+                    }
+                }).build());
+
 
     }
 
