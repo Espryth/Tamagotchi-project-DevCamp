@@ -18,8 +18,9 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
         registerAction("Pet", new SimpleAction.Builder()
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
-                    player.getTamagotchi().getHappiness().increase(20D);
-                    System.out.println(player.getTamagotchi().getName()+" is licking your hand");
+                    player.getTamagotchi().getHappiness().increase(40D);
+                    player.getMoney().increase(5);
+                    System.out.println(player.getTamagotchi().getName()+" is still and enjoying it");
                 }).build());
 
         registerAction("Bath", new SimpleAction.Builder()
@@ -27,8 +28,21 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
                     player.getTamagotchi().getDirty().decrement(80D);
-                    System.out.println(player.getTamagotchi().getName()+" is very happy");
+                    player.getMoney().increase(10);
+                    System.out.println(player.getTamagotchi().getName()+" is cold and upset");
                 }).build());
+
+        registerAction("Exercise", new SimpleAction.Builder()
+                .createExecutor((player, item) -> {
+                    core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getHunger().decrement(40D);
+                    player.getTamagotchi().getThirst().decrement(40D);
+                    player.getTamagotchi().getHappiness().decrement(10D);
+                    player.getTamagotchi().getDirty().increase(50D);
+                    player.getMoney().increase(15);
+                    System.out.println(player.getTamagotchi().getName()+" was exhausted and fell asleep");
+                }).build());
+
     }
 
 }
