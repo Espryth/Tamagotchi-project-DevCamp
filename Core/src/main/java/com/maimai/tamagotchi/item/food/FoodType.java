@@ -3,15 +3,15 @@ package com.maimai.tamagotchi.item.food;
 import com.maimai.tamagotchi.item.DefaultType;
 
 public enum FoodType implements DefaultType {
-    SEED("Seed", 15, 10),
-    APPLE("Apple", 10, 5),
-    BERRIE("Berrie", 15, 10),
-    MANGO("Mango", 30, 15),
-    CARROT("Carrot", 15, 10),
-    LETTUCE("Lettuce", 50, 25),
-    FISH("Fish", 30, 15),
-    BEEF("Beef", 50, 25),
-    CHICKEN("Chicken", 15, 10);
+    SEED("Seed", 15, 10), //HAMSTER,PARROT
+    APPLE("Apple", 10, 5), //HAMSTER,PARROT
+    BERRIE("Berrie", 15, 10), //HAMSTER,PARROT
+    MANGO("Mango", 30, 15), //HAMSTER,PARROT
+    CARROT("Carrot", 15, 10), //HAMSTER,PARROT,RABBIT
+    LETTUCE("Lettuce", 50, 25), //HAMSTER,PARROT,RABBIT
+    FISH("Fish", 30, 15), //CAT,DOG
+    BEEF("Beef", 50, 25), //CAT,DOG
+    CHICKEN("Chicken", 15, 10); //CAT,DOG
 
     private final String name;
     private final double value;
