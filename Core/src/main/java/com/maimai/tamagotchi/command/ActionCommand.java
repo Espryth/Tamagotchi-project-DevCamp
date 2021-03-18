@@ -8,17 +8,21 @@ import com.maimai.tamagotchi.player.Player;
 
 public class ActionCommand implements CommandClass {
 
+    private Player player;
+
+    public ActionCommand(Player player) {
+        this.player = player;
+    }
+
     @Command(
             name = "action",
             usage = "/action [action] <item>"
     )
     public void executeActionCommand(Action<Player> action, @OptArg Item item) {
 
-        if(item == null) {
-            System.out.println("Usage - /action [action] [item name]");
-            return;
+        if(action.getActionRequirement().requeriment(player, item)) {
+            action.getActionExecutor().execute(player, item);
         }
-
 
     }
 
