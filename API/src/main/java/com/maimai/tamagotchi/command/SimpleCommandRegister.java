@@ -1,6 +1,7 @@
 package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.command.annotation.Command;
+import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.command.part.ArgumentPart;
 import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.manager.Manager;
@@ -62,26 +63,35 @@ public class SimpleCommandRegister implements CommandRegister {
 
                 registeredCommandManager.insert(method.getAnnotation(Command.class).name(), new RegisteredCommand(commandClass, method.getAnnotation(Command.class).usage(), (command, arguments) -> {
 
-                    if(parameters.length != arguments.size()) {
-                        System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
-                        return;
-                    }
-
                     ArgumentStack stack = new SimpleArgumentStack(arguments);
 
                     List<ArgumentPart<?>> argumentPartList = new ArrayList<>();
 
+                    List<ArgumentPart<?>> argumentPartOptList = new ArrayList<>();
+
                     Arrays.asList(parameters).forEach(parameter -> {
 
                         ArgumentPart<?> argumentPart = partHandler.corvertToArgumentPart(parameter.getType());
+
+                        if(parameter.isAnnotationPresent(OptArg.class)) {
+                            argumentPartOptList.add(argumentPart);
+                            return;
+                        }
+
                         argumentPartList.add(argumentPart);
 
                     });
 
-                    List<Object> objectParsedList = parseAll(argumentPartList, stack);
+
+                    if(arguments.size() > argumentPartList.size() + argumentPartOptList.size()) {
+                        System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
+                        return;
+                    }
+
+                    List<Object> objectParsedList = parseAll(argumentPartList, argumentPartOptList, stack);
 
                     if(objectParsedList == null) {
-                        System.out.println("Uno de los valorees es invalodo");
+                        System.out.println("You have a invalid argument!");
                         return;
                     }
 
@@ -105,13 +115,14 @@ public class SimpleCommandRegister implements CommandRegister {
     }
 
     @Override
-    public List<Object> parseAll(List<ArgumentPart<?>> argumentParts, ArgumentStack argumentStack) {
+    public List<Object> parseAll(List<ArgumentPart<?>> argumentParts, List<ArgumentPart<?>> argumentPartsOpt, ArgumentStack argumentStack) {
 
         List<Object> list = new ArrayList<>();
 
         argumentParts.forEach(argumentPart ->  {
 
             Object object = argumentPart.parse(argumentStack);
+
 
             if(object == null) {
                 return;
@@ -120,7 +131,22 @@ public class SimpleCommandRegister implements CommandRegister {
             list.add(object);
         });
 
-        if(list.size() != argumentParts.size()) {
+
+        argumentPartsOpt.forEach(argumentPart ->  {
+
+            Object object = argumentPart.parse(argumentStack);
+
+
+            if(object == null) {
+                list.add(null);
+                return;
+            }
+
+            list.add(object);
+        });
+
+
+        if(list.size() < argumentParts.size() || list.size() > argumentParts.size() + argumentPartsOpt.size()) {
             return null;
         }
 

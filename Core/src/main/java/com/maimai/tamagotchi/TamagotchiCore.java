@@ -53,9 +53,6 @@ public class TamagotchiCore implements ProgramCore {
     }
 
 
-
-
-
     @Override
     public boolean isEnabled() {
         return enabled;

@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.scheduler.Scheduler;
+import com.maimai.tamagotchi.scheduler.TamagotchiScheduler;
 
 public interface ProgramCore {
 
