@@ -127,40 +127,39 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
         registerAction("Feed", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
-                    switch (player.getTamagotchi().getType()){
+                    switch (player.getTamagotchi().getType()) {
                         case CAT:
                         case DOG:
                             if (item.getDefaultType() == FoodType.BEEF || item.getDefaultType() == FoodType.FISH ||
-                                    item.getDefaultType() == FoodType.CHICKEN){
+                                    item.getDefaultType() == FoodType.CHICKEN) {
                                 return true;
                             }else{
-                                System.out.println("This item can not be used with this Tamagotchi");
+                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
                             }
                             break;
                         case PARROT:
                         case HAMSTER:
                             if (item.getDefaultType() == FoodType.SEED || item.getDefaultType() == FoodType.APPLE ||
                                     item.getDefaultType() == FoodType.BERRIE || item.getDefaultType() == FoodType.MANGO ||
-                                    item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE){
+                                    item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE) {
                                 return true;
                             }else{
-                                System.out.println("This item can not be used with this Tamagotchi");
+                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
                             }
                             break;
                         case RABBIT:
-                            if (item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE){
+                            if (item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE) {
                                 return true;
-                            }else {
-                                System.out.println("This item can not be used with this Tamagotchi");
+                            }else{
+                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
                             }
-                    }return false;
+                            break;
+                    }
+                    return false;
                 })
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
-                    player.getTamagotchi().getHunger().decrement(30D);
-                    player.getTamagotchi().getThirst().decrement(30D);
-                    player.getTamagotchi().getDirty().increase(30D);
-                    player.getMoney().increase(10);
+                    player.getMoney().increase(5);
                     switch (player.getTamagotchi().getType()){
                         case CAT:
                             System.out.println("C");
