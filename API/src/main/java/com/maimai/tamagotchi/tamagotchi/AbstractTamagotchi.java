@@ -24,7 +24,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private final Statistic<Double> dirty;
     private final Statistic<Double> happiness;
 
-    private final Manager<String, Action<Player>> actionManager;
+    private final Manager<String, Action> actionManager;
     private final Statistic<Double> fatigue;
 
     @ConstructorProperties({
@@ -47,14 +47,14 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.fatigue = new DoubleStatistic();
 
         this.actionManager = new ManagerImpl<>();
-        
+
         registerActions();
         registerDefaultActions();
     }
 
     public abstract void registerActions();
 
-    protected void registerAction(String name, Action<Player> action) {
+    protected void registerAction(String name, Action action) {
         getActionManager().insert(name, action);
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     @Override
-    public Manager<String, Action<Player>> getActionManager() {
+    public Manager<String, Action> getActionManager() {
         return actionManager;
     }
 

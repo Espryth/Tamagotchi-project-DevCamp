@@ -2,22 +2,22 @@ package com.maimai.tamagotchi.command.part.defaults;
 
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.command.ArgumentStack;
+
 import com.maimai.tamagotchi.command.part.ArgumentPart;
 import com.maimai.tamagotchi.manager.Manager;
-import com.maimai.tamagotchi.player.Player;
 
 import java.lang.reflect.Type;
 
-public class ActionPart implements ArgumentPart<Action<Player>> {
+public class ActionPart implements ArgumentPart<Action> {
 
-    private final Manager<String, Action<Player>> actionManager;
+    private final Manager<String, Action> actionManager;
 
-    public ActionPart(Manager<String, Action<Player>> actionManager) {
+    public ActionPart(Manager<String, Action> actionManager) {
         this.actionManager = actionManager;
     }
 
     @Override
-    public Action<Player> parse(ArgumentStack argumentStack) {
+    public Action parse(ArgumentStack argumentStack) {
 
         if(argumentStack.hasNext()) {
 

@@ -2,10 +2,10 @@ package com.maimai.tamagotchi.action;
 
 import com.maimai.tamagotchi.entity.Entity;
 
-public interface Action<T extends Entity> {
+public interface Action {
 
-    ActionExecutor<T> getActionExecutor();
+    ActionExecutor getActionExecutor();
 
-    ActionRequirement<T> getActionRequirement();
+    ActionRequirement getActionRequirement();
 
 }

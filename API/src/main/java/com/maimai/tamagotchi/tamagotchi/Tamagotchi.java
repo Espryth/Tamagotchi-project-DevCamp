@@ -20,7 +20,7 @@ public interface Tamagotchi extends Entity {
     TamagotchiType getType();
 
     @JsonIgnore
-    Manager<String, Action<Player>> getActionManager();
+    Manager<String, Action> getActionManager();
 
     @JsonProperty("hunger")
     Statistic<Double> getHunger();

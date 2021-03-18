@@ -1,9 +1,9 @@
 package com.maimai.tamagotchi.action;
 
-import com.maimai.tamagotchi.entity.Entity;
 import com.maimai.tamagotchi.item.Item;
+import com.maimai.tamagotchi.player.Player;
 
 @FunctionalInterface
-public interface ActionExecutor<T extends Entity> {
-    void execute(T t, Item item);
+public interface ActionExecutor {
+    void execute(Player player, Item item);
 }
