@@ -22,7 +22,7 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
                     player.getTamagotchi().getHunger().decrement(30D);
                     player.getTamagotchi().getThirst().decrement(30D);
                     player.getTamagotchi().getDirty().increase(30D);
-                    System.out.println("Guaau guaau");
+                    System.out.println("");
                 }).build());
 
         registerAction("Pet", new TamagotchiAction.Builder()
