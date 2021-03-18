@@ -2,6 +2,7 @@ package com.maimai.tamagotchi.player.inventory;
 
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;
+import com.sun.corba.se.spi.ior.iiop.IIOPProfileTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,8 +27,18 @@ public class PlayerInventory implements Inventory {
     }
 
     @Override
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    @Override
     public void addItems(Item... items) {
         this.items.addAll(Arrays.asList(items));
+    }
+
+    @Override
+    public int getSize(){
+        return items.size();
     }
 
     @Override
@@ -40,5 +51,10 @@ public class PlayerInventory implements Inventory {
         for (int id : index){
             items.remove(id);
         }
+    }
+
+    @Override
+    public List<Item> getItems(){
+        return items;
     }
 }
