@@ -245,6 +245,11 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     @Override
+    public boolean isHunger() {
+        return hunger.getValue() <= 10;
+    }
+
+    @Override
     public Statistic<Double> getHealth() {
         return health;
     }
@@ -276,10 +281,5 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     @Override
     public Statistic<Double> getFatigue() {
         return fatigue;
-    }
-
-    @Override
-    public boolean isFatigue() {
-        return fatigue.getValue() >= 90;
     }
 }
