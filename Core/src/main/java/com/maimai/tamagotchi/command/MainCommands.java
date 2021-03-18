@@ -44,10 +44,11 @@ public class MainCommands implements CommandClass {
             name = "inventory", usage = "")
     public void executeInventoryCommand(){
         Inventory inventory = core.getPlayer().getInventory();
-
-        System.out.println("Inventory size: " + inventory.getSize());
-        System.out.println("");
-        System.out.println("List of items:");
+        Arrays.asList(
+                "Inventory size: " + inventory.getSize(),
+                "",
+                "List of items:"
+        ).forEach(System.out::println);
         for (Item item : inventory.getItems()){
             System.out.println("- " + item.getDefaultType().getName() + " - Value:" + item.getDefaultType().getValue());
         }
@@ -60,23 +61,6 @@ public class MainCommands implements CommandClass {
 
         Player player = core.getPlayer();
         Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
-
-        /*System.out.println("Stats:");
-        System.out.println("");
-        System.out.println("Player:");
-        System.out.println("- Name: " + player.getName());
-        System.out.println("- Money: " + player.getMoney().getValue());
-        System.out.println();
-        System.out.println("Tamagochi:");
-        System.out.println("- Type: " + tamagotchiMain.getType().getName());
-        System.out.println("- Name: " + tamagotchiMain.getName());
-        System.out.println("");
-        System.out.println("Status of " + tamagotchiMain.getName() + ":");
-        System.out.println("- Health points: " + tamagotchiMain.getHealth().getValue());
-        System.out.println("- Hunger points: " + tamagotchiMain.getHunger().getValue());
-        System.out.println("- Thirst points: " + tamagotchiMain.getThirst().getValue());
-        System.out.println("- Happiness points: " + tamagotchiMain.getHappiness().getValue());
-        System.out.println("- Dirty points: " + tamagotchiMain.getDirty().getValue());¨*/
 
         Arrays.asList(
                 "Stats:",
