@@ -41,4 +41,9 @@ public class PlayerInventory implements Inventory {
             items.remove(id);
         }
     }
+
+    @Override
+    public List<Item> getAllItems() {
+        return items;
+    }
 }

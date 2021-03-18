@@ -2,6 +2,8 @@ package com.maimai.tamagotchi.inventory;
 
 import com.maimai.tamagotchi.item.Item;
 
+import java.util.List;
+
 public interface Inventory {
 
     Item getItem(int index);
@@ -13,4 +15,6 @@ public interface Inventory {
     void removeItem(int index);
 
     void removeItems(int... index);
+
+    List<Item> getAllItems();
 }
