@@ -7,7 +7,7 @@ import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.statistic.Statistic;
 
-public class ShopAction {
+public class TamagotchiShopAction implements ShopAction {
 
     public void buyItem(Player player, ItemType itemType, DefaultType defaultType) {
 

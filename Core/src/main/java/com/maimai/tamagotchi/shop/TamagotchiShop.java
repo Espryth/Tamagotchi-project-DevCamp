@@ -3,22 +3,21 @@ package com.maimai.tamagotchi.shop;
 import com.maimai.tamagotchi.item.DefaultType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
-import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.shop.action.ShopAction;
+import com.maimai.tamagotchi.shop.action.TamagotchiShopAction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShopLoader implements Loader {
+public class TamagotchiShop implements Shop {
 
-    private final ShopAction shopAction;
-
+    private final TamagotchiShopAction shopAction;
     private final List<DefaultType> defaultTypes;
 
-    public ShopLoader(){
+    public TamagotchiShop(){
+        this.shopAction = new TamagotchiShopAction();
         this.defaultTypes = new ArrayList<>();
-        this.shopAction = new ShopAction();
     }
 
     @Override
@@ -27,20 +26,13 @@ public class ShopLoader implements Loader {
         defaultTypes.addAll(Arrays.asList(ToyType.values()));
     }
 
-    public ShopAction getActions(){
+    @Override
+    public ShopAction getShopAction() {
         return shopAction;
     }
 
-    public FoodType[] getFoods() {
-        return FoodType.values();
-    }
-
-    public ToyType[] getToys() {
-        return ToyType.values();
-    }
-
-    public List<DefaultType> getAllItems(){
+    @Override
+    public List<DefaultType> getDefaultType() {
         return defaultTypes;
     }
-
 }
