@@ -38,5 +38,4 @@ public class YamlConfiguration {
     public List<String> getStringList(String path){
         return listStringPath.get(path);
     }
-
 }
