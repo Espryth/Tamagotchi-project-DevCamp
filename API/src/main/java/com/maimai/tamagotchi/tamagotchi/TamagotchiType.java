@@ -1,7 +1,7 @@
 package com.maimai.tamagotchi.tamagotchi;
 
 public enum TamagotchiType {
-    CAT("Cat"), DOG("Dog"), PARROT("Parrot");
+    CAT("Cat"), DOG("Dog"), PARROT("Parrot"), HAMSTER("Hamster"), RABBIT("Rabbit");
 
     private final String name;
 
