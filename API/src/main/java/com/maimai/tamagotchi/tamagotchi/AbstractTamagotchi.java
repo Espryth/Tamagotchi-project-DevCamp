@@ -87,6 +87,35 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     }
                 }).build());
 
+        registerAction("Sleep", new SimpleAction.Builder()
+                .createExecutor((player, item) -> {
+                    core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
+                    player.getTamagotchi().getHunger().decrement(40D);
+                    player.getTamagotchi().getThirst().decrement(40D);
+                    player.getTamagotchi().getHappiness().increase(20D);
+                    player.getTamagotchi().getDirty().increase(20D);
+                    player.getTamagotchi().getFatigue().decrement(80D);
+                    player.getMoney().increase(5);
+                    switch (player.getTamagotchi().getType()){
+                        case CAT:
+                            System.out.println("c");
+                            break;
+                        case DOG:
+                            System.out.println("d");
+                            break;
+                        case PARROT:
+                            System.out.println("p");
+                            break;
+                        case HAMSTER:
+                            System.out.println("h");
+                            break;
+                        case RABBIT:
+                            System.out.println("r");
+                            break;
+                    }
+                }).build());
+
+
 
     }
 
