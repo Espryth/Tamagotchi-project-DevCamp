@@ -8,8 +8,7 @@ import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.SimplePlayer;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
-import com.maimai.tamagotchi.tamagotchi.impl.CatTamagotchi;
-import com.maimai.tamagotchi.tamagotchi.impl.DogTamagotchi;
+import com.maimai.tamagotchi.tamagotchi.impl.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -80,6 +79,15 @@ public class MainModule implements Module {
                     break;
                 case DOG:
                     tamagotchi = new DogTamagotchi(core, tamagotchiName);
+                    break;
+                case PARROT:
+                    tamagotchi = new ParrotTamagotchi(core, tamagotchiName);
+                    break;
+                case HAMSTER:
+                    tamagotchi = new HamsterTamagotchi(core, tamagotchiName);
+                    break;
+                case RABBIT:
+                    tamagotchi = new RabbitTamagotchi(core, tamagotchiName);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + tamagotchiType);

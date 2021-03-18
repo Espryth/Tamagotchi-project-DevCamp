@@ -38,7 +38,7 @@ public class MainCommands implements CommandClass {
             name = "exit",
             usage = "/exit"
     )
-    public void executeExistCommand() {
+    public void executeExitCommand() {
         core.setEnabled(false);
         System.out.println("Bye!");
     }
