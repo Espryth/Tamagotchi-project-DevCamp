@@ -40,7 +40,7 @@ public class TamagotchiCore implements ProgramCore {
         initLoaders(
                 new ListenerLoader(this),
                 new ShopLoader(),
-                new CommandLoader(this)
+                new CommandLoader(this, shopMain)
         );
     }
 
@@ -87,9 +87,5 @@ public class TamagotchiCore implements ProgramCore {
     public Scheduler getScheduler() {
         return scheduler;
     }
-
-    @Override
-    public ShopLoader getShop() {
-        return shopMain;
-    }
+    
 }

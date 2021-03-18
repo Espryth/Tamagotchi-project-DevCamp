@@ -19,8 +19,11 @@ public class ShopCommand implements CommandClass {
 
     private final ProgramCore core;
 
-    public ShopCommand(ProgramCore core) {
+    private final ShopLoader shopMain;
+
+    public ShopCommand(ProgramCore core, ShopLoader shopMain) {
         this.core = core;
+        this.shopMain = shopMain;
     }
 
     @Command(name = "shop", usage = "/shop help")
@@ -28,7 +31,6 @@ public class ShopCommand implements CommandClass {
 
         Player player = core.getPlayer();
         Inventory inventory = player.getInventory();
-        ShopLoader shopMain = core.getShop();
         ShopAction shopAction = shopMain.getActions();
         List<DefaultType> defaultTypes = shopMain.getAllItems();
         switch (arg.toLowerCase()) {
