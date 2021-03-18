@@ -67,6 +67,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getHunger().decrement(30D);
                     player.getTamagotchi().getThirst().decrement(30D);
                     player.getTamagotchi().getDirty().increase(30D);
+                    player.getMoney().increase(10);
                     switch (player.getTamagotchi().getType()){
                         case CAT:
                             System.out.println("Miauuu");
