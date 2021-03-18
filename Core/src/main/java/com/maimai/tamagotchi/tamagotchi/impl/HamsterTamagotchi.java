@@ -6,10 +6,10 @@ import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
-public class ParrotTamagotchi extends AbstractTamagotchi {
+public class HamsterTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
-    public ParrotTamagotchi(ProgramCore core, String name) {
-        super(name, TamagotchiType.PARROT);
+    public HamsterTamagotchi(ProgramCore core, String name) {
+        super(name, TamagotchiType.HAMSTER);
         this.core = core;
     }
 
@@ -37,7 +37,7 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
                     player.getTamagotchi().getDirty().decrement(80D);
-                    System.out.println(player.getTamagotchi().getName()+" is very happy");
+                    System.out.println(player.getTamagotchi().getName()+" didn't like the bath");
                 }).build());
     }
 

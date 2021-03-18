@@ -6,10 +6,10 @@ import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.action.TamagotchiAction;
 
-public class ParrotTamagotchi extends AbstractTamagotchi {
+public class RabbitTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
-    public ParrotTamagotchi(ProgramCore core, String name) {
-        super(name, TamagotchiType.PARROT);
+    public RabbitTamagotchi(ProgramCore core, String name) {
+        super(name, TamagotchiType.RABBIT);
         this.core = core;
     }
 
