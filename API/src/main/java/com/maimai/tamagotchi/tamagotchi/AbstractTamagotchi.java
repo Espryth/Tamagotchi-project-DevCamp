@@ -47,8 +47,9 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.fatigue = new DoubleStatistic();
 
         this.actionManager = new ManagerImpl<>();
-
+        
         registerActions();
+        registerDefaultActions();
     }
 
     public abstract void registerActions();
@@ -57,8 +58,8 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         getActionManager().insert(name, action);
     }
 
-    private void regusterDefaultActions() {
-        
+    private void registerDefaultActions() {
+
     }
 
 
