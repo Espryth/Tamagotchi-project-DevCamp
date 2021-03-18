@@ -16,15 +16,6 @@ public class CatTamagotchi extends AbstractTamagotchi{
 
     @Override
     public void registerActions() {
-        registerAction("Play", new SimpleAction.Builder()
-                .createExecutor((player, item)-> {
-                    core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
-                    player.getTamagotchi().getHappiness().increase(40D);
-                    player.getTamagotchi().getHunger().decrement(30D);
-                    player.getTamagotchi().getThirst().decrement(30D);
-                    player.getTamagotchi().getDirty().increase(30D);
-                }).build());
-
         registerAction("Pet", new SimpleAction.Builder()
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
