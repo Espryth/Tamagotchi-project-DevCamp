@@ -1,4 +1,4 @@
-package com.maimai.tamagotchi.item.toy;
+package com.maimai.tamagotchi.item.impl;
 
 import com.maimai.tamagotchi.item.DefaultType;
 

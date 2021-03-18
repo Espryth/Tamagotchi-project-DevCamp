@@ -1,8 +1,8 @@
 package com.maimai.tamagotchi.shop;
 
 import com.maimai.tamagotchi.item.DefaultType;
-import com.maimai.tamagotchi.item.food.FoodType;
-import com.maimai.tamagotchi.item.toy.ToyType;
+import com.maimai.tamagotchi.item.impl.FoodType;
+import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.shop.action.ShopAction;
 
