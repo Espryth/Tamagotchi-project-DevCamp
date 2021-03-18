@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public class TamagotchiStatsChangeListener implements Listener {
+
     @EventHandler
     public void onTamagotchiStatsChange(TamagotchiStatsChangeEvent event) {
 

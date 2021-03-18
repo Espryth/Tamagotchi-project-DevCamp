@@ -12,6 +12,7 @@ import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.shop.ShopLoader;
 import com.maimai.tamagotchi.shop.action.ShopAction;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ShopCommand implements CommandClass {
@@ -32,13 +33,14 @@ public class ShopCommand implements CommandClass {
         List<DefaultType> defaultTypes = shopMain.getAllItems();
         switch (arg.toLowerCase()) {
             case "help":
-                System.out.println("Shop help 1/3");
-                System.out.println("/shop foods");
-                System.out.println("/shop toys");
-                System.out.println("/shop baths");
-                System.out.println(" ");
-                System.out.println("/shop buy [item]");
-                System.out.println("/shop sell [item]");
+                Arrays.asList(
+                        "Shop help 1/3",
+                        "/shop foods",
+                        "/shop toys",
+                        "",
+                        "/shop buy [item]",
+                        "/shop sell [item]"
+                ).forEach(System.out::println);
                 break;
             case "toys":
                 System.out.println("List of toys");

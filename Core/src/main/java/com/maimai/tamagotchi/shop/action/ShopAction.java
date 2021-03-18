@@ -9,11 +9,11 @@ import com.maimai.tamagotchi.statistic.Statistic;
 
 public class ShopAction {
 
-    public void buyItem(Player player, ItemType itemType, DefaultType defaultType){
+    public void buyItem(Player player, ItemType itemType, DefaultType defaultType) {
 
         Statistic<Integer> money = player.getMoney();
 
-        if (money.getValue() < defaultType.getCost()){
+        if (money.getValue() < defaultType.getCost()) {
             System.out.println("You don't have that money.");
             return;
         }
@@ -30,7 +30,7 @@ public class ShopAction {
         System.out.println("You successfully sold the item, it costs " + defaultType.getCost() + "$.");
     }
 
-    public void sellItem(Player player, int id){
+    public void sellItem(Player player, int id) {
 
         DefaultType defaultType = player.getInventory().getItem(id).getDefaultType();
 

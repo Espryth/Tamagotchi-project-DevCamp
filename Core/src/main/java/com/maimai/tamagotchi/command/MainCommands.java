@@ -24,8 +24,13 @@ public class MainCommands implements CommandClass {
     )
     public void executeHelpCommand() {
         Arrays.asList(
-                "I am a help list",
-                "!"
+                "Tamagotchi help commands:",
+                "/exit",
+                "/inventory",
+                "/stats",
+                "/open [module]",
+                "/shop help",
+                "/action [action] <item>"
         ).forEach(System.out::println);
     }
 
@@ -39,7 +44,7 @@ public class MainCommands implements CommandClass {
     }
 
     @Command(
-            name = "inventory", usage = "")
+            name = "inventory", usage = "/inventory")
     public void executeInventoryCommand(){
         Inventory inventory = core.getPlayer().getInventory();
         Arrays.asList(
@@ -54,7 +59,7 @@ public class MainCommands implements CommandClass {
 
 
     @Command(
-            name = "stats", usage = "")
+            name = "stats", usage = "/stats")
     public void executeStatsCommand(){
 
         Player player = core.getPlayer();
