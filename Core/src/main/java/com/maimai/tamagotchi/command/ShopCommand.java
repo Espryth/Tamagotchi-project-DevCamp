@@ -8,7 +8,6 @@ import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.DefaultType;
 import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.item.ItemType;
-import com.maimai.tamagotchi.item.bath.BathType;
 import com.maimai.tamagotchi.item.food.FoodType;
 import com.maimai.tamagotchi.item.toy.ToyType;
 import com.maimai.tamagotchi.module.Module;
@@ -37,7 +36,6 @@ public class ShopCommand implements CommandClass {
             System.out.println("Shop help 1/3");
             System.out.println("/shop foods");
             System.out.println("/shop toys");
-            System.out.println("/shop baths");
             System.out.println(" ");
             System.out.println("/shop buy [item]");
             System.out.println("/shop sell [item]");
@@ -60,13 +58,6 @@ public class ShopCommand implements CommandClass {
             return;
         }
 
-        if (arg.equalsIgnoreCase("baths")){
-            System.out.println("List of baths: ");
-            for (BathType bathType : shopMain.getBaths()){
-                System.out.println(bathType + " - " + bathType.getValue() +  " - " + bathType.getCost() + "$");
-            }
-            return;
-        }
 
         ShopAction shopAction = shopMain.getActions();
         List<DefaultType> defaultTypes = shopMain.getAllItems();
@@ -94,23 +85,6 @@ public class ShopCommand implements CommandClass {
                 }
 
                 shopAction.buyItem(core.getPlayer(), ItemType.FOOD, FoodType.valueOf(item.toUpperCase()));
-                return;
-            }
-
-            if (type.equalsIgnoreCase("baths")) {
-                if (item == null){
-                    System.out.println("Usage - /shop buy baths [item]");
-                    return;
-                }
-
-                try{
-                    BathType.valueOf(item.toUpperCase());
-                }catch (IllegalArgumentException illegalArgumentException){
-                    System.out.println("Unknown item");
-                    return;
-                }
-
-                shopAction.buyItem(core.getPlayer(), ItemType.BATH, BathType.valueOf(item.toUpperCase()));
                 return;
             }
 

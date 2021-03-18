@@ -82,7 +82,6 @@ public class MainCommands implements CommandClass {
         System.out.println("Tamagochi>");
         System.out.println("- Type: " + tamagotchiMain.getType().getName());
         System.out.println("- Name: " + tamagotchiMain.getName());
-        System.out.println("- ID: " + tamagotchiMain.getId());
         System.out.println("- Is alive?: " + tamagotchiMain.isAlive());
         System.out.println("");
         System.out.println("Status of the tamagochi:");
