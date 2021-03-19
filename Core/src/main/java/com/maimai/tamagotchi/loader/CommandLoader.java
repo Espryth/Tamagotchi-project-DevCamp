@@ -33,7 +33,7 @@ public class CommandLoader implements Loader{
         commandRegister.registerCommand(
                 new ShopCommand(core),
                 new MainCommands(core),
-                new ActionCommand(core.getPlayer())
+                new ActionCommand(core)
         );
 
         while (core.isEnabled()) {

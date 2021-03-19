@@ -46,7 +46,7 @@
     "Puntos de suciedad: %s"
   ],
   "shop": {
-    "view": "",
+    "view": "- %s x(%s) - Value: %s",
     "help": [
       "Ayuda de la tienda",
       "/shop foods",
@@ -66,6 +66,7 @@
     "canNotEat": "%s no puede comer eso",
     "canNotDoExercise": "%s no tiene energia para ejercitarse",
     "canEat": "Alimentaste a %s",
+    "isHungry": "El tamagotchi requiere de tu atención! Necesita comer",
     "cat": {
       "pet": "%s esta ronroneando",
       "bath": "%s esta enojad@ contigo",
