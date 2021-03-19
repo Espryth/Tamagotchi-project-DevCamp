@@ -5,8 +5,6 @@ import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.loader.Loader;
 import com.maimai.tamagotchi.loader.PlayerLoader;
 
-import java.util.Arrays;
-
 public class LoadGameModule implements Module {
 
     private final ProgramCore core;
