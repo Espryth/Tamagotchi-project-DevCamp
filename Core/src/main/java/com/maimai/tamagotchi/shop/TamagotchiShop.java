@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.shop;
 
+import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.item.DefaultType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
@@ -12,18 +13,17 @@ import java.util.List;
 
 public class TamagotchiShop implements Shop {
 
+    private final ProgramCore core;
     private final TamagotchiShopAction shopAction;
     private final List<DefaultType> defaultTypes;
 
-    public TamagotchiShop(){
-        this.shopAction = new TamagotchiShopAction();
+    public TamagotchiShop(ProgramCore core){
+        this.core = core;
+        this.shopAction = new TamagotchiShopAction(core);
         this.defaultTypes = new ArrayList<>();
-    }
-
-    @Override
-    public void load() {
         defaultTypes.addAll(Arrays.asList(FoodType.values()));
         defaultTypes.addAll(Arrays.asList(ToyType.values()));
+
     }
 
     @Override

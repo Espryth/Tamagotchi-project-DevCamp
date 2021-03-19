@@ -56,7 +56,7 @@ public class ShopCommand implements CommandClass {
                 }
                 break;
             case "buy":
-                if (type == null){
+                if (type == null) {
                     MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy [foods/toys]");
                     break;
                 }
@@ -88,8 +88,10 @@ public class ShopCommand implements CommandClass {
                             MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                             break;
                         }
+                    default:
+                        MessageUtils.sendMessageFromLang(core, "shop.unknownType");
+                        break;
                 }
-                MessageUtils.sendMessageFromLang(core, "shop.unknownType");
                 break;
             case "sell":
                 if (item == null){
