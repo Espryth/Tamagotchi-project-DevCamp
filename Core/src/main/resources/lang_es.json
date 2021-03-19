@@ -52,6 +52,7 @@
     "Puntos de suciedad: %s"
   ],
   "shop": {
+    "header": "Lista de %s",
     "view": "- %s x(%s) - Value: %s",
     "help": [
       "Ayuda de la tienda",

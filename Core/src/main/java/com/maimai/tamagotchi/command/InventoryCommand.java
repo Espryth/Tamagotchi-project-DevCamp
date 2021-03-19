@@ -28,7 +28,7 @@ public class InventoryCommand implements CommandClass {
 
         Inventory inventory = core.getPlayer().getInventory();
 
-        MessageUtils.sendMessageListFromLang(core, "inventory.title", Integer.toString(inventory.getSize()));
+        MessageUtils.sendMessageFromLang(core, "inventory.title", Integer.toString(inventory.getSize()));
 
         Set<Item> itemSet = new HashSet<>(inventory.getItems());
 

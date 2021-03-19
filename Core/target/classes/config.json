@@ -1,6 +1,0 @@
-{
-  "database" : {
-    "name": "MaiMaiTamagotchi",
-    "uri": "mongodb://tamagotchi:123123123@espetybot-shard-00-00.b8kbn.gcp.mongodb.net:27017,espetybot-shard-00-01.b8kbn.gcp.mongodb.net:27017,espetybot-shard-00-02.b8kbn.gcp.mongodb.net:27017/MaiMaiTamagotchi?ssl=true&replicaSet=atlas-hg5rht-shard-0&authSource=admin&retryWrites=true&w=majority"
-  }
-}

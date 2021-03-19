@@ -52,6 +52,7 @@
     "Dirty points: %s"
   ],
   "shop": {
+    "header": "List of %s",
     "view": "- %s x(%s) - Value: %s",
     "help": [
       "Shop help 1/3",
