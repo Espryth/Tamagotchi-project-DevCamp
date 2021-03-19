@@ -7,6 +7,7 @@ import com.maimai.tamagotchi.file.JsonFile;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
+import com.maimai.tamagotchi.loader.TaskLoader;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.module.MainModule;
@@ -51,7 +52,8 @@ public class TamagotchiCore implements ProgramCore {
         initLoaders(
                 new ListenerLoader(this),
                 new TamagotchiShop(),
-                new CommandLoader(this)
+                new CommandLoader(this),
+                new TaskLoader(this)
         );
     }
 

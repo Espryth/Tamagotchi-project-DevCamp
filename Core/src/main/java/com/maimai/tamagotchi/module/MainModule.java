@@ -75,18 +75,6 @@ public class MainModule implements Module {
             choosing = false;
         }
 
-        Tamagotchi tamagotchi = core.getPlayer().getTamagotchi();
-        core.getScheduler().runTask(() -> tamagotchi.getHunger().decrement(10D),0L, 30L, TimeUnit.MINUTES);
-        core.getScheduler().runTask(() -> {
-            if(tamagotchi.isHunger()) {
-                Arrays.asList(
-                        "Your tamagotchi requires your attention!",
-                        "Feed him"
-                ).forEach(System.out::println);
-            }
-            if(tamagotchi.getHunger().getValue() <= 0D) {
-                tamagotchi.getHealth().decrement(1D);
-            }
-        }, 5L, 20L, TimeUnit.SECONDS);
+
     }
 }
