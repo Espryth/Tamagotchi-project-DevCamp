@@ -48,7 +48,8 @@
     "Hunger points: %s",
     "Thirst points: %s",
     "Happiness points: %s",
-    "Dirty points: %s"
+    "Dirty points: %s",
+    "Fatigue points: %s"
   ],
   "shop": {
     "header": "List of %s",

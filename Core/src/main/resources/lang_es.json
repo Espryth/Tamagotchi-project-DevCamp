@@ -48,7 +48,8 @@
     "Puntos de hambre: %s",
     "Puntos de sed: %s",
     "Puntos de felicidad: %s",
-    "Puntos de suciedad: %s"
+    "Puntos de suciedad: %s",
+    "Puntos de fatiga: %s"
   ],
   "shop": {
     "header": "Lista de %s",
