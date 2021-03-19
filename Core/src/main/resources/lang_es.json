@@ -19,7 +19,6 @@
       "/exit",
       "/inventory",
       "/stats",
-      "/open [module]",
       "/shop help",
       "/action [action] <item>"
     ],

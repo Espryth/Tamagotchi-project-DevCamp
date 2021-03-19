@@ -19,7 +19,6 @@
       "/exit",
       "/inventory",
       "/stats",
-      "/open [module]",
       "/shop help",
       "/action [action] <item>"
     ],
@@ -55,7 +54,7 @@
     "header": "List of %s",
     "view": "- %s x(%s) - Value: %s",
     "help": [
-      "Shop help 1/3",
+      "Shop help",
       "/shop foods",
       "/shop toys",
       "",
