@@ -31,7 +31,8 @@ public class StatsCommand implements CommandClass {
                 Double.toString(tamagotchiMain.getHunger().getValue()),
                 Double.toString(tamagotchiMain.getThirst().getValue()),
                 Double.toString(tamagotchiMain.getHappiness().getValue()),
-                Double.toString(tamagotchiMain.getDirty().getValue())
+                Double.toString(tamagotchiMain.getDirty().getValue()),
+                Double.toString(tamagotchiMain.getFatigue().getValue())
         );
     }
 }

@@ -46,7 +46,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.thirst = new DoubleStatistic(100);
         this.dirty = new DoubleStatistic(100);
         this.happiness = new DoubleStatistic(100);
-        this.fatigue = new DoubleStatistic(100);
+        this.fatigue = new DoubleStatistic(0);
 
         this.actionManager = new ManagerImpl<>();
 
