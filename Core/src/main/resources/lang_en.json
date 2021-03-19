@@ -1,0 +1,56 @@
+{
+  "commons": {
+    "unknownCommand": "Unknown command",
+    "correctUsage": "Correct usage: %s",
+    "invalidArgument": "Invalid argument",
+    "welcomeBack": [
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "Welcome back %s",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    ],
+    "help": [
+      "Tamagotchi help commands",
+      "/exit",
+      "/inventory",
+      "/stats",
+      "/open [module]",
+      "/shop help",
+      "/action [action] <item>"
+    ]
+  },
+  "inventory": {
+    "view": "- %s x(%s) - Value: %s"
+  },
+  "stats": [
+    "Stats:",
+    "",
+    "Player",
+    "Name: %s",
+    "Money: %s",
+    "",
+    "Tamagotchi:",
+    "Type: %s",
+    "Name: %s",
+    "",
+    "Status of %s:",
+    "Health points: %s",
+    "Hunger points: %s",
+    "Thirst points: %s",
+    "Happiness points: %s",
+    "Dirty points: %s"
+  ],
+  "shop": {
+    "view": "",
+    "help": [
+      "Shop help 1/3",
+      "/shop foods",
+      "/shop toys",
+      "",
+      "/shop buy [item]",
+      "/shop sell [item]"
+    ],
+    "unknownItem": "",
+    "unknownType": "",
+    "haveNotItem": ""
+  }
+}
