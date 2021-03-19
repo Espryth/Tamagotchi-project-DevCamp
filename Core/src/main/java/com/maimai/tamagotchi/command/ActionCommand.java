@@ -6,6 +6,7 @@ import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.player.Player;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class ActionCommand implements CommandClass {
 
@@ -19,11 +20,11 @@ public class ActionCommand implements CommandClass {
             name = "action",
             usage = "/action [action] <item>"
     )
-    public void executeActionCommand(Action action, @OptArg Item item) {
+    public void executeActionCommand(@OptArg Action action, @OptArg Item item) {
         Player player = core.getPlayer();
 
         if(action == null) {
-            System.out.println("A");
+            MessageUtils.sendMessageListFromLang(core,"actions.help");
             return;
         }
 
