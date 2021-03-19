@@ -80,9 +80,14 @@
     "notRequiresItem": "Esta accion no requiere un item!",
     "requiresItem": "Esta accion requiere un item!",
     "help":[
-      "Actions list",
-      "Test",
-      "Test"
+      "Actions list:",
+      "/action play <item> - (Juega con tu tamagotchi)",
+      "/action feed <food> - (Alimenta a tu tamagotchi)",
+      "/action sleep - (Manda a tu tamagotchi a dormir)",
+      "/action water - (Darle agua a tu tamagotchi)",
+      "/action pet - (Acaricicar a tu tamagotchi)",
+      "/action bath - (Bañar a tu tamagotchi)",
+      "/action exercise - (Hacer a tu tamagotchi hacer ejercicio)"
     ]
   },
 
