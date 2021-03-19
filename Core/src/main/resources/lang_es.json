@@ -5,8 +5,8 @@
     "invalidArgument": "Argumento invalido",
     "welcome": [
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-      "Welcome %s!",
-      "to know how to play use /help",
+      "Bienvenido %s!",
+      "para saber como jugar usa /help",
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     ],
     "welcomeBack": [
