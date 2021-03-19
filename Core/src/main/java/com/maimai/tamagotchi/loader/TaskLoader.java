@@ -30,7 +30,7 @@ public class TaskLoader implements Loader {
             }
         }, 5L, 20L, TimeUnit.SECONDS);
         core.getScheduler().runTask(() -> {
-            if(tamagotchi.getHealth().getValue() <= 0) {
+            if(tamagotchi.getHealth().getValue() <= 0D) {
                 tamagotchi.setAlive(false);
                 MessageUtils.sendMessageFromLang(core, "tamagotchi.death");
                 core.getEventRegister().callEvent(new GameEndEvent(GameEndCause.TAMAGOTCHI_DEAD));
