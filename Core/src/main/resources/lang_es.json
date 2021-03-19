@@ -30,7 +30,8 @@
       "Tamaño del inventario: %s",
       "",
       "Lista de items:"
-    ]
+    ],
+    "empty": "- El inventario está lleno."
   },
   "stats": [
     "Estadisticas:",
