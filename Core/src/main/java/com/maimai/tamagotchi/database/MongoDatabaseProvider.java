@@ -6,7 +6,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 
-    private MongoDatabase mongoDatabase;
+    private final MongoDatabase mongoDatabase;
 
     public MongoDatabaseProvider(MongoClient mongoClient,
                                  String dbname) {
@@ -16,6 +16,6 @@ public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 
     @Override
     public MongoDatabase get() {
-        return null;
+        return mongoDatabase;
     }
 }

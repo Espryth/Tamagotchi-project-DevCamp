@@ -48,7 +48,7 @@ public class MainModule implements Module {
 
             switch (option) {
                 case 1:
-                    new NewGameModule(core).start();
+                    new NewGameModule(core, mongoDbManager).start();
                     break;
                 case 2:
                     new LoadGameModule(core, mongoDbManager).start();
