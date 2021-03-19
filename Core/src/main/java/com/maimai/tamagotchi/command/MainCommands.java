@@ -68,7 +68,7 @@ public class MainCommands implements CommandClass {
         Player player = core.getPlayer();
         Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
 
-        MessageUtils.sendMessageListFromLang(core, "stats.view",
+        MessageUtils.sendMessageListFromLang(core, "stats",
                 player.getName(),
                 Integer.toString(player.getMoney().getValue()),
                 tamagotchiMain.getType().getName(),
