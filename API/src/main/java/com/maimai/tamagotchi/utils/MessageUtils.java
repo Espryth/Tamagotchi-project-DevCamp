@@ -13,7 +13,11 @@ public class MessageUtils {
                 sendMessage("An error occurred while trying to send the message " + path);
                 return;
             }
-            sendMessage(file.getString(path));
+
+            String str = file.getString(path);
+
+            sendMessage(String.format(str, replacements));
+
         });
     }
 
@@ -23,7 +27,10 @@ public class MessageUtils {
                 sendMessage("An error occurred while trying to send the message " + path);
                 return;
             }
-            sendMessage(file.getStringList(path));
+
+            List<String> list = file.getStringList(path);
+
+            sendMessage(FormatterList.format(list, replacements));
         });
     }
 
