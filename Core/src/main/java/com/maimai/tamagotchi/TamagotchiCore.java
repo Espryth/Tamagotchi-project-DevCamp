@@ -25,6 +25,7 @@ public class TamagotchiCore implements ProgramCore {
 
     private Player player;
 
+    private JsonFile config;
     private MongoDbManager mongoDbManager;
     private Scheduler scheduler;
 
@@ -63,7 +64,8 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     private void initObjects() {
-        //this.mongoDbManager = new MongoDbManager();
+        this.config = new JsonFile("config");
+        this.mongoDbManager = new MongoDbManager(config);
         this.languageManager = new ManagerImpl<>();
         this.eventRegister = new SimpleEventRegister();
         this.tamagotchiShop = new TamagotchiShop(this);

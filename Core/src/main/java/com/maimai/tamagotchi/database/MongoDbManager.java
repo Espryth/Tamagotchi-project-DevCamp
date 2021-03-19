@@ -16,6 +16,7 @@ public class MongoDbManager {
     private final Provider<ObjectMapper> objectMapperProvider;
 
     private Provider<ObjectRepository<Player>> playerRepositoryProvider;
+    //private Provider<ObjectRepository<Test>> testRepository;
 
     public MongoDbManager(JsonFile config) {
 
@@ -33,6 +34,7 @@ public class MongoDbManager {
                 Player.class,
                 objectMapperProvider.get()
         );
+
     }
 
     public ObjectRepository<Player> getPlayerRepository() {

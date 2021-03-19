@@ -9,15 +9,15 @@ import com.maimai.tamagotchi.utils.MessageUtils;
 
 
 public class CatTamagotchi extends AbstractTamagotchi{
-    private final ProgramCore core;
-    public CatTamagotchi(ProgramCore core, String name) {
-        super(core, name, TamagotchiType.CAT);
-        this.core = core;
+
+
+    public CatTamagotchi(String name) {
+        super(name, TamagotchiType.CAT);
     }
 
     @Override
-    public void registerActions() {
-        registerAction("pet", new SimpleAction.Builder()
+    public void registerActions(ProgramCore core) {
+        registerAction(core,"pet", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -32,7 +32,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.cat.pet", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("bath", new SimpleAction.Builder()
+        registerAction(core,"bath", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -48,7 +48,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.cat.bath", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("exercise", new SimpleAction.Builder()
+        registerAction(core,"exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){

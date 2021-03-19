@@ -47,6 +47,7 @@ public class PlayerLoader implements Loader {
             for (Player player : mongoDbManager.getPlayerRepository().findAllSync()) {
 
                 if (player.getPassword().equals(password) && player.getName().equals(username)) {
+                    player.getTamagotchi().registerDefaultActions(core);
                     core.setPlayer(player);
                     MessageUtils.sendMessageListFromLang(core, "commons.welcomeBack", player.getName());
                     return;

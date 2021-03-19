@@ -3,6 +3,7 @@ package com.maimai.tamagotchi.module;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.utils.MessageUtils;
+import sun.applet.Main;
 
 import java.util.Scanner;
 
@@ -40,6 +41,7 @@ public class MainModule implements Module {
 
             if(!scanner.hasNextInt()) {
                 MessageUtils.sendMessage("That is not a option!");
+                new MainModule(core, mongoDbManager).start();
                 return;
             }
 

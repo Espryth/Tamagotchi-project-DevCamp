@@ -11,10 +11,7 @@ import com.maimai.tamagotchi.tamagotchi.impl.*;
 import com.maimai.tamagotchi.utils.MessageUtils;
 import com.oracle.xmlns.internal.webservices.jaxws_databinding.XmlOneway;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class NewGameModule implements Module {
 
@@ -119,23 +116,25 @@ public class NewGameModule implements Module {
 
         switch (tamagotchiType) {
             case CAT:
-                tamagotchi = new CatTamagotchi(core, tamagotchiName);
+                tamagotchi = new CatTamagotchi(tamagotchiName);
                 break;
             case DOG:
-                tamagotchi = new DogTamagotchi(core, tamagotchiName);
+                tamagotchi = new DogTamagotchi(tamagotchiName);
                 break;
             case PARROT:
-                tamagotchi = new ParrotTamagotchi(core, tamagotchiName);
+                tamagotchi = new ParrotTamagotchi(tamagotchiName);
                 break;
             case HAMSTER:
-                tamagotchi = new HamsterTamagotchi(core, tamagotchiName);
+                tamagotchi = new HamsterTamagotchi(tamagotchiName);
                 break;
             case RABBIT:
-                tamagotchi = new RabbitTamagotchi(core, tamagotchiName);
+                tamagotchi = new RabbitTamagotchi(tamagotchiName);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + tamagotchiType);
         }
+
+        tamagotchi.registerDefaultActions(core);
 
         Player player = new SimplePlayer(playerName, password, tamagotchi, language);
 

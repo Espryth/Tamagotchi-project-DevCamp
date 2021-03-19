@@ -1,6 +1,5 @@
 package com.maimai.tamagotchi.player;
 
-import com.maimai.tamagotchi.builder.IBuilder;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.player.inventory.PlayerInventory;
 import com.maimai.tamagotchi.player.language.Language;

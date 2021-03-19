@@ -28,15 +28,15 @@ public class GameEndListener implements Listener {
         switch (event.getCause()) {
 
             case PLAYER_EXIT:
-                MessageUtils.sendMessageListFromLang(core, "commons.exit");
+                MessageUtils.sendMessageFromLang(core, "commons.exit");
                 break;
 
             case TAMAGOTCHI_DEAD:
-                MessageUtils.sendMessageListFromLang(core, "tamagotchi.death");
+                MessageUtils.sendMessageFromLang(core, "tamagotchi.death");
                 break;
         }
 
-        mongoDbManager.getPlayerRepository().saveOrReplaceSync(player.getId(), player);
+        mongoDbManager.getPlayerRepository().saveSync(player);
         core.setEnabled(false);
 
     }

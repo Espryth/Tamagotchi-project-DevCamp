@@ -8,15 +8,21 @@ import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class RabbitTamagotchi extends AbstractTamagotchi {
-    private final ProgramCore core;
-    public RabbitTamagotchi(ProgramCore core, String name) {
-        super(core, name, TamagotchiType.RABBIT);
-        this.core = core;
+
+    public RabbitTamagotchi(String name) {
+        super(name, TamagotchiType.RABBIT);
     }
 
     @Override
-    public void registerActions() {
-        registerAction("pet", new SimpleAction.Builder()
+    public void registerActions(ProgramCore core) {
+        registerAction(core,"pet", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if(item == null) {
+                        return true;
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(40D);
@@ -24,7 +30,14 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.rabbit.pet", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("bath", new SimpleAction.Builder()
+        registerAction(core,"bath", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if(item == null) {
+                        return true;
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
@@ -33,7 +46,7 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.rabbit.bath", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("exercise", new SimpleAction.Builder()
+        registerAction(core, "exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){

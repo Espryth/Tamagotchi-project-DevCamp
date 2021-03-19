@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maimai.tamagotchi.Provider;
 
-public class ObjectMapperProvider implements Provider<ObjectMapper> {
+public class  ObjectMapperProvider implements Provider<ObjectMapper> {
 
     private final ObjectMapper mapper;
 

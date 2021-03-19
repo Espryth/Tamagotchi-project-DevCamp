@@ -8,15 +8,14 @@ import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class HamsterTamagotchi extends AbstractTamagotchi {
-    private final ProgramCore core;
-    public HamsterTamagotchi(ProgramCore core, String name) {
-        super(core, name, TamagotchiType.HAMSTER);
-        this.core = core;
+
+    public HamsterTamagotchi(String name) {
+        super(name, TamagotchiType.HAMSTER);
     }
 
     @Override
-    public void registerActions() {
-        registerAction("pet", new SimpleAction.Builder()
+    public void registerActions(ProgramCore core) {
+        registerAction(core,"pet", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -31,7 +30,7 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.hamster.pet", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("bath", new SimpleAction.Builder()
+        registerAction(core,"bath", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -47,7 +46,7 @@ public class HamsterTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.hamster.bath", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("exercise", new SimpleAction.Builder()
+        registerAction(core,"exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){

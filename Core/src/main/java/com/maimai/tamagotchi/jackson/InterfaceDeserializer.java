@@ -7,6 +7,8 @@ import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.SimplePlayer;
 import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
+import com.maimai.tamagotchi.tamagotchi.impl.CatTamagotchi;
+import com.maimai.tamagotchi.tamagotchi.impl.DogTamagotchi;
 
 public class InterfaceDeserializer {
 
@@ -15,7 +17,6 @@ public class InterfaceDeserializer {
         SimpleModule module = new SimpleModule("InterfaceDeserializer", Version.unknownVersion());
 
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver()
-                .addMapping(Tamagotchi.class, AbstractTamagotchi.class)
                 .addMapping(Player.class, SimplePlayer.class);
 
         module.setAbstractTypes(resolver);
