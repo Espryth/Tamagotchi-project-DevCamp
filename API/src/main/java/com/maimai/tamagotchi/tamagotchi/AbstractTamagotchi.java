@@ -44,12 +44,12 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.type = type;
         this.alive = true;
 
-        this.hunger = new DoubleStatistic();
-        this.health = new DoubleStatistic();
-        this.thirst = new DoubleStatistic();
-        this.dirty = new DoubleStatistic();
-        this.happiness = new DoubleStatistic();
-        this.fatigue = new DoubleStatistic();
+        this.hunger = new DoubleStatistic(100);
+        this.health = new DoubleStatistic(100);
+        this.thirst = new DoubleStatistic(100);
+        this.dirty = new DoubleStatistic(100);
+        this.happiness = new DoubleStatistic(100);
+        this.fatigue = new DoubleStatistic(100);
 
         this.actionManager = new ManagerImpl<>();
 
