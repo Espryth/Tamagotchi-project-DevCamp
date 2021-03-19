@@ -6,6 +6,7 @@ import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 
 public class CatTamagotchi extends AbstractTamagotchi{
@@ -22,7 +23,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(40D);
                     player.getMoney().increase(5);
-                    System.out.println(player.getTamagotchi().getName()+" is purring");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.cat.pet", player.getTamagotchi().getName());
                 }).build());
 
         registerAction("Bath", new SimpleAction.Builder()
@@ -31,7 +32,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     player.getTamagotchi().getHappiness().decrement(20D);
                     player.getTamagotchi().getDirty().decrement(80D);
                     player.getMoney().increase(10);
-                    System.out.println(player.getTamagotchi().getName()+" is upset with you");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.cat.bath", player.getTamagotchi().getName());
                 }).build());
 
         registerAction("Exercise", new SimpleAction.Builder()
@@ -39,7 +40,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
                         return true;
                     }else {
-                        System.out.println(player.getTamagotchi().getName() + " is very tired to exercise");
+                        MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
                         return false;
                     }
                 })
@@ -51,7 +52,7 @@ public class CatTamagotchi extends AbstractTamagotchi{
                     player.getTamagotchi().getHappiness().decrement(10D);
                     player.getTamagotchi().getDirty().increase(50D);
                     player.getMoney().increase(15);
-                    System.out.println(player.getTamagotchi().getName()+" is irritated");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.cat.exercise", player.getTamagotchi().getName());
                 }).build());
 
     }

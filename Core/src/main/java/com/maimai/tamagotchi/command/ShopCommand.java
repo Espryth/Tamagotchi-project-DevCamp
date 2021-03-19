@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.DefaultType;
+import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
@@ -13,6 +14,7 @@ import com.maimai.tamagotchi.shop.Shop;
 import com.maimai.tamagotchi.shop.TamagotchiShop;
 import com.maimai.tamagotchi.shop.action.ShopAction;
 import com.maimai.tamagotchi.shop.action.TamagotchiShopAction;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,44 +37,45 @@ public class ShopCommand implements CommandClass {
         List<DefaultType> defaultTypes = shop.getDefaultType();
         switch (arg.toLowerCase()) {
             case "help":
-                Arrays.asList(
-                        "Shop help 1/3",
-                        "/shop foods",
-                        "/shop toys",
-                        "",
-                        "/shop buy [item]",
-                        "/shop sell [item]"
-                ).forEach(System.out::println);
+                MessageUtils.sendMessageListFromLang(core, "shop.help");
                 break;
             case "toys":
                 System.out.println("List of toys");
                 for (ToyType toyType : ToyType.values()){
-                    System.out.println(toyType + " - " + toyType.getValue() +   " - "  + toyType.getCost() + "$");
+                    MessageUtils.sendMessageFromLang(core, "shop.view",
+                            toyType.getName(),
+                            Double.toString(toyType.getValue()),
+                            Integer.toString(toyType.getCost())
+                    );
                 }
                 break;
             case "foods":
                 System.out.println("List of foods:");
                 for (FoodType foodType : FoodType.values()){
-                    System.out.println(foodType.getName() + " - " + foodType.getValue() +  " - " + foodType.getCost() + "$");
+                    MessageUtils.sendMessageFromLang(core, "shop.view",
+                            foodType.getName(),
+                            Double.toString(foodType.getValue()),
+                            Integer.toString(foodType.getCost())
+                    );
                 }
                 break;
             case "buy":
                 if (type == null){
-                    System.out.println("Usage - /shop buy [foods/toys/baths]");
+                    MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy [foods/toys/baths]");
                     break;
                 }
 
                 switch (type) {
                     case "foods":
                         if (item == null){
-                            System.out.println("Usage - /shop buy foods [item]");
+                            MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy foods [item]");
                             break;
                         }
 
                         try{
                             FoodType.valueOf(item.toUpperCase());
                         }catch (IllegalArgumentException illegalArgumentException){
-                            System.out.println("Unknown item");
+                            MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                             break;
                         }
 
@@ -80,24 +83,24 @@ public class ShopCommand implements CommandClass {
                         break;
                     case "toys":
                         if (item == null){
-                            System.out.println("Usage - /shop buy toys [item]");
+                            MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy toys [item]");
                             break;
                         }
 
                         try{
                             ToyType.valueOf(item.toUpperCase());
                         }catch (IllegalArgumentException illegalArgumentException){
-                            System.out.println("Unknown item");
+                            MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                             break;
                         }
                         shopAction.buyItem(player, ItemType.TOY, ToyType.valueOf(item.toUpperCase()));
                         break;
                 }
-                System.out.println("Unknown type");
+                MessageUtils.sendMessageFromLang(core, "shop.unknownType");
                 break;
             case "sell":
                 if (item == null){
-                    System.out.println("Usage - /shop sell [item]");
+                    MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop sell [item]");
                     break;
                 }
 
@@ -105,6 +108,7 @@ public class ShopCommand implements CommandClass {
                     if (!defaultType.getName().equalsIgnoreCase(item)) {
                         continue;
                     }
+
                     for (int id = 0; id < inventory.getSize(); id++) {
                         if (!inventory.getItem(id).getDefaultType().getName().equals(item)){
                             continue;
@@ -114,13 +118,13 @@ public class ShopCommand implements CommandClass {
                         break;
                     }
 
-                    System.out.println("Error - You don't have the item in you inventory");
+                    MessageUtils.sendMessageFromLang(core, "shop.haveNotItem");
                     break;
                 }
-                System.out.println("Error - Unknown item.");
+                MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                 break;
             default:
-                System.out.println("Unknown argument");
+                MessageUtils.sendMessageFromLang(core, "commons.unknownArgument");
                 break;
         }
     }

@@ -10,6 +10,7 @@ import com.maimai.tamagotchi.player.language.Language;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.tamagotchi.impl.*;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,36 +21,6 @@ import java.util.concurrent.TimeUnit;
 public class MainModule implements Module {
 
     private final ProgramCore core;
-
-    private static final Map<String, TamagotchiType> TAMAGOTCHI_TYPE_ALIASES = new HashMap<>();
-    private static final Map<String, Language> LANGUAGE_ALIASES = new HashMap<>();
-
-    static {
-        for (TamagotchiType tamagotchiType : TamagotchiType.values()) {
-
-            TAMAGOTCHI_TYPE_ALIASES.put(tamagotchiType.toString().toLowerCase(), tamagotchiType);
-            TAMAGOTCHI_TYPE_ALIASES.put(tamagotchiType.getName().toLowerCase(), tamagotchiType);
-
-        }
-
-        for(Language language : Language.values()) {
-
-            LANGUAGE_ALIASES.put(language.toString().toLowerCase(), language);
-
-            switch (language) {
-                case ES:
-                    LANGUAGE_ALIASES.put("español", language);
-                    LANGUAGE_ALIASES.put("spanish", language);
-                    break;
-                case EN:
-                    LANGUAGE_ALIASES.put("ingles", language);
-                    LANGUAGE_ALIASES.put("english", language);
-                    break;
-            }
-
-        }
-
-    }
 
     private final MongoDbManager mongoDbManager;
 
@@ -63,82 +34,47 @@ public class MainModule implements Module {
     public void start() {
         
         Scanner scanner = new Scanner(System.in);
-        
-        Arrays.asList(
-                "Welcome to MaiMai Tamagotchi, if",
-                "you wanna start a new game, enter true",
-                "else if you wanna load a previous game",
-                "enter false"
-        ).forEach(System.out::println);
 
-        if(scanner.nextBoolean()) {
+        MessageUtils.sendMessage(
+                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                "Welcome to MaiMai Tamagotchi!, choose a option",
+                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                "",
+                "1.- Start a new game",
+                "2.- Load a previous game",
+                "3.- Exit",
+                ""
+        );
 
-            System.out.println("To start put your language");
-            Language language = LANGUAGE_ALIASES.get(scanner.next());
+        boolean choosing = true;
 
-            while (language == null) {
-                Arrays.asList(
-                        "That language doesn't exist!",
-                        "please try again."
-                ).forEach(System.out::println);
-                language = LANGUAGE_ALIASES.get(scanner.next());
+        while (choosing) {
+
+            if(!scanner.hasNextInt()) {
+                MessageUtils.sendMessage("That is not a option!");
+                return;
             }
 
-            System.out.println("Enter your name");
-            String playerName = scanner.next();
-            
-            System.out.println("Enter the name of your tamagotchi");
-            String tamagotchiName = scanner.next();
-            
-            System.out.println("What kind of tamagotchi do you want?");
-            TamagotchiType tamagotchiType = TAMAGOTCHI_TYPE_ALIASES.get(scanner.next());
-            
-            while (tamagotchiType == null) {
-                Arrays.asList(
-                        "That kind of tamagotchi doesn't exist!",
-                        "please try again."
-                ).forEach(System.out::println);
+            int option = scanner.nextInt();
 
-                tamagotchiType = TAMAGOTCHI_TYPE_ALIASES.get(scanner.next());
-            }
-            
-            Tamagotchi tamagotchi;
 
-            switch (tamagotchiType) {
-                case CAT:
-                    tamagotchi = new CatTamagotchi(core, tamagotchiName);
+            switch (option) {
+                case 1:
+                    new NewGameModule(core).start();
                     break;
-                case DOG:
-                    tamagotchi = new DogTamagotchi(core, tamagotchiName);
+                case 2:
+                    new LoadGameModule(core, mongoDbManager).start();
                     break;
-                case PARROT:
-                    tamagotchi = new ParrotTamagotchi(core, tamagotchiName);
-                    break;
-                case HAMSTER:
-                    tamagotchi = new HamsterTamagotchi(core, tamagotchiName);
-                    break;
-                case RABBIT:
-                    tamagotchi = new RabbitTamagotchi(core, tamagotchiName);
+                case 3:
+                    core.setEnabled(false);
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + tamagotchiType);
+                    MessageUtils.sendMessage("That is not a option!");
+                    break;
             }
-
-            Player player = new SimplePlayer(playerName, tamagotchi, language);
-            core.setPlayer(player);
-
-            Arrays.asList(
-
-                    "Welcome " + player.getName() + "!",
-                    "to start use /help"
-
-            ).forEach(System.out::println);
-
-            
-        } else {
-            Loader playerLoader = new PlayerLoader(core, mongoDbManager);
-            playerLoader.load();
+            choosing = false;
         }
+
         Tamagotchi tamagotchi = core.getPlayer().getTamagotchi();
         core.getScheduler().runTask(() -> tamagotchi.getHunger().decrement(10D),0L, 30L, TimeUnit.MINUTES);
         core.getScheduler().runTask(() -> {

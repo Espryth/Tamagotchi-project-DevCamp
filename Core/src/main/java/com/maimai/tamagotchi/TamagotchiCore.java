@@ -3,7 +3,7 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
-import com.maimai.tamagotchi.file.YamlFileCreator;
+import com.maimai.tamagotchi.file.JsonFile;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;
@@ -31,13 +31,12 @@ public class TamagotchiCore implements ProgramCore {
 
     private Shop shop;
 
-    private Manager<Language, YamlFileCreator> languageManager;
+    private Manager<Language, JsonFile> languageManager;
 
     @Override
     public void initCore() {
 
         initObjects();
-        initLanguages();
 
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
@@ -45,6 +44,8 @@ public class TamagotchiCore implements ProgramCore {
         Module module = new MainModule(this, mongoDbManager);
 
         module.start();
+
+        initLanguages();
 
         initLoaders(
                 new ListenerLoader(this),
@@ -68,7 +69,7 @@ public class TamagotchiCore implements ProgramCore {
 
     private void initLanguages() {
         for(Language language : Language.values()) {
-            YamlFileCreator file = new YamlFileCreator(language.getFileName());
+            JsonFile file = new JsonFile(language.getFileName());
             languageManager.insert(language, file);
         }
     }
@@ -100,7 +101,7 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     @Override
-    public Manager<Language, YamlFileCreator> getLanguageManager() {
+    public Manager<Language, JsonFile> getLanguageManager() {
         return languageManager;
     }
 

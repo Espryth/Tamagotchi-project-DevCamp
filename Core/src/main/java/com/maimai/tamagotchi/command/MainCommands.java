@@ -7,6 +7,7 @@ import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,15 +27,7 @@ public class MainCommands implements CommandClass {
             usage = "/help"
     )
     public void executeHelpCommand() {
-        Arrays.asList(
-                "Tamagotchi help commands:",
-                "/exit",
-                "/inventory",
-                "/stats",
-                "/open [module]",
-                "/shop help",
-                "/action [action] <item>"
-        ).forEach(System.out::println);
+        MessageUtils.sendMessageListFromLang(core, "commons.help");
     }
 
     @Command(
@@ -60,9 +53,10 @@ public class MainCommands implements CommandClass {
 
         for (Item item : itemSet){
 
-            int amount = Collections.frequency(inventory.getItems(), item);
+            String amount = Integer.toString(Collections.frequency(inventory.getItems(), item));
+            String value = Double.toString(item.getDefaultType().getValue());
 
-            System.out.println("- " + item.getDefaultType().getName() + "x("+amount+")" + " - Value:" + item.getDefaultType().getValue());
+            MessageUtils.sendMessageFromLang(core, "inventory.view", item.getDefaultType().getName(), amount, value);
         }
     }
 
@@ -74,32 +68,18 @@ public class MainCommands implements CommandClass {
         Player player = core.getPlayer();
         Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
 
-        Arrays.asList(
-                "Stats:",
-                "",
-                "Player:",
-                "- Name: " + player.getName(),
-                "- Money: " + player.getMoney().getValue(),
-                "",
-                "Tamagochi:",
-                "- Type: " + tamagotchiMain.getType().getName(),
-                "- Name: " + tamagotchiMain.getName(),
-                "",
-                "Status of " + tamagotchiMain.getName() + ":",
-                "- Health points: " + tamagotchiMain.getHealth().getValue(),
-                "- Hunger points: " + tamagotchiMain.getHunger().getValue(),
-                "- Thirst points: " + tamagotchiMain.getThirst().getValue(),
-                "- Happiness points: " + tamagotchiMain.getHappiness().getValue(),
-                "- Dirty points: " + tamagotchiMain.getDirty().getValue()
-        ).forEach(System.out::println);
-    }
-
-    @Command(
-            name = "open",
-            usage = "/open [module]"
-    )
-    public void executeOpenCommand(Module module) {
-        module.start();
+        MessageUtils.sendMessageListFromLang(core, "stats.view",
+                player.getName(),
+                Integer.toString(player.getMoney().getValue()),
+                tamagotchiMain.getType().getName(),
+                tamagotchiMain.getName(),
+                tamagotchiMain.getName(),
+                Double.toString(tamagotchiMain.getHealth().getValue()),
+                Double.toString(tamagotchiMain.getHunger().getValue()),
+                Double.toString(tamagotchiMain.getThirst().getValue()),
+                Double.toString(tamagotchiMain.getHappiness().getValue()),
+                Double.toString(tamagotchiMain.getDirty().getValue())
+        );
     }
 
 }

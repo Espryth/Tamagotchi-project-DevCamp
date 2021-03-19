@@ -1,0 +1,51 @@
+commons:
+  unknownCommand: "a"
+  correctUsage: "b"
+  invalidArgument: "c"
+  welcomeBack:
+    - '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    - 'Welcome back %s!'
+    - '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+  help:
+    - 'Tamagotchi help commands:'
+    - '/exit'
+    - '/inventory'
+    - '/stats"'
+    - '/open [module]'
+    - '/shop help'
+    - '/action [action] <item>'
+
+inventory:
+  view: "- %s x(%s) - Value: %s"
+
+stats:
+  view:
+    - 'Stats:'
+    - ''
+    - 'Player'
+    - 'Name: %s'
+    - 'Money: %s'
+    - ''
+    - 'Tamagotchi:'
+    - 'Type: %s'
+    - 'Name: %s'
+    - ''
+    - 'Status of %s:'
+    - 'Health points: %s'
+    - 'Hunger points: %s'
+    - 'Thirst points: %s'
+    - 'Happiness points: %s'
+    - 'Dirty points: %s'
+
+shop:
+  view: "Name: %s Regen: %s Price: %s"
+  help:
+    - 'Shop help 1/3'
+    - '/shop foods'
+    - '/shop toys'
+    - ''
+    - '/shop buy [item]'
+    - '/shop sell [item]'
+  unknownItem: ""
+  unknownType: ""
+  haveNotItem: ""
