@@ -161,23 +161,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getMoney().increase(5);
-                    switch (player.getTamagotchi().getType()){
-                        case CAT:
-                            System.out.println("C");
-                            break;
-                        case DOG:
-                            System.out.println("D");
-                            break;
-                        case PARROT:
-                            System.out.println("P");
-                            break;
-                        case HAMSTER:
-                            System.out.println("H");
-                            break;
-                        case RABBIT:
-                            System.out.println("R");
-                            break;
-                    }
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.canEat", player.getTamagotchi().getName());
                 }).build());
 
         registerAction("Sleep", new SimpleAction.Builder()
@@ -189,9 +173,8 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getDirty().increase(20D);
                     player.getTamagotchi().getFatigue().decrement(80D);
                     player.getMoney().increase(5);
-
-                    MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString().toLowerCase()+".sleep", player.getTamagotchi().getName());
-
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString()
+                            .toLowerCase()+".sleep", player.getTamagotchi().getName());
                 }).build());
 
 

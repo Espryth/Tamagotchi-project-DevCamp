@@ -59,6 +59,7 @@
     "canNotPlay": "%s no tiene energia para jugar",
     "canNotEat": "%s no puede comer eso",
     "canNotDoExercise": "%s no tiene energia para ejercitarse",
+    "canEat": "Alimentaste a %s",
     "cat": {
       "pet": "%s esta ronroneando",
       "bath": "%s esta enojad@ contigo",
