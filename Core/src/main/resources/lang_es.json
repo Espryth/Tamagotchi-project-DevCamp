@@ -5,11 +5,11 @@
     "invalidArgument": "Argumento invalido",
     "welcomeBack": [
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-      "Welcome back %s",
+      "Bienvenido otra vez %s",
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     ],
     "help": [
-      "Comandos de ayuda de Tamagotchi",
+      "Comandos de ayuda del Tamagotchi",
       "/exit",
       "/inventory",
       "/stats",
@@ -42,7 +42,7 @@
   "shop": {
     "view": "",
     "help": [
-      "Shop help 1/3",
+      "Ayuda de la tienda",
       "/shop foods",
       "/shop toys",
       "",
