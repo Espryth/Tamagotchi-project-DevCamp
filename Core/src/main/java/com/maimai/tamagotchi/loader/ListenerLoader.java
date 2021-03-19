@@ -2,7 +2,7 @@ package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.event.EventRegister;
-import com.maimai.tamagotchi.event.TamagotchiStatsChangeListener;
+import com.maimai.tamagotchi.listener.TamagotchiStatsChangeListener;
 
 public class ListenerLoader implements Loader{
 

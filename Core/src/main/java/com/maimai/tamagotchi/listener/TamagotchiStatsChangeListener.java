@@ -1,5 +1,6 @@
-package com.maimai.tamagotchi.event;
+package com.maimai.tamagotchi.listener;
 
+import com.maimai.tamagotchi.event.EventHandler;
 import com.maimai.tamagotchi.event.listener.Listener;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
