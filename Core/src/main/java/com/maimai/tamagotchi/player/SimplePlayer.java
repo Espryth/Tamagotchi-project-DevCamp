@@ -14,7 +14,6 @@ public class SimplePlayer implements Player {
 
     private final String id;
     private final String name;
-    private final String password;
 
     private final Tamagotchi tamagotchi;
     private final Inventory inventory;
@@ -24,28 +23,21 @@ public class SimplePlayer implements Player {
 
     @ConstructorProperties({
             "name",
-            "password",
             "tamagotchi",
             "language"
     })
     public SimplePlayer(String name,
-                        String password,
                         Tamagotchi tamagotchi,
                         Language language) {
 
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.password = password;
         this.language = language;
         this.tamagotchi = tamagotchi;
         this.inventory = new PlayerInventory();
         this.money = new DoubleStatistic();
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public Tamagotchi getTamagotchi() {

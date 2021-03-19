@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi.listener;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventHandler;
 import com.maimai.tamagotchi.event.game.GameEndEvent;
 import com.maimai.tamagotchi.event.listener.Listener;
@@ -10,16 +9,13 @@ import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class GameEndListener implements Listener {
 
-    private final MongoDbManager mongoDbManager;
-
     private final Player player;
 
     private final ProgramCore core;
 
-    public GameEndListener(ProgramCore core, MongoDbManager mongoDbManager) {
+    public GameEndListener(ProgramCore core ) {
         this.core = core;
         this.player = core.getPlayer();;
-        this.mongoDbManager = mongoDbManager;
     }
 
     @EventHandler
@@ -36,7 +32,6 @@ public class GameEndListener implements Listener {
                 break;
         }
 
-        mongoDbManager.getPlayerRepository().saveSync(player);
         core.setEnabled(false);
 
     }

@@ -3,18 +3,19 @@ package com.maimai.tamagotchi.tamagotchi.impl;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.SimpleAction;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
-import com.maimai.tamagotchi.tamagotchi.SimpleTamagotchi;
+import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
 
-public class CatTamagotchi extends SimpleTamagotchi {
+public class CatTamagotchi extends AbstractTamagotchi{
 
-    public CatTamagotchi(String name) {
-        super(name, TamagotchiType.CAT);
+    public CatTamagotchi(ProgramCore core, String name) {
+        super(core, name, TamagotchiType.CAT);
     }
 
-    public void registerActions(ProgramCore core) {
+    @Override
+    protected void registerActions(ProgramCore core) {
         registerAction("pet", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {

@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi.module;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.SimplePlayer;
 import com.maimai.tamagotchi.player.language.Language;
@@ -44,11 +43,9 @@ public class NewGameModule implements Module {
     }
 
     private final ProgramCore core;
-    private MongoDbManager mongoDbManager;
 
-    public NewGameModule(ProgramCore core, MongoDbManager mongoDbManager) {
+    public NewGameModule(ProgramCore core) {
         this.core = core;
-        this.mongoDbManager = mongoDbManager;
     }
 
     @Override
@@ -75,19 +72,6 @@ public class NewGameModule implements Module {
         MessageUtils.sendMessage("➟ What is your name?");
         String playerName = scanner.next();
 
-        Set<Player> players = mongoDbManager.getPlayerRepository().findAllSync();
-
-        if(!players.isEmpty()) {
-            for(Player player : players) {
-                while (player.getName().equals(playerName)) {
-                    MessageUtils.sendMessage("That username is already taken! please try again.");
-                    playerName = scanner.next();
-                }
-            }
-        }
-
-        MessageUtils.sendMessage("➟ Enter a password");
-        String password = scanner.next();
 
         MessageUtils.sendMessage("➟ What do you want your tamagotchi to be called?");
         String tamagotchiName = scanner.next();
@@ -114,19 +98,19 @@ public class NewGameModule implements Module {
 
         switch (tamagotchiType) {
             case CAT:
-                tamagotchi = new CatTamagotchi(tamagotchiName);
+                tamagotchi = new CatTamagotchi(core, tamagotchiName);
                 break;
             case DOG:
-                tamagotchi = new DogTamagotchi(tamagotchiName);
+                tamagotchi = new DogTamagotchi(core, tamagotchiName);
                 break;
             case PARROT:
-                tamagotchi = new ParrotTamagotchi(tamagotchiName);
+                tamagotchi = new ParrotTamagotchi(core, tamagotchiName);
                 break;
             case HAMSTER:
-                tamagotchi = new HamsterTamagotchi(tamagotchiName);
+                tamagotchi = new HamsterTamagotchi(core, tamagotchiName);
                 break;
             case RABBIT:
-                tamagotchi = new RabbitTamagotchi(tamagotchiName);
+                tamagotchi = new RabbitTamagotchi(core, tamagotchiName);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + tamagotchiType);
@@ -134,7 +118,7 @@ public class NewGameModule implements Module {
 
         tamagotchi.registerDefaultActions(core);
 
-        Player player = new SimplePlayer(playerName, password, tamagotchi, language);
+        Player player = new SimplePlayer(playerName, tamagotchi, language);
 
         core.setPlayer(player);
 

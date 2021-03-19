@@ -3,14 +3,14 @@ package com.maimai.tamagotchi.tamagotchi.impl;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.SimpleAction;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
-import com.maimai.tamagotchi.tamagotchi.SimpleTamagotchi;
+import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
-public class ParrotTamagotchi extends SimpleTamagotchi {
+public class ParrotTamagotchi extends AbstractTamagotchi {
 
-    public ParrotTamagotchi(String name) {
-        super(name, TamagotchiType.PARROT);
+    public ParrotTamagotchi(ProgramCore core, String name) {
+        super(core, name, TamagotchiType.PARROT);
     }
 
     public void registerActions(ProgramCore core) {

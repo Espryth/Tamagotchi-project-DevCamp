@@ -11,7 +11,7 @@ import com.maimai.tamagotchi.player.SimplePlayer;
 import com.maimai.tamagotchi.player.inventory.PlayerInventory;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
-import com.maimai.tamagotchi.tamagotchi.SimpleTamagotchi;
+import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public class InterfaceDeserializer {
@@ -21,7 +21,7 @@ public class InterfaceDeserializer {
         SimpleModule module = new SimpleModule("InterfaceDeserializer", Version.unknownVersion());
 
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver()
-                .addMapping(Tamagotchi.class, SimpleTamagotchi.class)
+                .addMapping(Tamagotchi.class, AbstractTamagotchi.class)
                 .addMapping(Player.class, SimplePlayer.class)
                 .addMapping(Statistic.class, DoubleStatistic.class)
                 .addMapping(Inventory.class, PlayerInventory.class)

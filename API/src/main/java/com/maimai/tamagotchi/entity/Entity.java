@@ -5,7 +5,6 @@ import com.maimai.tamagotchi.Model;
 
 public interface Entity {
 
-    @JsonProperty("name")
     String getName();
 
 }

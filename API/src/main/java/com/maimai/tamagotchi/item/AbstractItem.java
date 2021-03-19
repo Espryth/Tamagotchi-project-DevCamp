@@ -1,6 +1,6 @@
 package com.maimai.tamagotchi.item;
 
-public class AbstractItem implements Item {
+public abstract class AbstractItem implements Item {
 
     private final ItemExecutor itemExecutor;
 

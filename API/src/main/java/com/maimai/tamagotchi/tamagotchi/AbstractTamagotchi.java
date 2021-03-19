@@ -10,13 +10,11 @@ import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
-import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.beans.ConstructorProperties;
 
-public class SimpleTamagotchi implements Tamagotchi {
+public abstract class AbstractTamagotchi implements Tamagotchi {
 
     private final String name;
     private final TamagotchiType type;
@@ -35,8 +33,9 @@ public class SimpleTamagotchi implements Tamagotchi {
             "name",
             "type"
     })
-    public SimpleTamagotchi(String name,
-                            TamagotchiType type) {
+    public AbstractTamagotchi(ProgramCore core,
+                              String name,
+                              TamagotchiType type) {
 
         this.name = name;
         this.type = type;
@@ -51,9 +50,14 @@ public class SimpleTamagotchi implements Tamagotchi {
 
         this.actionManager = new ManagerImpl<>();
 
+        registerDefaultActions(core);
+        registerActions(core);
+
     }
 
-    private void registerAction(String name, Action action) {
+    protected abstract void registerActions(ProgramCore core);
+
+    protected void registerAction(String name, Action action) {
         getActionManager().insert(name, action);
     }
 
@@ -202,8 +206,10 @@ public class SimpleTamagotchi implements Tamagotchi {
 
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.water", player.getTamagotchi().getName());
                 }).build());
+
     }
-    
+
+
     @Override
     public boolean isAlive() {
         return alive;

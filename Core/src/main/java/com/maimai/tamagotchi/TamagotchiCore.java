@@ -1,6 +1,5 @@
 package com.maimai.tamagotchi;
 
-import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
 import com.maimai.tamagotchi.file.JsonFile;
@@ -25,8 +24,6 @@ public class TamagotchiCore implements ProgramCore {
 
     private Player player;
 
-    private JsonFile config;
-    private MongoDbManager mongoDbManager;
     private Scheduler scheduler;
 
     private EventRegister eventRegister;
@@ -45,13 +42,13 @@ public class TamagotchiCore implements ProgramCore {
         this.scheduler = new TamagotchiScheduler();
 
 
-        Module module = new MainModule(this, mongoDbManager);
+        Module module = new MainModule(this);
 
         module.start();
 
 
         initLoaders(
-                new ListenerLoader(this, mongoDbManager),
+                new ListenerLoader(this),
                 new CommandLoader(this),
                 new TaskLoader(this)
         );
@@ -64,8 +61,6 @@ public class TamagotchiCore implements ProgramCore {
     }
 
     private void initObjects() {
-        this.config = new JsonFile("config");
-        this.mongoDbManager = new MongoDbManager(config);
         this.languageManager = new ManagerImpl<>();
         this.eventRegister = new SimpleEventRegister();
         this.tamagotchiShop = new TamagotchiShop(this);

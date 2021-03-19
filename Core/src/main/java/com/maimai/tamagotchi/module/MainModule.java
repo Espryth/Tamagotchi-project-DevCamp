@@ -1,9 +1,7 @@
 package com.maimai.tamagotchi.module;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.utils.MessageUtils;
-import sun.applet.Main;
 
 import java.util.Scanner;
 
@@ -11,11 +9,8 @@ public class MainModule implements Module {
 
     private final ProgramCore core;
 
-    private final MongoDbManager mongoDbManager;
-
-    public MainModule(ProgramCore core, MongoDbManager mongoDbManager) {
+    public MainModule(ProgramCore core) {
         this.core = core;
-        this.mongoDbManager = mongoDbManager;
 
     }
 
@@ -41,7 +36,7 @@ public class MainModule implements Module {
 
             if(!scanner.hasNextInt()) {
                 MessageUtils.sendMessage("That is not a option!");
-                new MainModule(core, mongoDbManager).start();
+                new MainModule(core).start();
                 return;
             }
 
@@ -50,10 +45,11 @@ public class MainModule implements Module {
 
             switch (option) {
                 case 1:
-                    new NewGameModule(core, mongoDbManager).start();
+                    new NewGameModule(core).start();
                     break;
                 case 2:
-                    new LoadGameModule(core, mongoDbManager).start();
+                    MessageUtils.sendMessage("Option in progress... :(");
+                    new MainModule(core).start();
                     break;
                 case 3:
                     core.setEnabled(false);
