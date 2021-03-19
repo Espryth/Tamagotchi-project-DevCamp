@@ -60,6 +60,11 @@
     "haveNotItem": ""
   },
 
+  "actions": {
+    "notRequiresItem": "This action do not requires a item!",
+    "requiresItem": "This action requires a item!"
+  },
+
   "tamagotchi": {
     "itemCanNotBeUsed":"This item can not be used with this Tamagotchi",
     "canNotPlay": "%s is very tired to play",

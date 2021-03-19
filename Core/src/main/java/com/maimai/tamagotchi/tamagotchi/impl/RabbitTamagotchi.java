@@ -35,6 +35,18 @@ public class RabbitTamagotchi extends AbstractTamagotchi {
 
         registerAction("Exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
+                    if(item == null) {
+                        if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
+                            return true;
+                        } else {
+                            MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
+                            return false;
+                        }
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
+                .createRequirement((player, item) -> {
                     if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
                         return true;
                     }else {

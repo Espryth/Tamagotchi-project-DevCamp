@@ -66,6 +66,10 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     private void registerDefaultActions(ProgramCore core) {
         registerAction("Play", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
+                    if(item == null) {
+                        MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
+                        return false;
+                    }
                     if(!(player.getTamagotchi().getFatigue().getValue() <= 30)){
                         switch (player.getTamagotchi().getType()){
                             case CAT:
@@ -128,6 +132,10 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
         registerAction("Feed", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
+                    if(item == null) {
+                        MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
+                        return false;
+                    }
                     switch (player.getTamagotchi().getType()) {
                         case CAT:
                         case DOG:
@@ -165,6 +173,13 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                 }).build());
 
         registerAction("Sleep", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if(item == null) {
+                        return true;
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHunger().decrement(40D);

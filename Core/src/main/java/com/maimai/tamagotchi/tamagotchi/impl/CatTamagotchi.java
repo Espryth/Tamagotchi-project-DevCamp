@@ -19,6 +19,13 @@ public class CatTamagotchi extends AbstractTamagotchi{
     @Override
     public void registerActions() {
         registerAction("Pet", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if(item == null) {
+                        return true;
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(40D);
@@ -27,6 +34,13 @@ public class CatTamagotchi extends AbstractTamagotchi{
                 }).build());
 
         registerAction("Bath", new SimpleAction.Builder()
+                .createRequirement((player, item) -> {
+                    if(item == null) {
+                        return true;
+                    }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
+                })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().decrement(20D);
@@ -37,12 +51,16 @@ public class CatTamagotchi extends AbstractTamagotchi{
 
         registerAction("Exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
-                    if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
-                        return true;
-                    }else {
-                        MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
-                        return false;
+                    if(item == null) {
+                        if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
+                            return true;
+                        } else {
+                            MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
+                            return false;
+                        }
                     }
+                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                    return false;
                 })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
