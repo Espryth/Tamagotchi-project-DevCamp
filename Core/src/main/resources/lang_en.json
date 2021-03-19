@@ -22,7 +22,8 @@
       "/open [module]",
       "/shop help",
       "/action [action] <item>"
-    ]
+    ],
+    "exit": "TestExit"
   },
   "inventory": {
     "view": "- %s x(%s) - Value: %s"
@@ -62,7 +63,12 @@
 
   "actions": {
     "notRequiresItem": "This action do not requires a item!",
-    "requiresItem": "This action requires a item!"
+    "requiresItem": "This action requires a item!",
+    "help":[
+      "Actions list",
+      "Test",
+      "Test"
+    ]
   },
 
   "tamagotchi": {
