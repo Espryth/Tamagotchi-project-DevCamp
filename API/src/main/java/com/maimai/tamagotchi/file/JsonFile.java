@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.file;
 
+import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.List;
 
 public class JsonFile {
 
@@ -47,5 +49,13 @@ public class JsonFile {
 
     public JSONObject getJsonObject() {
         return jsonObject;
+    }
+
+    public String getString(String path) {
+        return JsonPath.read(getJsonObject(), path);
+    }
+
+    public List<String> getStringList(String path) {
+        return JsonPath.read(getJsonObject(), path);
     }
 }
