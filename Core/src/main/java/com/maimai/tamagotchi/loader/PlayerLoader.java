@@ -31,7 +31,7 @@ public class PlayerLoader implements Loader {
 
         core.setPlayer(optionalPlayer.get());
 
-        MessageUtils.sendMessageListFromLang(core, "main.welcomeBack", optionalPlayer.get().getName());
+        MessageUtils.sendMessageListFromLang(core, "commons.welcomeBack", optionalPlayer.get().getName());
 
     }
 

@@ -38,14 +38,15 @@ public class TamagotchiCore implements ProgramCore {
 
         initObjects();
 
+        initLanguages();
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
+
 
         Module module = new MainModule(this, mongoDbManager);
 
         module.start();
 
-        initLanguages();
 
         initLoaders(
                 new ListenerLoader(this),
