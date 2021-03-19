@@ -31,7 +31,9 @@ public class CommandLoader implements Loader{
         commandRegister.registerCommand(
                 new ShopCommand(core),
                 new MainCommands(core),
-                new ActionCommand(core)
+                new ActionCommand(core),
+                new InventoryCommand(core),
+                new StatsCommand(core)
         );
 
         while (core.isEnabled()) {

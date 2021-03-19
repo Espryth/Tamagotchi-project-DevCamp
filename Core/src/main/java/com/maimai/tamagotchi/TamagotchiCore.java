@@ -50,7 +50,7 @@ public class TamagotchiCore implements ProgramCore {
 
 
         initLoaders(
-                new ListenerLoader(this),
+                new ListenerLoader(this, mongoDbManager),
                 new CommandLoader(this),
                 new TaskLoader(this)
         );
