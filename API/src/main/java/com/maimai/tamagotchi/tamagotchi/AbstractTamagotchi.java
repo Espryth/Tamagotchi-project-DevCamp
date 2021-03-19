@@ -64,7 +64,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
     }
 
     private void registerDefaultActions(ProgramCore core) {
-        registerAction("Play", new SimpleAction.Builder()
+        registerAction("play", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
@@ -130,7 +130,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     }
                 }).build());
 
-        registerAction("Feed", new SimpleAction.Builder()
+        registerAction("feed", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
@@ -172,7 +172,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.canEat", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("Sleep", new SimpleAction.Builder()
+        registerAction("sleep", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -193,7 +193,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                             .toLowerCase()+".sleep", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("Water", new SimpleAction.Builder()
+        registerAction("water", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;

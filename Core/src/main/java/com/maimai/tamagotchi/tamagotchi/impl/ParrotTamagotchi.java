@@ -16,7 +16,7 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
 
     @Override
     public void registerActions() {
-        registerAction("Pet", new SimpleAction.Builder()
+        registerAction("pet", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -31,7 +31,7 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.parrot.pet", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("Bath", new SimpleAction.Builder()
+        registerAction("bath", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -47,7 +47,7 @@ public class ParrotTamagotchi extends AbstractTamagotchi {
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.parrot.bath", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction("Exercise", new SimpleAction.Builder()
+        registerAction("exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
