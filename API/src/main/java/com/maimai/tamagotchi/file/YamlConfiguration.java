@@ -2,11 +2,12 @@ package com.maimai.tamagotchi.file;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class YamlConfiguration {
 
-    private final HashMap<String, String> stringPath;
-    private final HashMap<String, List<String>> listStringPath;
+    private final Map<String, String> stringPath;
+    private final Map<String, List<String>> listStringPath;
 
     public YamlConfiguration() {
         this.stringPath = new HashMap<>();

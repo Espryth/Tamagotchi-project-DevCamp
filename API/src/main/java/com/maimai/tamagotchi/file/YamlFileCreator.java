@@ -1,12 +1,12 @@
 package com.maimai.tamagotchi.file;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class YamlFileCreator {
@@ -34,12 +34,11 @@ public class YamlFileCreator {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             bufferedReader.lines().collect(Collectors.toList()).forEach(lines -> {
-                yamlConfiguration.setString(lines.split(":")[0], lines.split(":")[1]);
+                //yamlConfiguration.setString(lines.split(":")[0], lines.split(":")[1]);
             });
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public String getString(String path) {
