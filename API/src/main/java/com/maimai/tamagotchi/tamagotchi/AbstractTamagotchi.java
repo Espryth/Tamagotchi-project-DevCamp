@@ -10,6 +10,7 @@ import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.beans.ConstructorProperties;
 import java.util.UUID;
@@ -93,9 +94,9 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                                 }
                                 break;
                         }
-                        System.out.println("This item can not be used with this Tamagotchi");
+                        MessageUtils.sendMessageFromLang(core, "tamagotchi.itemCanNotBeUsed");
                     }else{
-                        System.out.println(player.getTamagotchi().getName() + " is very tired to play");
+                        MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotPlay", player.getTamagotchi().getName());
                     }
                     return false;
                 })
@@ -134,7 +135,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                                     item.getDefaultType() == FoodType.CHICKEN) {
                                 return true;
                             }else{
-                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
+                                MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotEat", player.getTamagotchi().getName());
                             }
                             break;
                         case PARROT:
@@ -144,14 +145,14 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                                     item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE) {
                                 return true;
                             }else{
-                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
+                                MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotEat", player.getTamagotchi().getName());
                             }
                             break;
                         case RABBIT:
                             if (item.getDefaultType() == FoodType.CARROT || item.getDefaultType() == FoodType.LETTUCE) {
                                 return true;
                             }else{
-                                System.out.println(player.getTamagotchi().getName() + " cant eat that");
+                                MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotEat", player.getTamagotchi().getName());
                             }
                             break;
                     }
@@ -188,23 +189,9 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getDirty().increase(20D);
                     player.getTamagotchi().getFatigue().decrement(80D);
                     player.getMoney().increase(5);
-                    switch (player.getTamagotchi().getType()){
-                        case CAT:
-                            System.out.println(player.getTamagotchi().getName()+" is tired, as always");
-                            break;
-                        case DOG:
-                            System.out.println(player.getTamagotchi().getName()+" is running around the place");
-                            break;
-                        case PARROT:
-                            System.out.println(player.getTamagotchi().getName()+" is screaming for food");
-                            break;
-                        case HAMSTER:
-                            System.out.println(player.getTamagotchi().getName()+" wants to eat and go to bed again");
-                            break;
-                        case RABBIT:
-                            System.out.println(player.getTamagotchi().getName()+" went to bed again");
-                            break;
-                    }
+
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString().toLowerCase()+".sleep", player.getTamagotchi().getName());
+
                 }).build());
 
 

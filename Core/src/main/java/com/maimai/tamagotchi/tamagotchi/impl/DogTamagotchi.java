@@ -5,6 +5,7 @@ import com.maimai.tamagotchi.action.SimpleAction;
 import com.maimai.tamagotchi.event.tamagotchi.TamagotchiStatsChangeEvent;
 import com.maimai.tamagotchi.tamagotchi.AbstractTamagotchi;
 import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class DogTamagotchi extends AbstractTamagotchi {
     private final ProgramCore core;
@@ -20,7 +21,7 @@ public class DogTamagotchi extends AbstractTamagotchi {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getHappiness().increase(40D);
                     player.getMoney().increase(5);
-                    System.out.println(player.getTamagotchi().getName()+" is very excited and is licking you");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.dog.pet", player.getTamagotchi().getName());
                 }).build());
 
         registerAction("Bath", new SimpleAction.Builder()
@@ -29,7 +30,7 @@ public class DogTamagotchi extends AbstractTamagotchi {
                     player.getTamagotchi().getHappiness().increase(40D);
                     player.getTamagotchi().getDirty().decrement(80D);
                     player.getMoney().increase(10);
-                    System.out.println(player.getTamagotchi().getName()+" is very happy");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.dog.bath", player.getTamagotchi().getName());
                 }).build());
 
         registerAction("Exercise", new SimpleAction.Builder()
@@ -37,7 +38,7 @@ public class DogTamagotchi extends AbstractTamagotchi {
                     if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
                         return true;
                     }else {
-                        System.out.println(player.getTamagotchi().getName() + " is very tired to exercise");
+                        MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
                         return false;
                     }
                 })
@@ -49,7 +50,7 @@ public class DogTamagotchi extends AbstractTamagotchi {
                     player.getTamagotchi().getHappiness().increase(30D);
                     player.getTamagotchi().getDirty().increase(50D);
                     player.getMoney().increase(15);
-                    System.out.println(player.getTamagotchi().getName()+" is very energetic");
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.dog.exercise", player.getTamagotchi().getName());
                 }).build());
 
     }

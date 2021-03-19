@@ -52,5 +52,45 @@
     "unknownItem": "",
     "unknownType": "",
     "haveNotItem": ""
+  },
+
+  "tamagotchi": {
+    "itemCanNotBeUsed":"This item can not be used with this Tamagotchi",
+    "canNotPlay": "%s is very tired to play",
+    "canNotEat": "%s cant eat that",
+    "canNotDoExercise": "%s is very tired to exercise",
+    "cat": {
+      "pet": "%s is purring",
+      "bath": "%s is upset with you",
+      "exercise": "%s is irritated",
+      "sleep": "%s is tired, as always"
+    },
+    "dog": {
+      "pet": "%s is very excited and is licking you",
+      "bath": "%s is very happy",
+      "exercise": "%s is very energetic",
+      "sleep": "%s is running around the place"
+
+    },
+    "hamster": {
+      "pet": "%s is excited",
+      "bath": "%s didn't like the bath",
+      "exercise": "%s is exhausted and wants to eat",
+      "sleep": "%s wants to eat and go to bed again"
+
+    },
+    "parrot": {
+      "pet": "%s is making weird noises",
+      "bath": "%s is making very loud noises and is upset",
+      "exercise": "%s is flying around the place",
+      "sleep": "%s is screaming for food"
+
+    },
+    "rabbit": {
+      "pet": "%s is still and enjoying it",
+      "bath": "%s is cold and upset",
+      "exercise": "%s was exhausted and fell asleep",
+      "sleep": "%s went to bed again"
+    }
   }
 }
