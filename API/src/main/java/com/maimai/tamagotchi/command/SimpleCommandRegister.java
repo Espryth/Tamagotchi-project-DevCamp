@@ -1,11 +1,13 @@
 package com.maimai.tamagotchi.command;
 
+import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.command.part.ArgumentPart;
 import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
+import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,15 +19,18 @@ import java.util.Optional;
 
 public class SimpleCommandRegister implements CommandRegister {
 
+    private final ProgramCore core;
+
     private final Manager<String, RegisteredCommand> registeredCommandManager;
 
     private final PartHandler partHandler;
 
     private final String prefix;
 
-    public SimpleCommandRegister(PartHandler partHandler,
+    public SimpleCommandRegister(ProgramCore core,
+                                 PartHandler partHandler,
                                  String prefix) {
-
+        this.core = core;
         this.prefix = prefix;
         this.partHandler = partHandler;
         this.registeredCommandManager = new ManagerImpl<>();
@@ -41,7 +46,7 @@ public class SimpleCommandRegister implements CommandRegister {
         Optional<RegisteredCommand> optionalCommand = registeredCommandManager.find(arguments[0].replace(prefix, ""));
 
         if(!optionalCommand.isPresent()) {
-            System.out.println("Incorrect command please use /help");
+            MessageUtils.sendMessageFromLang(core, "commons.unknownCommand");
             return;
         }
 
@@ -87,14 +92,14 @@ public class SimpleCommandRegister implements CommandRegister {
 
 
                     if(arguments.size() > argumentPartList.size() + argumentPartOptList.size() || (arguments.isEmpty() && parameters.length > 0)) {
-                        System.out.println("Correct usage: " + method.getAnnotation(Command.class).usage());
+                        MessageUtils.sendMessageFromLang(core, "commons.correctUsage", method.getAnnotation(Command.class).usage());
                         return;
                     }
 
                     List<Object> objectParsedList = parseAll(argumentPartList, argumentPartOptList, stack);
 
                     if(objectParsedList == null) {
-                        System.out.println("You have a invalid argument!");
+                        MessageUtils.sendMessageFromLang(core, "commons.invalidArgument");
                         return;
                     }
 

@@ -1,0 +1,8 @@
+commons:
+  unknownCommand: ""
+  correctUsage: ""
+  invalidArgument: ""
+  welcomeBack:
+    - '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    - 'Welcome back %s!'
+    - '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
