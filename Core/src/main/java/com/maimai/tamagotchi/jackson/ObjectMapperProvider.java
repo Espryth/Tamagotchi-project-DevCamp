@@ -1,11 +1,14 @@
 package com.maimai.tamagotchi.jackson;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.maimai.tamagotchi.Provider;
+import com.maimai.tamagotchi.tamagotchi.impl.*;
 
-public class  ObjectMapperProvider implements Provider<ObjectMapper> {
+public class ObjectMapperProvider implements Provider<ObjectMapper> {
 
     private final ObjectMapper mapper;
 

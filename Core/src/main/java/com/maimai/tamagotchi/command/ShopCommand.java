@@ -41,7 +41,7 @@ public class ShopCommand implements CommandClass {
                     MessageUtils.sendMessageFromLang(core, "shop.view",
                             toyType.getName(),
                             Double.toString(toyType.getValue()),
-                            Integer.toString(toyType.getCost())
+                            Double.toString(toyType.getCost())
                     );
                 }
                 break;
@@ -51,7 +51,7 @@ public class ShopCommand implements CommandClass {
                     MessageUtils.sendMessageFromLang(core, "shop.view",
                             foodType.getName(),
                             Double.toString(foodType.getValue()),
-                            Integer.toString(foodType.getCost())
+                            Double.toString(foodType.getCost())
                     );
                 }
                 break;

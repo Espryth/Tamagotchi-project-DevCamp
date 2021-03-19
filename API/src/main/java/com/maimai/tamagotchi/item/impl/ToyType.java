@@ -16,9 +16,9 @@ public enum ToyType implements DefaultType {
 
     private final String name;
     private final double value;
-    private final int cost;
+    private final double cost;
 
-    ToyType(String name, double value, int cost) {
+    ToyType(String name, double value, double cost) {
         this.name = name;
         this.value = value;
         this.cost = cost;
@@ -35,7 +35,7 @@ public enum ToyType implements DefaultType {
     }
 
     @Override
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 }

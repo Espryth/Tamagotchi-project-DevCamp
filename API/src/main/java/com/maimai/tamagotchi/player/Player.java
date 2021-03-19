@@ -20,7 +20,7 @@ public interface Player extends Entity, Model {
     Inventory getInventory();
 
     @JsonProperty("money")
-    Statistic<Integer> getMoney();
+    Statistic<Double> getMoney();
 
     @JsonProperty("language")
     Language getLanguage();

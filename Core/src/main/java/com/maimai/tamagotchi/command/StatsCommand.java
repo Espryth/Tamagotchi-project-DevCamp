@@ -23,7 +23,7 @@ public class StatsCommand implements CommandClass {
 
         MessageUtils.sendMessageListFromLang(core, "stats",
                 player.getName(),
-                Integer.toString(player.getMoney().getValue()),
+                Double.toString(player.getMoney().getValue()),
                 tamagotchiMain.getType().getName(),
                 tamagotchiMain.getName(),
                 tamagotchiMain.getName(),

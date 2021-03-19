@@ -10,12 +10,13 @@ import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.manager.ManagerImpl;
 import com.maimai.tamagotchi.statistic.Statistic;
 import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
+import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
+import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
 import java.beans.ConstructorProperties;
-import java.util.UUID;
 
-public abstract class AbstractTamagotchi implements Tamagotchi {
+public class SimpleTamagotchi implements Tamagotchi {
 
     private final String name;
     private final TamagotchiType type;
@@ -34,8 +35,8 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
             "name",
             "type"
     })
-    public AbstractTamagotchi(String name,
-                              TamagotchiType type) {
+    public SimpleTamagotchi(String name,
+                            TamagotchiType type) {
 
         this.name = name;
         this.type = type;
@@ -52,15 +53,13 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
     }
 
-    public abstract void registerActions(ProgramCore core);
-
-    protected void registerAction(ProgramCore core, String name, Action action) {
+    private void registerAction(String name, Action action) {
         getActionManager().insert(name, action);
     }
 
     @Override
     public void registerDefaultActions(ProgramCore core) {
-        registerAction(core, "play", new SimpleAction.Builder()
+        registerAction("play", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
@@ -106,7 +105,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getHunger().decrement(30D);
                     player.getTamagotchi().getThirst().decrement(30D);
                     player.getTamagotchi().getDirty().increase(30D);
-                    player.getMoney().increase(10);
+                    player.getMoney().increase(10D);
                     switch (player.getTamagotchi().getType()){
                         case CAT:
                             System.out.println("Miauuu");
@@ -126,7 +125,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     }
                 }).build());
 
-        registerAction(core, "feed", new SimpleAction.Builder()
+        registerAction("feed", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
@@ -164,11 +163,11 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                 })
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
-                    player.getMoney().increase(5);
+                    player.getMoney().increase(5D);
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.canEat", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction(core, "sleep", new SimpleAction.Builder()
+        registerAction("sleep", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -183,13 +182,13 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getHappiness().increase(20D);
                     player.getTamagotchi().getDirty().increase(20D);
                     player.getTamagotchi().getFatigue().decrement(80D);
-                    player.getMoney().increase(5);
+                    player.getMoney().increase(5D);
 
                     MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString()
                             .toLowerCase()+".sleep", player.getTamagotchi().getName());
                 }).build());
 
-        registerAction(core, "water", new SimpleAction.Builder()
+        registerAction("water", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
                         return true;
@@ -203,11 +202,8 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
 
                     MessageUtils.sendMessageFromLang(core, "tamagotchi.water", player.getTamagotchi().getName());
                 }).build());
-
-        registerActions(core);
     }
-
-
+    
     @Override
     public boolean isAlive() {
         return alive;

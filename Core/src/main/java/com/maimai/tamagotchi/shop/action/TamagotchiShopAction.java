@@ -11,7 +11,7 @@ import com.maimai.tamagotchi.utils.MessageUtils;
 
 public class TamagotchiShopAction implements ShopAction {
 
-    private ProgramCore core;
+    private final ProgramCore core;
 
     public TamagotchiShopAction(ProgramCore core) {
         this.core = core;
@@ -20,7 +20,7 @@ public class TamagotchiShopAction implements ShopAction {
     @Override
     public void buyItem(Player player, ItemType itemType, DefaultType defaultType) {
 
-        Statistic<Integer> money = player.getMoney();
+        Statistic<Double> money = player.getMoney();
 
         if (money.getValue() < defaultType.getCost()) {
             MessageUtils.sendMessageFromLang(core, "shop.haveNotMoney");

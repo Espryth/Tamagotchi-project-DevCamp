@@ -2,7 +2,7 @@ package com.maimai.tamagotchi.tamagotchi;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.action.Action;
 import com.maimai.tamagotchi.entity.Entity;

@@ -5,11 +5,9 @@ import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.SimplePlayer;
 import com.maimai.tamagotchi.player.language.Language;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
-import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
+import com.maimai.tamagotchi.tamagotchi.*;
 import com.maimai.tamagotchi.tamagotchi.impl.*;
 import com.maimai.tamagotchi.utils.MessageUtils;
-import com.oracle.xmlns.internal.webservices.jaxws_databinding.XmlOneway;
 
 import java.util.*;
 

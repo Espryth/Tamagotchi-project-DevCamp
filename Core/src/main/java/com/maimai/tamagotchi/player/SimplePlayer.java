@@ -4,7 +4,7 @@ import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.player.inventory.PlayerInventory;
 import com.maimai.tamagotchi.player.language.Language;
 import com.maimai.tamagotchi.statistic.Statistic;
-import com.maimai.tamagotchi.statistic.impl.IntegerStatistic;
+import com.maimai.tamagotchi.statistic.impl.DoubleStatistic;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 import java.beans.ConstructorProperties;
@@ -18,7 +18,7 @@ public class SimplePlayer implements Player {
 
     private final Tamagotchi tamagotchi;
     private final Inventory inventory;
-    private final Statistic<Integer> money;
+    private final Statistic<Double> money;
 
     private final Language language;
 
@@ -39,7 +39,7 @@ public class SimplePlayer implements Player {
         this.language = language;
         this.tamagotchi = tamagotchi;
         this.inventory = new PlayerInventory();
-        this.money = new IntegerStatistic();
+        this.money = new DoubleStatistic();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class SimplePlayer implements Player {
     }
 
     @Override
-    public Statistic<Integer> getMoney() {
+    public Statistic<Double> getMoney() {
         return money;
     }
 
