@@ -1,10 +1,7 @@
 package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
-import com.maimai.tamagotchi.command.CommandRegister;
-import com.maimai.tamagotchi.command.MainCommands;
-import com.maimai.tamagotchi.command.ShopCommand;
-import com.maimai.tamagotchi.command.SimpleCommandRegister;
+import com.maimai.tamagotchi.command.*;
 import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.command.part.defaults.ActionPart;
 import com.maimai.tamagotchi.command.part.defaults.ItemPart;
@@ -35,7 +32,8 @@ public class CommandLoader implements Loader{
         CommandRegister commandRegister = new SimpleCommandRegister(core, partHandler, "/");
         commandRegister.registerCommand(
                 new ShopCommand(core),
-                new MainCommands(core)
+                new MainCommands(core),
+                new ActionCommand(core.getPlayer())
         );
 
         while (core.isEnabled()) {
