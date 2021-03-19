@@ -7,13 +7,23 @@ import java.util.List;
 
 public class MessageUtils {
 
-    public static void sendMessage(ProgramCore core, String path) {
+    public static void sendMessageFromLang(ProgramCore core, String path) {
         core.getLanguageManager().find(core.getPlayer().getLanguage()).ifPresent(file -> {
             if(file.getString(path).isEmpty()) {
-                System.out.println("An error occurred while trying to send the message " + path);
+                sendMessage("An error occurred while trying to send the message " + path);
                 return;
             }
-            System.out.println(file.getString(path));
+            sendMessage(file.getString(path));
+        });
+    }
+
+    public static void sendMessageListFromLang(ProgramCore core, String path) {
+        core.getLanguageManager().find(core.getPlayer().getLanguage()).ifPresent(file -> {
+            if(file.getString(path).isEmpty()) {
+                sendMessage("An error occurred while trying to send the message " + path);
+                return;
+            }
+            sendMessage(file.getStringList(path));
         });
     }
 
