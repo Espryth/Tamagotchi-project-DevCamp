@@ -55,9 +55,9 @@
       "/shop buy [item]",
       "/shop sell [item]"
     ],
-    "unknownItem": "",
-    "unknownType": "",
-    "haveNotItem": ""
+    "unknownItem": "The item you are looking for is unknown",
+    "unknownType": "That type of item does not exist",
+    "haveNotItem": "You do not have this item"
   },
 
   "actions": {

@@ -6,8 +6,6 @@ import com.maimai.tamagotchi.command.part.PartHandler;
 import com.maimai.tamagotchi.command.part.defaults.ActionPart;
 import com.maimai.tamagotchi.command.part.defaults.ItemPart;
 import com.maimai.tamagotchi.command.part.defaults.StringPart;
-import com.maimai.tamagotchi.shop.Shop;
-import com.maimai.tamagotchi.shop.TamagotchiShop;
 
 import java.util.Scanner;
 

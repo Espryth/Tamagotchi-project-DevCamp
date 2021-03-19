@@ -4,7 +4,6 @@ import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;
-import com.maimai.tamagotchi.module.Module;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.utils.MessageUtils;

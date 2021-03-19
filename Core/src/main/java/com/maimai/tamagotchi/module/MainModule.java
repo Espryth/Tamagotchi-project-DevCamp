@@ -2,21 +2,9 @@ package com.maimai.tamagotchi.module;
 
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.database.MongoDbManager;
-import com.maimai.tamagotchi.loader.Loader;
-import com.maimai.tamagotchi.loader.PlayerLoader;
-import com.maimai.tamagotchi.player.Player;
-import com.maimai.tamagotchi.player.SimplePlayer;
-import com.maimai.tamagotchi.player.language.Language;
-import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
-import com.maimai.tamagotchi.tamagotchi.TamagotchiType;
-import com.maimai.tamagotchi.tamagotchi.impl.*;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class MainModule implements Module {
 

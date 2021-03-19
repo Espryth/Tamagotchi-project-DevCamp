@@ -5,18 +5,14 @@ import com.maimai.tamagotchi.command.annotation.Command;
 import com.maimai.tamagotchi.command.annotation.OptArg;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.DefaultType;
-import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.item.ItemType;
 import com.maimai.tamagotchi.item.impl.FoodType;
 import com.maimai.tamagotchi.item.impl.ToyType;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.shop.Shop;
-import com.maimai.tamagotchi.shop.TamagotchiShop;
 import com.maimai.tamagotchi.shop.action.ShopAction;
-import com.maimai.tamagotchi.shop.action.TamagotchiShopAction;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ShopCommand implements CommandClass {
