@@ -23,7 +23,7 @@ public class MessageUtils {
 
     public static void sendMessageListFromLang(ProgramCore core, String path, String... replacements) {
         core.getLanguageManager().find(core.getPlayer().getLanguage()).ifPresent(file -> {
-            if(file.getString(path).isEmpty()) {
+            if(file.getStringList(path).isEmpty()) {
                 sendMessage("An error occurred while trying to send the message " + path);
                 return;
             }

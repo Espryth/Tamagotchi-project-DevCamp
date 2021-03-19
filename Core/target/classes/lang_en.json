@@ -59,6 +59,7 @@
     "canNotPlay": "%s is very tired to play",
     "canNotEat": "%s cant eat that",
     "canNotDoExercise": "%s is very tired to exercise",
+    "canEat": "You fed %s",
     "cat": {
       "pet": "%s is purring",
       "bath": "%s is upset with you",

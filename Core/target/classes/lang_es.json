@@ -1,0 +1,97 @@
+{
+  "commons": {
+    "unknownCommand": "Comando desconocido",
+    "correctUsage": "Uso correcto: %s",
+    "invalidArgument": "Argumento invalido",
+    "welcomeBack": [
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "Bienvenido otra vez %s",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    ],
+    "help": [
+      "Comandos de ayuda del Tamagotchi",
+      "/exit",
+      "/inventory",
+      "/stats",
+      "/open [module]",
+      "/shop help",
+      "/action [action] <item>"
+    ]
+  },
+  "inventory": {
+    "view": "- %s x(%s) - Value: %s"
+  },
+  "stats": [
+    "Estadisticas:",
+    "",
+    "Jugador",
+    "Nombre: %s",
+    "Dinero: %s",
+    "",
+    "Tamagotchi:",
+    "Tipo: %s",
+    "Nombre: %s",
+    "",
+    "Estado de %s:",
+    "Puntos de vida: %s",
+    "Puntos de hambre: %s",
+    "Puntos de sed: %s",
+    "Puntos de felicidad: %s",
+    "Puntos de suciedad: %s"
+  ],
+  "shop": {
+    "view": "",
+    "help": [
+      "Ayuda de la tienda",
+      "/shop foods",
+      "/shop toys",
+      "",
+      "/shop buy [item]",
+      "/shop sell [item]"
+    ],
+    "unknownItem": "",
+    "unknownType": "",
+    "haveNotItem": ""
+  },
+
+  "tamagotchi": {
+    "itemCanNotBeUsed":"No puedes usar ese item con este Tamagotchi",
+    "canNotPlay": "%s no tiene energia para jugar",
+    "canNotEat": "%s no puede comer eso",
+    "canNotDoExercise": "%s no tiene energia para ejercitarse",
+    "canEat": "Alimentaste a %s",
+    "cat": {
+      "pet": "%s esta ronroneando",
+      "bath": "%s esta enojad@ contigo",
+      "exercise": "%s esta irritad@",
+      "sleep": "%s esta cansad@, como siempre"
+    },
+    "dog": {
+      "pet": "%s esta muy emocionad@ y te esta lamiendo",
+      "bath": "%s esta muy feliz",
+      "exercise": "%s esta muy energetic@",
+      "sleep": "%s esta corriendo por el lugar"
+
+    },
+    "hamster": {
+      "pet": "%s esta emocionad@",
+      "bath": "A %s no le gusto el baño",
+      "exercise": "%s esta cansado y quiere comer",
+      "sleep": "%s quiere comer e ir a dormir otra vez"
+
+    },
+    "parrot": {
+      "pet": "%s esta haciendo ruidos raros",
+      "bath": "%s esta haciendo ruidos muy fuertes y esta enojad@",
+      "exercise": "%s esta volando por el lugar",
+      "sleep": "%s esta gritando por comida"
+
+    },
+    "rabbit": {
+      "pet": "%s esta quiet@ y disfrutandolo",
+      "bath": "%s tiene frio y esta enojad@",
+      "exercise": "%s estaba cansado y se durmio",
+      "sleep": "%s se fue a la cama otra vez"
+    }
+  }
+}
