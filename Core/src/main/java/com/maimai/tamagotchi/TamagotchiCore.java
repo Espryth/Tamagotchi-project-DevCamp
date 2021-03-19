@@ -3,7 +3,6 @@ package com.maimai.tamagotchi;
 import com.maimai.tamagotchi.database.MongoDbManager;
 import com.maimai.tamagotchi.event.EventRegister;
 import com.maimai.tamagotchi.event.SimpleEventRegister;
-import com.maimai.tamagotchi.file.YamlFileCreator;
 import com.maimai.tamagotchi.loader.CommandLoader;
 import com.maimai.tamagotchi.loader.ListenerLoader;
 import com.maimai.tamagotchi.loader.Loader;

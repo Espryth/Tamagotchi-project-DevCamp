@@ -1,7 +1,6 @@
 package com.maimai.tamagotchi;
 
 import com.maimai.tamagotchi.event.EventRegister;
-import com.maimai.tamagotchi.file.YamlFileCreator;
 import com.maimai.tamagotchi.manager.Manager;
 import com.maimai.tamagotchi.player.Player;
 import com.maimai.tamagotchi.player.language.Language;

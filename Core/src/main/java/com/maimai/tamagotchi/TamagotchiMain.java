@@ -1,6 +1,6 @@
 package com.maimai.tamagotchi;
 
-import com.maimai.tamagotchi.json.JsonFile;
+import com.maimai.tamagotchi.file.JsonFile;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
