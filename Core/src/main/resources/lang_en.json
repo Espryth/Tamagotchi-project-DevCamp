@@ -26,7 +26,12 @@
     "exit": "TestExit"
   },
   "inventory": {
-    "view": "- %s x(%s) - Value: %s"
+    "view": "- %s x(%s) - Value: %s",
+    "title": [
+      "Inventory size: %s",
+      "",
+      "List of items:"
+    ]
   },
   "stats": [
     "Stats:",
