@@ -52,7 +52,7 @@
       "/shop foods",
       "/shop toys",
       "",
-      "/shop buy [item]",
+      "/shop buy [type] [item]",
       "/shop sell [item]"
     ],
     "unknownItem": "The item you are looking for is unknown",
@@ -72,6 +72,7 @@
     "canNotDoExercise": "%s is very tired to exercise",
     "canEat": "You fed %s",
     "isHungry": "Tamagotchi requires your attention! It needs to eat",
+    "death": "Your tamagotchi just died from your lack of care",
     "cat": {
       "pet": "%s is purring",
       "bath": "%s is upset with you",

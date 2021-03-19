@@ -57,26 +57,23 @@ public class ShopCommand implements CommandClass {
                 break;
             case "buy":
                 if (type == null){
-                    MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy [foods/toys/baths]");
+                    MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy [foods/toys]");
                     break;
                 }
-
                 switch (type) {
                     case "foods":
                         if (item == null){
                             MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy foods [item]");
                             break;
                         }
-
                         try{
-                            FoodType.valueOf(item.toUpperCase());
+                            FoodType foodType =  FoodType.valueOf(item.toUpperCase());
+                            shopAction.buyItem(player, ItemType.FOOD, foodType);
+                            break;
                         }catch (IllegalArgumentException illegalArgumentException){
                             MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                             break;
                         }
-
-                        shopAction.buyItem(player, ItemType.FOOD, FoodType.valueOf(item.toUpperCase()));
-                        break;
                     case "toys":
                         if (item == null){
                             MessageUtils.sendMessageFromLang(core, "commons.correctUsage","/shop buy toys [item]");
@@ -84,13 +81,13 @@ public class ShopCommand implements CommandClass {
                         }
 
                         try{
-                            ToyType.valueOf(item.toUpperCase());
+                            ToyType toyType = ToyType.valueOf(item.toUpperCase());
+                            shopAction.buyItem(player, ItemType.TOY, toyType);
+                            break;
                         }catch (IllegalArgumentException illegalArgumentException){
                             MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                             break;
                         }
-                        shopAction.buyItem(player, ItemType.TOY, ToyType.valueOf(item.toUpperCase()));
-                        break;
                 }
                 MessageUtils.sendMessageFromLang(core, "shop.unknownType");
                 break;

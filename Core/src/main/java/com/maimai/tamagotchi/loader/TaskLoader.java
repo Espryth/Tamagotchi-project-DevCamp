@@ -1,6 +1,8 @@
 package com.maimai.tamagotchi.loader;
 
 import com.maimai.tamagotchi.ProgramCore;
+import com.maimai.tamagotchi.event.game.GameEndCause;
+import com.maimai.tamagotchi.event.game.GameEndEvent;
 import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
@@ -18,6 +20,7 @@ public class TaskLoader implements Loader {
     @Override
     public void load() {
         core.getScheduler().runTask(() -> tamagotchi.getHunger().decrement(10D),30L, 30L, TimeUnit.MINUTES);
+
         core.getScheduler().runTask(() -> {
             if(tamagotchi.isHunger()) {
                 MessageUtils.sendMessageFromLang(core, "tamagotchi.isHungry");
@@ -26,5 +29,12 @@ public class TaskLoader implements Loader {
                 tamagotchi.getHealth().decrement(1D);
             }
         }, 5L, 20L, TimeUnit.SECONDS);
+        core.getScheduler().runTask(() -> {
+            if(tamagotchi.getHealth().getValue() <= 0) {
+                tamagotchi.setAlive(false);
+                MessageUtils.sendMessageFromLang(core, "tamagotchi.death");
+                core.getEventRegister().callEvent(new GameEndEvent(GameEndCause.TAMAGOTCHI_DEAD));
+            }
+        }, 0L, 1L, TimeUnit.SECONDS);
     }
 }
