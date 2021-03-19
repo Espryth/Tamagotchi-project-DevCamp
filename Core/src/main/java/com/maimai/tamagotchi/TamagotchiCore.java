@@ -30,7 +30,7 @@ public class TamagotchiCore implements ProgramCore {
 
     private EventRegister eventRegister;
 
-    private Shop shop;
+    private Shop tamagotchiShop;
 
     private Manager<Language, JsonFile> languageManager;
 
@@ -52,8 +52,7 @@ public class TamagotchiCore implements ProgramCore {
         initLoaders(
                 new ListenerLoader(this),
                 new CommandLoader(this),
-                new TaskLoader(this),
-                new TamagotchiShop()
+                new TaskLoader(this)
         );
     }
 
@@ -67,7 +66,7 @@ public class TamagotchiCore implements ProgramCore {
         //this.mongoDbManager = new MongoDbManager();
         this.languageManager = new ManagerImpl<>();
         this.eventRegister = new SimpleEventRegister();
-        this.shop = new TamagotchiShop();
+        this.tamagotchiShop = new TamagotchiShop(this);
     }
 
     private void initLanguages() {
@@ -117,6 +116,6 @@ public class TamagotchiCore implements ProgramCore {
 
     @Override
     public Shop getShop() {
-        return shop;
+        return tamagotchiShop;
     }
 }

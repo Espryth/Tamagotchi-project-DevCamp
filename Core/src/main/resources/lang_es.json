@@ -56,6 +56,7 @@
       "/shop buy [tipo] [item]",
       "/shop sell [item]"
     ],
+    "haveNotMoney": "No tienes ese dinero.",
     "unknownItem": "El item que buscas es desconocido",
     "unknownType": "Ese tipo de ítem no existe",
     "haveNotItem": "No cuentas con este ítem"
