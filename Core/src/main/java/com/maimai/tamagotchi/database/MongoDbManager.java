@@ -1,8 +1,10 @@
 package com.maimai.tamagotchi.database;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.Provider;
 import com.maimai.tamagotchi.database.repository.ObjectRepositoryProvider;
+import com.maimai.tamagotchi.file.JsonFile;
 import com.maimai.tamagotchi.jackson.ObjectMapperProvider;
 import com.maimai.tamagotchi.player.Player;
 import com.mongodb.client.MongoClient;
@@ -15,10 +17,10 @@ public class MongoDbManager {
 
     private Provider<ObjectRepository<Player>> playerRepositoryProvider;
 
-    public MongoDbManager() {
+    public MongoDbManager(JsonFile config) {
 
-        Provider<MongoClient> mongoClientProvider = new MongoClientProvider("uri");
-        this.mongoDatabaseProvider = new MongoDatabaseProvider(mongoClientProvider.get(), "MaimaiTamagotchi");
+        Provider<MongoClient> mongoClientProvider = new MongoClientProvider(config.getString("database.uri"));
+        this.mongoDatabaseProvider = new MongoDatabaseProvider(mongoClientProvider.get(), config.getString("database.name"));
         this.objectMapperProvider = new ObjectMapperProvider();
 
         initRepositories();

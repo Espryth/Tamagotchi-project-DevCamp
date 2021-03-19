@@ -9,6 +9,9 @@ import com.maimai.tamagotchi.tamagotchi.Tamagotchi;
 
 public interface Player extends Entity {
 
+    @JsonProperty("password")
+    String getPassword();
+
     @JsonProperty("tamagotchi")
     Tamagotchi getTamagotchi();
 

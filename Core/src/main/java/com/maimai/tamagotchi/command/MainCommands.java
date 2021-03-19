@@ -2,6 +2,8 @@ package com.maimai.tamagotchi.command;
 
 import com.maimai.tamagotchi.ProgramCore;
 import com.maimai.tamagotchi.command.annotation.Command;
+import com.maimai.tamagotchi.event.game.GameEndCause;
+import com.maimai.tamagotchi.event.game.GameEndEvent;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.player.Player;
@@ -34,8 +36,7 @@ public class MainCommands implements CommandClass {
             usage = "/exit"
     )
     public void executeExitCommand() {
-        core.setEnabled(false);
-        System.out.println("Bye!");
+        core.getEventRegister().callEvent(new GameEndEvent(GameEndCause.PLAYER_EXIT));
     }
 
     @Command(
