@@ -23,6 +23,7 @@ public class NewGameModule implements Module {
 
         }
 
+
         for(Language language : Language.values()) {
 
             LANGUAGE_ALIASES.put(language.toString().toLowerCase(), language);
@@ -66,7 +67,7 @@ public class NewGameModule implements Module {
 
         while (language == null) {
             MessageUtils.sendMessage("That language doesn't exist!, please try again.");
-            language = LANGUAGE_ALIASES.get(scanner.next());
+            language = LANGUAGE_ALIASES.get(scanner.next().toLowerCase());
         }
 
         MessageUtils.sendMessage("➟ What is your name?");
