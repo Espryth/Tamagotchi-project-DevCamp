@@ -36,7 +36,7 @@ public class ShopCommand implements CommandClass {
                 MessageUtils.sendMessageListFromLang(core, "shop.help");
                 break;
             case "toys":
-                System.out.println("List of toys");
+                MessageUtils.sendMessageListFromLang(core, "shop.toys");
                 for (ToyType toyType : ToyType.values()){
                     MessageUtils.sendMessageFromLang(core, "shop.view",
                             toyType.getName(),
@@ -46,7 +46,7 @@ public class ShopCommand implements CommandClass {
                 }
                 break;
             case "foods":
-                System.out.println("List of foods:");
+                MessageUtils.sendMessageListFromLang(core, "shop.foods");
                 for (FoodType foodType : FoodType.values()){
                     MessageUtils.sendMessageFromLang(core, "shop.view",
                             foodType.getName(),

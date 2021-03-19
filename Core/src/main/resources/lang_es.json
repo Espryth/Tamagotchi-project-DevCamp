@@ -61,6 +61,12 @@
       "/shop buy [tipo] [item]",
       "/shop sell [item]"
     ],
+    "foods":[
+      "Lista de comidas:"
+    ],
+    "toys":[
+      "Lista de juguetes"
+    ],
     "purchased": "Compraste correctamente el artículo, cuesta %s",
     "sold": "Vendiste el artículo con éxito, cuesta %s",
     "haveNotMoney": "No tienes ese dinero.",
