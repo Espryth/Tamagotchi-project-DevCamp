@@ -188,6 +188,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     player.getTamagotchi().getDirty().increase(20D);
                     player.getTamagotchi().getFatigue().decrement(80D);
                     player.getMoney().increase(5);
+
                     MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString()
                             .toLowerCase()+".sleep", player.getTamagotchi().getName());
                 }).build());

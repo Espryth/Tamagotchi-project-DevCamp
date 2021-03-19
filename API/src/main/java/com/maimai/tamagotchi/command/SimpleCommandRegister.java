@@ -56,7 +56,7 @@ public class SimpleCommandRegister implements CommandRegister {
 
         argumentList.remove(0);
 
-        command.getCommandExecutor().execute(command.getCommandClass(), argumentList);
+        command.getCommandExecutor(). execute(command.getCommandClass(), argumentList);
     }
 
     public void registerCommand(CommandClass commandClass) {
@@ -127,17 +127,16 @@ public class SimpleCommandRegister implements CommandRegister {
 
         List<Object> list = new ArrayList<>();
 
-        argumentParts.forEach(argumentPart ->  {
-
+        for (ArgumentPart<?> argumentPart : argumentParts) {
             Object object = argumentPart.parse(argumentStack);
 
 
             if(object == null) {
-                return;
+                return null;
             }
 
             list.add(object);
-        });
+        }
 
 
         argumentPartsOpt.forEach(argumentPart ->  {

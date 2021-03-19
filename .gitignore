@@ -198,3 +198,4 @@ Core/target/classes/com/maimai/tamagotchi/tamagotchi/impl/HamsterTamagotchi.clas
 Core/target/classes/com/maimai/tamagotchi/tamagotchi/impl/RabbitTamagotchi.class
 Core/target/classes/lang_en.json
 Core/target/classes/lang_es.json
+Core/target/classes/com/maimai/tamagotchi/loader/TaskLoader.class

@@ -124,7 +124,7 @@ public class ShopCommand implements CommandClass {
                 MessageUtils.sendMessageFromLang(core, "shop.unknownItem");
                 break;
             default:
-                MessageUtils.sendMessageFromLang(core, "commons.unknownArgument");
+                MessageUtils.sendMessageFromLang(core, "commons.invalidArgument");
                 break;
         }
     }

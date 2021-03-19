@@ -21,6 +21,12 @@ public class ActionCommand implements CommandClass {
     )
     public void executeActionCommand(Action action, @OptArg Item item) {
         Player player = core.getPlayer();
+
+        if(action == null) {
+            System.out.println("A");
+            return;
+        }
+
         if(action.getActionRequirement().requeriment(player, item)) {
             action.getActionExecutor().execute(player, item);
         }
