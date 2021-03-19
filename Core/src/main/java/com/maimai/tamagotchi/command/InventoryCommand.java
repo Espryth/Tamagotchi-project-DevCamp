@@ -6,6 +6,7 @@ import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.item.Item;
 import com.maimai.tamagotchi.utils.MessageUtils;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -31,6 +32,11 @@ public class InventoryCommand implements CommandClass {
         MessageUtils.sendMessageListFromLang(core, "inventory.title", Integer.toString(inventory.getSize()));
 
         Set<Item> itemSet = new HashSet<>(inventory.getItems());
+
+        if (itemSet.size() < 1){
+            MessageUtils.sendMessageFromLang(core, "inventory.empty");
+            return;
+        }
 
         for (Item item : itemSet){
 

@@ -21,6 +21,7 @@ public class TaskLoader implements Loader {
     public void load() {
         core.getScheduler().runTask(() -> tamagotchi.getHunger().decrement(10D),30L, 30L, TimeUnit.MINUTES);
 
+
         core.getScheduler().runTask(() -> {
             if(tamagotchi.isHunger()) {
                 MessageUtils.sendMessageFromLang(core, "tamagotchi.isHungry");

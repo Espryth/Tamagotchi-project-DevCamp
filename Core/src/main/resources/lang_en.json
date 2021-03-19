@@ -30,7 +30,8 @@
       "Inventory size: %s",
       "",
       "List of items:"
-    ]
+    ],
+    "empty": "- The inventory is empty."
   },
   "stats": [
     "Stats:",
