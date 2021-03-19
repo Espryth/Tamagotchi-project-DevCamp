@@ -46,7 +46,7 @@ public class ShopCommand implements CommandClass {
                 }
                 break;
             case "foods":
-                MessageUtils.sendMessageListFromLang(core, "shop.header", "foods");
+                MessageUtils.sendMessageFromLang(core, "shop.header", "foods");
                 for (FoodType foodType : FoodType.values()){
                     MessageUtils.sendMessageFromLang(core, "shop.view",
                             foodType.getName(),
