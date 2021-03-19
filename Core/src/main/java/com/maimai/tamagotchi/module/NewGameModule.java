@@ -122,13 +122,7 @@ public class NewGameModule implements Module {
 
         core.setPlayer(player);
 
-        MessageUtils.sendMessage(
-
-                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-                "Welcome " + player.getName() + "!",
-                "to know how to player use /help",
-                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-        );
+        MessageUtils.sendMessageListFromLang(core, "commons.welcome", player.getName());
+        
     }
 }

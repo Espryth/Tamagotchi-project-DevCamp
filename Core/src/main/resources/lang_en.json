@@ -3,6 +3,12 @@
     "unknownCommand": "Unknown command",
     "correctUsage": "Correct usage: %s",
     "invalidArgument": "Invalid argument",
+    "welcome": [
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "Welcome %s!",
+      "to know how to play use /help",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    ],
     "welcomeBack": [
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
       "Welcome back %s",
