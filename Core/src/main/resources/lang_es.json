@@ -56,6 +56,8 @@
       "/shop buy [tipo] [item]",
       "/shop sell [item]"
     ],
+    "purchased": "Compraste correctamente el artículo, cuesta %s",
+    "sold": "Vendiste el artículo con éxito, cuesta %s",
     "haveNotMoney": "No tienes ese dinero.",
     "unknownItem": "El item que buscas es desconocido",
     "unknownType": "Ese tipo de ítem no existe",
