@@ -123,6 +123,6 @@ public class NewGameModule implements Module {
         core.setPlayer(player);
 
         MessageUtils.sendMessageListFromLang(core, "commons.welcome", player.getName());
-        
+
     }
 }
