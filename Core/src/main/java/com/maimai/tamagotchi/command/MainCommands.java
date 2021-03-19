@@ -39,47 +39,5 @@ public class MainCommands implements CommandClass {
         core.getEventRegister().callEvent(new GameEndEvent(GameEndCause.PLAYER_EXIT));
     }
 
-    @Command(
-            name = "inventory", usage = "/inventory")
-    public void executeInventoryCommand(){
-        Inventory inventory = core.getPlayer().getInventory();
-        Arrays.asList(
-                "Inventory size: " + inventory.getSize(),
-                "",
-                "List of items:"
-        ).forEach(System.out::println);
-
-        Set<Item> itemSet = new HashSet<>(inventory.getItems());
-
-        for (Item item : itemSet){
-
-            String amount = Integer.toString(Collections.frequency(inventory.getItems(), item));
-            String value = Double.toString(item.getDefaultType().getValue());
-
-            MessageUtils.sendMessageFromLang(core, "inventory.view", item.getDefaultType().getName(), amount, value);
-        }
-    }
-
-
-    @Command(
-            name = "stats", usage = "/stats")
-    public void executeStatsCommand(){
-
-        Player player = core.getPlayer();
-        Tamagotchi tamagotchiMain = core.getPlayer().getTamagotchi();
-
-        MessageUtils.sendMessageListFromLang(core, "stats",
-                player.getName(),
-                Integer.toString(player.getMoney().getValue()),
-                tamagotchiMain.getType().getName(),
-                tamagotchiMain.getName(),
-                tamagotchiMain.getName(),
-                Double.toString(tamagotchiMain.getHealth().getValue()),
-                Double.toString(tamagotchiMain.getHunger().getValue()),
-                Double.toString(tamagotchiMain.getThirst().getValue()),
-                Double.toString(tamagotchiMain.getHappiness().getValue()),
-                Double.toString(tamagotchiMain.getDirty().getValue())
-        );
-    }
 
 }
