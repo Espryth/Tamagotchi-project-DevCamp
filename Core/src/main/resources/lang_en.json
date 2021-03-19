@@ -31,7 +31,7 @@
       "",
       "List of items:"
     ],
-    "empty": "- The inventory is full."
+    "empty": "- The inventory is empty."
   },
   "stats": [
     "Stats:",

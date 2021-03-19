@@ -31,7 +31,7 @@
       "",
       "Lista de items:"
     ],
-    "empty": "- El inventario está lleno."
+    "empty": "- El inventario está vacio."
   },
   "stats": [
     "Estadisticas:",
