@@ -37,7 +37,6 @@ public class TamagotchiCore implements ProgramCore {
     public void initCore() {
 
         initObjects();
-        initLanguages();
 
         this.enabled = true;
         this.scheduler = new TamagotchiScheduler();
@@ -45,6 +44,8 @@ public class TamagotchiCore implements ProgramCore {
         Module module = new MainModule(this, mongoDbManager);
 
         module.start();
+
+        initLanguages();
 
         initLoaders(
                 new ListenerLoader(this),

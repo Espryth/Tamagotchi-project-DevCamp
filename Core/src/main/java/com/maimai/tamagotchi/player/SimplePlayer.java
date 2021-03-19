@@ -1,5 +1,6 @@
 package com.maimai.tamagotchi.player;
 
+import com.maimai.tamagotchi.builder.IBuilder;
 import com.maimai.tamagotchi.inventory.Inventory;
 import com.maimai.tamagotchi.player.inventory.PlayerInventory;
 import com.maimai.tamagotchi.player.language.Language;
@@ -66,5 +67,34 @@ public class SimplePlayer implements Player {
     @Override
     public String getId() {
         return id;
+    }
+
+    public static class Builder implements IBuilder<Player> {
+
+        private String name;
+
+        private Tamagotchi tamagotchi;
+
+        private Language language;
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setTamagotchi(Tamagotchi tamagotchi) {
+            this.tamagotchi = tamagotchi;
+            return this;
+        }
+
+        public Builder setLanguage(Language language) {
+            this.language = language;
+            return this;
+        }
+
+        @Override
+        public Player build() {
+            return new SimplePlayer(name, tamagotchi, language);
+        }
     }
 }
