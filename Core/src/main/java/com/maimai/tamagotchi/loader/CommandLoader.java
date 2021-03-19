@@ -32,7 +32,7 @@ public class CommandLoader implements Loader{
         partHandler.installPart(new ActionPart(core.getPlayer().getTamagotchi().getActionManager()));
         partHandler.installPart(new ItemPart(core.getPlayer()));
 
-        CommandRegister commandRegister = new SimpleCommandRegister(partHandler, "/");
+        CommandRegister commandRegister = new SimpleCommandRegister(core, partHandler, "/");
         commandRegister.registerCommand(
                 new ShopCommand(core),
                 new MainCommands(core)
