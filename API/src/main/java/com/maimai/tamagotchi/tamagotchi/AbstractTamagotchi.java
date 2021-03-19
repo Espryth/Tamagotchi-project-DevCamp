@@ -205,8 +205,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
                     player.getTamagotchi().getThirst().increase(40D);
 
-                    MessageUtils.sendMessageFromLang(core, "tamagotchi."+ player.getTamagotchi().getType().toString()
-                            .toLowerCase()+".water", player.getTamagotchi().getName());
+                    MessageUtils.sendMessageFromLang(core, "tamagotchi.water", player.getTamagotchi().getName());
                 }).build());
 
     }

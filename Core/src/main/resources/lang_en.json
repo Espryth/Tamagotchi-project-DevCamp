@@ -73,6 +73,7 @@
     "canEat": "You fed %s",
     "isHungry": "Tamagotchi requires your attention! It needs to eat",
     "death": "Your tamagotchi just died from your lack of care",
+    "water": "You gave water to %s",
     "cat": {
       "pet": "%s is purring",
       "bath": "%s is upset with you",
