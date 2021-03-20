@@ -50,15 +50,16 @@ public class CatTamagotchi extends AbstractTamagotchi{
         registerAction("exercise", new SimpleAction.Builder()
                 .createRequirement((player, item) -> {
                     if(item == null) {
-                        if (!(player.getTamagotchi().getFatigue().getValue() <= 40)){
+                        if(!(player.getTamagotchi().getFatigue().getValue() >= 60)){
                             return true;
                         } else {
                             MessageUtils.sendMessageFromLang(core, "tamagotchi.canNotDoExercise", player.getTamagotchi().getName());
                             return false;
                         }
+                    }else{
+                        MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
+                        return false;
                     }
-                    MessageUtils.sendMessageFromLang(core, "actions.notRequiresItem");
-                    return false;
                 })
                 .createExecutor((player, item) -> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
