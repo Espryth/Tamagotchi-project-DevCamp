@@ -17,6 +17,7 @@ public class SimpleTask implements Task {
         this.period = period;
         this.thread = new Thread(runnable);
         this.service = Executors.newSingleThreadScheduledExecutor();
+        this.timeUnit = timeUnit;
         service.scheduleAtFixedRate(thread, delay, period, timeUnit);
     }
 
