@@ -22,7 +22,7 @@
       "/action [action] <item> - (Command to perform actions)",
       "/exit - (Command to leave the game)"
     ],
-    "exit": "TestExit"
+    "exit": "Bye! See you later!"
   },
   "inventory": {
     "view": "- %s x(%s) - Price: %s",
