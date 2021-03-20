@@ -25,7 +25,7 @@
     "exit": "TestExit"
   },
   "inventory": {
-    "view": "- %s x(%s) - Value: %s",
+    "view": "- %s x(%s) - Price: %s",
     "title": [
       "Inventory size: %s",
       "",
@@ -63,10 +63,10 @@
       "/shop buy [type] [item]",
       "/shop sell [item]"
     ],
-    "purchased": " You successfully purchased the item, it costs %s",
-    "sold": " You successfully sold the item, it costs %s",
-    "haveNotMoney": "You don't have that money.",
-    "unknownItem": "The item you are looking for is unknown",
+    "purchased": " You successfully purchased the item for %s",
+    "sold": " You successfully sold the item for %s",
+    "haveNotMoney": "You don't have enough money",
+    "unknownItem": "That item does not exist",
     "unknownType": "That type of item does not exist",
     "haveNotItem": "You do not have this item"
   },

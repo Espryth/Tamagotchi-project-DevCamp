@@ -54,7 +54,7 @@
   ],
   "shop": {
     "header": "Lista de %s",
-    "view": "- %s x(%s) - Value: %s",
+    "view": "- %s x(%s) - Precio: %s",
     "help": [
       "Ayuda de la tienda",
       "/shop foods",
@@ -69,10 +69,10 @@
     "toys":[
       "Lista de juguetes"
     ],
-    "purchased": "Compraste correctamente el artículo, cuesta %s",
-    "sold": "Vendiste el artículo con éxito, cuesta %s",
-    "haveNotMoney": "No tienes ese dinero.",
-    "unknownItem": "El item que buscas es desconocido",
+    "purchased": "Compraste correctamente el artículo por %s",
+    "sold": "Vendiste el artículo con éxito por %s",
+    "haveNotMoney": "No tienes suficiente dinero",
+    "unknownItem": "Ese item no existe",
     "unknownType": "Ese tipo de ítem no existe",
     "haveNotItem": "No cuentas con este ítem"
   },
