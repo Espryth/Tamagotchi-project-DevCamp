@@ -69,7 +69,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                         MessageUtils.sendMessageFromLang(core, "actions.requiresItem");
                         return false;
                     }
-                    if(!(player.getTamagotchi().getFatigue().getValue() <= 30)){
+                    if(!(player.getTamagotchi().getFatigue().getValue() >= 70)){
                         switch (player.getTamagotchi().getType()){
                             case CAT:
                                 if (item.getDefaultType() == ToyType.ROPE || item.getDefaultType() == ToyType.POINTER){
@@ -105,7 +105,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
                 })
                 .createExecutor((player, item)-> {
                     core.getEventRegister().callEvent(new TamagotchiStatsChangeEvent(player.getTamagotchi()));
-                    player.getTamagotchi().getFatigue().decrement(30D);
+                    player.getTamagotchi().getFatigue().increase(30D);
                     player.getTamagotchi().getHunger().decrement(30D);
                     player.getTamagotchi().getThirst().decrement(30D);
                     player.getTamagotchi().getDirty().increase(30D);
