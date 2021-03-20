@@ -16,11 +16,11 @@
     ],
     "help": [
       "Tamagotchi help commands",
-      "/exit",
-      "/inventory",
-      "/stats",
-      "/shop help",
-      "/action [action] <item>"
+      "/stats - (Show statistics of your tamagotchi and yours)",
+      "/inventory - (Shows the content of your inventory)",
+      "/shop help - (Command to see help of the store)",
+      "/action [action] <item> - (Command to perform actions)",
+      "/exit - (Command to leave the game)"
     ],
     "exit": "TestExit"
   },

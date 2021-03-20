@@ -44,7 +44,7 @@ public abstract class AbstractTamagotchi implements Tamagotchi {
         this.hunger = new DoubleStatistic(100);
         this.health = new DoubleStatistic(100);
         this.thirst = new DoubleStatistic(100);
-        this.dirty = new DoubleStatistic(100);
+        this.dirty = new DoubleStatistic(0);
         this.happiness = new DoubleStatistic(100);
         this.fatigue = new DoubleStatistic(0);
 
