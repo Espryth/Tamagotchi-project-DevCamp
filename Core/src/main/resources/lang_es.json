@@ -22,7 +22,7 @@
       "/action [action] <item> - (Comando para realizar acciones)",
       "/exit - (Comando para salir del juego)"
     ],
-    "exit": "TestExit"
+    "exit": "Bye! Vuelve pronto!"
   },
   "inventory": {
     "view": "- %s x(%s) - Value: %s",
