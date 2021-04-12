@@ -17,7 +17,7 @@
     <build>
         <defaultGoal>clean package install</defaultGoal>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <finalName>EasyJoin</finalName>
+        <finalName>Tamagotchi</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
